@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shainy Decorations — Fresh Flower Decorations, Singarayakonda, A.P</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --cream:#FBF2E1;
+    --linen:#F3E4C7;
+    --ink:#2A2015;
+    --ink-soft:#5C4F3B;
+    --leaf:#4A5D38;
+    --leaf-deep:#323F24;
+    --marigold:#E08D2C;
+    --marigold-deep:#BE6F1C;
+    --maroon:#7C2A1B;
+    --turmeric:#EFB13C;
+    --terracotta:#B15A34;
+    --line:rgba(42,32,21,0.15);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Karla', sans-serif; font-size:17px; line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  h1,h2,h3,h4{ font-family:'Yeseva One', serif; font-weight:400; color:var(--maroon); line-height:1.15; }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{position:relative; z-index:2;}
+  .eyebrow{
+    font-family:'Karla', sans-serif; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    font-size:.78rem; color:var(--marigold-deep); display:inline-block; margin-bottom:.6rem;
+  }
+
+  /* ---------- MARIGOLD GARLAND DIVIDER (signature) ---------- */
+  .garland{ display:flex; justify-content:center; padding:6px 0; opacity:.9; }
+  .garland svg{ width:100%; max-width:640px; height:26px; }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{ background:var(--maroon); color:#F3E4C7; font-size:.82rem; }
+  .topbar .wrap{ display:flex; justify-content:space-between; align-items:center; padding:8px 32px; flex-wrap:wrap; gap:6px; }
+  .topbar a{ font-weight:700; }
+  .topbar .tb-links{ display:flex; gap:20px; }
+
+  /* ---------- HEADER ---------- */
+  header{ position:sticky; top:0; z-index:50; background:rgba(251,242,225,0.95); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:8px 32px; max-width:1180px; margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Yeseva One', serif; font-size:1.5rem; color:var(--maroon); overflow:visible; }
+  .logo img{ height:82px; width:auto; display:block; margin:-12px 0; transition:transform .3s ease-in-out, filter .3s ease-in-out; animation:logoSway 3s ease-in-out infinite, logoColorShift 6s linear infinite; transform-origin:center; }
+  .logo:hover img{ animation:none; transform:translateX(9px); filter:drop-shadow(0 6px 10px rgba(224,141,44,0.4)); }
+  @keyframes logoSway{
+    0%, 100% { transform:translateX(0); }
+    25%      { transform:translateX(-8px); }
+    75%      { transform:translateX(8px); }
+  }
+  /* Cycles the logo gently through hue while pulsing a soft glow */
+  @keyframes logoColorShift{
+    0%   { filter:hue-rotate(0deg) saturate(1) drop-shadow(0 2px 4px rgba(224,141,44,0)); }
+    25%  { filter:hue-rotate(90deg) saturate(1.25) drop-shadow(0 4px 10px rgba(224,141,44,0.35)); }
+    50%  { filter:hue-rotate(180deg) saturate(1.4) drop-shadow(0 4px 14px rgba(224,141,44,0.55)); }
+    75%  { filter:hue-rotate(270deg) saturate(1.25) drop-shadow(0 4px 10px rgba(224,141,44,0.35)); }
+    100% { filter:hue-rotate(360deg) saturate(1) drop-shadow(0 2px 4px rgba(224,141,44,0)); }
+  }
+  @media (prefers-reduced-motion: reduce){ .logo img{ animation:none; } }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{ font-size:.9rem; letter-spacing:.02em; font-weight:600; color:var(--ink-soft); position:relative; }
+  .nav-links a::after{ content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--marigold); transition:width .25s ease; }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; gap:10px; align-items:center; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:3px; font-weight:700; font-size:.85rem; letter-spacing:.02em; transition:all .2s ease; border:1.5px solid transparent; cursor:pointer; }
+  .btn-primary{ background:var(--marigold); color:#fff; }
+  .btn-primary:hover{ background:var(--marigold-deep); transform:translateY(-2px); }
+
+  /* Explore Occasions: background sweeps in on hover, sweeps back out on leave */
+  .btn-fill-explore{
+    position:relative; overflow:hidden; z-index:1; background:var(--marigold);
+  }
+  .btn-fill-explore::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:var(--marigold-deep);
+    transform:scaleX(0); transform-origin:right center;
+    transition:transform .45s ease-in-out;
+  }
+  .btn-fill-explore:hover{ background:var(--marigold); transform:translateY(-2px); }
+  .btn-fill-explore:hover::before{ transform:scaleX(1); transform-origin:left center; }
+  .btn-fill-explore:active{ background:var(--marigold); transform:translateY(-1px) scale(.98); }
+  .btn-fill-explore:active::before{ transform:scaleX(1); transform-origin:left center; transition-duration:.25s; }
+  @media (prefers-reduced-motion: reduce){
+    .btn-fill-explore::before{ transition:none; }
+  }
+  .btn-whatsapp{ background:#3F7A4E; color:#fff; }
+  .btn-whatsapp:hover{ background:#2F5F3B; transform:translateY(-2px); }
+  .btn-outline{ border-color:var(--maroon); color:var(--maroon); }
+  .btn-outline:hover{ background:var(--maroon); color:#fff; }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:64px 0 50px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:center; }
+  .hero h1{ font-size:clamp(2.2rem,4.4vw,3.4rem); margin-bottom:1.1rem; }
+  .hero h1 span{ color:var(--marigold-deep); }
+  .hero p.lead{ max-width:480px; color:var(--ink-soft); font-size:1.05rem; margin-bottom:1.8rem; }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-art{
+    position:relative; display:flex; justify-content:center;
+  }
+  .hero-art svg{ width:100%; max-width:430px; }
+  .hero-img-wrap{
+    animation:heroImgBreathe 4.4s ease-in-out infinite;
+    will-change:transform;
+  }
+  .hero-img-wrap:hover{ animation-play-state:paused; }
+  .hero-art img{
+    border-radius:10px;
+    transition:box-shadow .3s ease-in-out, transform .3s ease-in-out;
+  }
+  .hero-art img:hover{ box-shadow:0 26px 48px rgba(42,32,21,0.28); }
+  @keyframes heroImgBreathe{
+    0%, 100% { transform:scale(1) translateY(0); }
+    50%      { transform:scale(1.06) translateY(-12px); }
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-img-wrap{ animation:none; } }
+  /* Google review badge: fixed in place, does not move with the image animation */
+  .rating-chip{
+    position:absolute; bottom:6%; left:0; background:#fff; border:1px solid var(--line); border-radius:8px;
+    padding:10px 16px; display:flex; gap:10px; align-items:center;
+    box-shadow:0 18px 40px rgba(42,32,21,0.28), 0 4px 12px rgba(224,141,44,0.18);
+    z-index:3; transition:transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  }
+  .rating-chip:hover{
+    transform:translateY(-4px);
+    box-shadow:0 26px 52px rgba(42,32,21,0.34), 0 6px 16px rgba(224,141,44,0.26);
+  }
+  .rating-chip .stars{ color:var(--marigold); font-size:1rem; letter-spacing:1px; }
+  .rating-chip .num{ font-weight:700; font-size:.85rem; color:var(--ink); }
+  .rating-chip .sub{ font-size:.72rem; color:var(--ink-soft); }
+
+
+  .strip{ background:var(--leaf-deep); color:#F3E4C7; padding:20px 0; }
+  .strip .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+  .strip .item{ text-align:center; flex:1; min-width:150px; }
+  .strip .item .num{ font-family:'Yeseva One', serif; font-size:1.5rem; color:var(--turmeric); }
+  .strip .item .lbl{ font-size:.78rem; letter-spacing:.03em; opacity:.85; margin-top:2px; }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{ max-width:640px; margin:0 auto 3rem; text-align:center; }
+  .section-head h2{ font-size:clamp(1.9rem,3.2vw,2.5rem); }
+  .section-head p{ color:var(--ink-soft); margin-top:.8rem; }
+
+  /* ---------- OCCASIONS GRID ---------- */
+  .occasions{ padding:90px 0 70px; }
+  .occ-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .occ-card{
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 20px; text-align:center;
+    transition:transform .3s ease-in-out, box-shadow .3s ease-in-out; position:relative; overflow:hidden;
+  }
+  .occ-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--marigold), var(--maroon)); }
+  .occ-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 24px 42px rgba(42,32,21,0.2);
+    animation:cardHoverPop .45s ease-in-out;
+  }
+  .occ-card svg{ width:56px; height:56px; margin:6px auto 14px; transition:transform .3s ease-in-out; }
+  .occ-card:hover svg{ transform:scale(1.1) rotate(-4deg); }
+  .occ-card h3{ font-size:1.12rem; margin-bottom:.4rem; }
+  .occ-card .price{ font-weight:700; color:var(--marigold-deep); font-size:.92rem; margin-bottom:.5rem; }
+  .occ-card p{ color:var(--ink-soft); font-size:.85rem; }
+
+  @keyframes cardHoverPop{
+    0%   { transform:translateY(0) scale(1); }
+    45%  { transform:translateY(-15px) scale(1.035); }
+    100% { transform:translateY(-10px) scale(1.02); }
+  }
+
+  /* ---------- STYLES (signature look) ---------- */
+  .styles{ padding:80px 0; background:var(--linen); }
+  .styles-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .style-card{ background:var(--cream); border-radius:6px; overflow:hidden; border:1px solid var(--line); transition:transform .3s ease-in-out, box-shadow .3s ease-in-out; }
+  .style-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 20px 36px rgba(42,32,21,0.16);
+    animation:cardHoverPopSoft .45s ease-in-out;
+  }
+  .style-thumb{ height:190px; display:flex; align-items:center; justify-content:center; background:#fff; overflow:hidden; }
+  .style-thumb img.occ-thumb{ width:100%; height:100%; object-fit:cover; border-radius:0; margin-bottom:0; }
+  .style-thumb svg{ width:100px; height:100px; transition:transform .35s ease-in-out; }
+  .style-card:hover .style-thumb svg{ transform:scale(1.08); }
+  .style-body{ padding:18px 18px 22px; }
+  .style-body h3{ font-size:1.05rem; margin-bottom:.35rem; }
+  .style-body p{ font-size:.85rem; color:var(--ink-soft); }
+
+  @keyframes cardHoverPopSoft{
+    0%   { transform:translateY(0) scale(1); }
+    45%  { transform:translateY(-12px) scale(1.03); }
+    100% { transform:translateY(-8px) scale(1.02); }
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{ padding:90px 0; }
+  .how-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px; counter-reset:step; }
+  .how-step{ text-align:center; position:relative; }
+  .how-step .step-num{
+    width:54px; height:54px; border-radius:50%; background:var(--maroon); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Yeseva One', serif; font-size:1.3rem;
+    margin:0 auto 18px;
+  }
+  .how-step h3{ font-size:1.2rem; margin-bottom:.5rem; }
+  .how-step p{ color:var(--ink-soft); font-size:.92rem; max-width:280px; margin:0 auto; }
+  .how-grid{ position:relative; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{ padding:90px 0; background:var(--leaf-deep); color:var(--cream); }
+  .gallery .section-head h2, .gallery .eyebrow{ color:var(--cream); }
+  .gallery .section-head p{ color:rgba(243,228,199,0.75); }
+
+  /* Sliding carousel: .gal-slider clips/masks the edges, .gal-track holds the
+     cards (content duplicated once) and animates smoothly left in an
+     infinite loop. Manual drag/scroll also works via native overflow-x. */
+  .gal-slider{
+    overflow-x:auto; overflow-y:hidden; width:100%;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    scroll-behavior:smooth; scrollbar-width:none; cursor:grab;
+    touch-action:pan-x; -webkit-overflow-scrolling:touch;
+  }
+  .gal-slider::-webkit-scrollbar{ display:none; }
+  .gal-slider:active{ cursor:grabbing; }
+  .gal-track{
+    display:flex; gap:16px; width:max-content;
+    animation:gallerySlide 68s linear infinite;
+  }
+  .gal-slider:hover .gal-track,
+  .gal-track.is-paused{ animation-play-state:paused; }
+  @keyframes gallerySlide{
+    from{ transform:translateX(0); }
+    to  { transform:translateX(-50%); }
+  }
+  .gal-card{
+    flex:0 0 250px; background:rgba(243,228,199,0.06); border:1px solid rgba(243,228,199,0.18);
+    border-radius:6px; padding:22px 16px; text-align:center; transition:transform .3s ease-in-out, background .3s ease-in-out;
+  }
+  .gal-card img{ width:100%; height:190px; object-fit:cover; border-radius:5px; margin-bottom:14px; }
+  .gal-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    background:rgba(243,228,199,0.14);
+    box-shadow:0 18px 30px rgba(0,0,0,0.25);
+    animation:cardHoverPopSoft .45s ease-in-out;
+  }
+  .gal-card svg{ width:60px; height:60px; margin:0 auto 12px; transition:transform .3s ease-in-out; }
+  .gal-card:hover svg{ transform:scale(1.1); }
+  .gal-card h4{ font-family:'Karla', sans-serif; font-weight:700; font-size:.92rem; color:var(--cream); margin-bottom:4px; }
+  .gal-card span{ font-size:.75rem; color:var(--turmeric); }
+  @media (prefers-reduced-motion: reduce){ .gal-track{ animation:none; } }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ padding:90px 0; }
+  .t-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .t-card{
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 22px;
+    box-shadow:0 8px 20px rgba(42,32,21,0.08);
+    transition:transform .3s ease-in-out, box-shadow .3s ease-in-out;
+  }
+  .t-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 24px 42px rgba(42,32,21,0.2);
+    animation:cardHoverPopSoft .45s ease-in-out;
+  }
+  .t-card .stars{ color:var(--marigold); letter-spacing:2px; margin-bottom:12px; }
+  .t-card p{ font-size:.96rem; color:var(--ink); margin-bottom:14px; }
+  .t-name{ font-weight:700; font-size:.9rem; color:var(--maroon); }
+  .t-role{ font-size:.78rem; color:var(--ink-soft); }
+
+  /* Periodic "refresh" transition when the testimonial content is swapped */
+  .t-card.card-refresh-out{ animation:cardRefreshOut .4s ease-in-out forwards; }
+  .t-card.card-refresh-in{ animation:cardRefreshIn .5s ease-in-out both; }
+  @keyframes cardRefreshOut{
+    from{ opacity:1; transform:translateY(0) scale(1); }
+    to  { opacity:0; transform:translateY(-12px) scale(.95); }
+  }
+  @keyframes cardRefreshIn{
+    from{ opacity:0; transform:translateY(12px) scale(.95); }
+    to  { opacity:1; transform:translateY(0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .t-card.card-refresh-out, .t-card.card-refresh-in{ animation:none; }
+  }
+
+  /* ---------- CONTACT / SERVICE AREA ---------- */
+  .contact{ padding:90px 0; background:var(--linen); }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+  .contact h2{ font-size:2rem; margin-bottom:1rem; }
+  .contact p{ color:var(--ink-soft); margin-bottom:1.5rem; }
+  .info-list{ list-style:none; }
+  .info-list li{ display:flex; gap:12px; padding:12px 0; border-bottom:1px dashed var(--line); font-size:.94rem; }
+  .info-list li:last-child{ border-bottom:none; }
+  .info-list svg{ width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); }
+  .info-list li > i.fa-solid{ width:20px; font-size:18px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); text-align:center; }
+  .info-list a{ color:var(--maroon); text-decoration:none; font-weight:600; }
+  .info-list a:hover{ text-decoration:underline; }
+  .areas{ margin-top:1.4rem; display:flex; flex-wrap:wrap; gap:8px; }
+  .area-chip{ background:#fff; border:1px solid var(--line); border-radius:20px; padding:5px 14px; font-size:.78rem; color:var(--ink-soft); }
+
+  .contact-form{
+    background:#fff; border-radius:8px; border:1.5px solid var(--line); padding:30px;
+    transition:transform .35s ease-in-out, box-shadow .35s ease-in-out, border-color .35s ease-in-out;
+    animation:formIdleGlow 4.5s ease-in-out infinite;
+  }
+  @keyframes formIdleGlow{
+    0%, 100% { box-shadow:0 8px 20px rgba(42,32,21,0.07); }
+    50%      { box-shadow:0 14px 32px rgba(224,141,44,0.16); }
+  }
+  .contact-form:hover{
+    animation:formShakeHover .5s ease-in-out;
+    transform:translateY(-6px);
+    box-shadow:0 22px 40px rgba(42,32,21,0.16);
+    border-color:var(--marigold);
+  }
+  .contact-form:focus-within{
+    animation:formFocusPulse .55s ease-in-out, formShake .45s ease-in-out;
+    transform:translateY(-9px) scale(1.012);
+    box-shadow:0 30px 54px rgba(224,141,44,0.28);
+    border-color:var(--marigold-deep);
+  }
+  @keyframes formFocusPulse{
+    0%   { box-shadow:0 0 0 0 rgba(224,141,44,0.35); }
+    100% { box-shadow:0 30px 54px rgba(224,141,44,0.28); }
+  }
+  /* Shake feedback the moment a visitor hovers the contact form */
+  @keyframes formShakeHover{
+    0%, 100% { transform:translateY(-6px) translateX(0); }
+    20%      { transform:translateY(-6px) translateX(-6px); }
+    40%      { transform:translateY(-6px) translateX(6px); }
+    60%      { transform:translateY(-6px) translateX(-4px); }
+    80%      { transform:translateY(-6px) translateX(4px); }
+  }
+  /* Shake feedback the moment a visitor clicks/taps into the contact form */
+  @keyframes formShake{
+    0%, 100% { transform:translateY(-9px) scale(1.012) translateX(0); }
+    20%      { transform:translateY(-9px) scale(1.012) translateX(-6px); }
+    40%      { transform:translateY(-9px) scale(1.012) translateX(6px); }
+    60%      { transform:translateY(-9px) scale(1.012) translateX(-4px); }
+    80%      { transform:translateY(-9px) scale(1.012) translateX(4px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .contact-form:hover{ animation:none; }
+    .contact-form:focus-within{ animation:formFocusPulse .55s ease-in-out; }
+  }
+  @media (prefers-reduced-motion: reduce){ .contact-form{ animation:none; } }
+  .contact-form h3{ font-size:1.3rem; margin-bottom:1.2rem; transition:color .3s ease-in-out; }
+  .contact-form:focus-within h3{ color:var(--marigold-deep); }
+  .form-row{ margin-bottom:14px; }
+  .form-row label{ display:block; font-size:.82rem; font-weight:700; margin-bottom:6px; color:var(--ink); transition:color .25s ease-in-out; }
+  .form-row:focus-within label{ color:var(--marigold-deep); }
+  .form-row input, .form-row select, .form-row textarea{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:4px; font-family:'Karla', sans-serif; font-size:.94rem; background:var(--cream);
+    transition:border-color .25s ease-in-out, box-shadow .25s ease-in-out, transform .25s ease-in-out, background .25s ease-in-out;
+  }
+  .form-row input:hover, .form-row select:hover, .form-row textarea:hover{ border-color:var(--marigold); }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+    outline:2px solid var(--marigold); outline-offset:1px; border-color:var(--marigold-deep);
+    transform:translateY(-1px) scale(1.012); box-shadow:0 8px 18px rgba(224,141,44,0.2); background:#fff;
+  }
+  .form-2col{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .contact-form .btn:active{ transform:scale(.96); }
+
+  /* Looping shimmer sweep across the submit button to draw the eye */
+  .contact-form button[type="submit"]{ position:relative; overflow:hidden; }
+  .contact-form button[type="submit"]::after{
+    content:''; position:absolute; top:0; left:-60%; width:35%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:skewX(-20deg);
+    animation:btnShimmer 3.4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes btnShimmer{
+    0%   { left:-60%; }
+    45%  { left:130%; }
+    100% { left:130%; }
+  }
+  @media (prefers-reduced-motion: reduce){ .contact-form button[type="submit"]::after{ animation:none; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--maroon); color:rgba(251,242,225,0.85); padding:56px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px; padding-bottom:40px; border-bottom:1px solid rgba(251,242,225,0.2); }
+  .foot-logo{ display:flex; align-items:center; gap:10px; font-family:'Yeseva One', serif; font-size:1.35rem; color:var(--cream); margin-bottom:12px; }
+  .foot-logo img{ height:80px; width:auto; display:block; background:var(--cream); border-radius:4px; padding:2px 4px; }
+  footer p{ font-size:.88rem; color:rgba(251,242,225,0.65); max-width:280px; }
+  footer h4{ color:var(--cream); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; font-family:'Karla',sans-serif; font-weight:700; }
+  footer ul{ list-style:none; }
+  footer ul li{ margin-bottom:9px; }
+  footer ul a{ font-size:.88rem; color:rgba(251,242,225,0.72); transition:color .2s ease; }
+  footer ul a:hover{ color:var(--turmeric); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:.78rem; color:rgba(251,242,225,0.55); flex-wrap:wrap; gap:10px; }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed; bottom:22px; right:22px; z-index:60; background:#3F7A4E; color:#fff; width:45px; height:45px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.25); transition:transform .2s ease;
+    border:none; cursor:pointer; font:inherit;
+  }
+  .float-wa:hover{ transform:scale(1.08); }
+  .float-wa svg{ width:20px; height:20px; }
+  /* Rotating ring around the floating WhatsApp button */
+  .float-wa::before{
+    content:''; position:absolute; inset:-6px; border-radius:50%;
+    border:2px dashed rgba(63,122,78,0.55);
+    animation:waRingSpin 5s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes waRingSpin{
+    from{ transform:rotate(0deg); }
+    to  { transform:rotate(360deg); }
+  }
+  /* ---------- REVEAL / MAIN-PAGE CARD LOADING ---------- */
+  .reveal{ opacity:0; transform:translateY(24px) scale(.97); transition:opacity .6s ease-in-out, transform .6s ease-in-out; }
+  .reveal.in{ opacity:1; transform:translateY(0) scale(1); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+
+  /* Staggered "loading in" delay so cards in the same row/grid don't all pop
+     together — same idea as the sub-page skeleton→card entrance. */
+  .occ-grid > .reveal:nth-child(1){ transition-delay:.02s; }
+  .occ-grid > .reveal:nth-child(2){ transition-delay:.08s; }
+  .occ-grid > .reveal:nth-child(3){ transition-delay:.14s; }
+  .occ-grid > .reveal:nth-child(4){ transition-delay:.20s; }
+  .occ-grid > .reveal:nth-child(5){ transition-delay:.26s; }
+  .occ-grid > .reveal:nth-child(6){ transition-delay:.32s; }
+  .occ-grid > .reveal:nth-child(7){ transition-delay:.38s; }
+  .occ-grid > .reveal:nth-child(8){ transition-delay:.44s; }
+
+  .styles-grid > .reveal:nth-child(1){ transition-delay:.02s; }
+  .styles-grid > .reveal:nth-child(2){ transition-delay:.10s; }
+  .styles-grid > .reveal:nth-child(3){ transition-delay:.18s; }
+  .styles-grid > .reveal:nth-child(4){ transition-delay:.26s; }
+
+  .t-grid > .reveal:nth-child(1){ transition-delay:.02s; }
+  .t-grid > .reveal:nth-child(2){ transition-delay:.12s; }
+  .t-grid > .reveal:nth-child(3){ transition-delay:.22s; }
+
+  /* Touch/mobile equivalent of :hover — tapping a card plays the same pop */
+  .occ-card:active{ animation:cardHoverPop .45s ease-in-out; transform:translateY(-10px) scale(1.02); box-shadow:0 24px 42px rgba(42,32,21,0.2); }
+  .style-card:active{ animation:cardHoverPopSoft .45s ease-in-out; transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px rgba(42,32,21,0.16); }
+  .gal-card:active{ animation:cardHoverPopSoft .45s ease-in-out; transform:translateY(-8px) scale(1.03); background:rgba(243,228,199,0.14); box-shadow:0 18px 30px rgba(0,0,0,0.25); }
+  .t-card:active{ animation:cardHoverPopSoft .45s ease-in-out; transform:translateY(-8px) scale(1.02); box-shadow:0 24px 42px rgba(42,32,21,0.2); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav{ padding:7px 28px; }
+    .logo img{ height:68px; margin:-9px 0; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; margin-bottom:6px; }
+    .hero-img-wrap{ animation-duration:4s; }
+    .hero-art img{ max-width:300px; }
+    .occ-grid, .styles-grid{ grid-template-columns:repeat(2,1fr); }
+    .how-grid, .t-grid{ grid-template-columns:1fr; }
+    .occ-card .occ-thumb{ height:200px; }
+    .style-thumb{ height:170px; }
+    .gal-card{ flex-basis:210px; }
+    .gal-card img{ height:160px; }
+    .gal-track{ animation-duration:52s; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr 1fr; row-gap:30px; }
+    .foot-logo img{ height:68px; }
+    .strip .wrap{ justify-content:flex-start; }
+
+    /* Snappier loading stagger on smaller screens — fewer columns means
+       cards queue up more, so shorten the wait between each. */
+    .occ-grid > .reveal:nth-child(1){ transition-delay:.02s; }
+    .occ-grid > .reveal:nth-child(2){ transition-delay:.06s; }
+    .occ-grid > .reveal:nth-child(3){ transition-delay:.10s; }
+    .occ-grid > .reveal:nth-child(4){ transition-delay:.14s; }
+    .occ-grid > .reveal:nth-child(5){ transition-delay:.18s; }
+    .occ-grid > .reveal:nth-child(6){ transition-delay:.22s; }
+    .occ-grid > .reveal:nth-child(7){ transition-delay:.26s; }
+    .occ-grid > .reveal:nth-child(8){ transition-delay:.30s; }
+    .styles-grid > .reveal:nth-child(1){ transition-delay:.02s; }
+    .styles-grid > .reveal:nth-child(2){ transition-delay:.07s; }
+    .styles-grid > .reveal:nth-child(3){ transition-delay:.12s; }
+    .styles-grid > .reveal:nth-child(4){ transition-delay:.17s; }
+
+    /* Contact form: slightly gentler lift on tablet/touch so it doesn't
+       feel jumpy without a precise mouse hover */
+    .contact-form:hover{ transform:translateY(-4px); }
+    .contact-form:focus-within{ transform:translateY(-6px) scale(1.008); }
+    @keyframes formShakeHover{
+      0%, 100% { transform:translateY(-4px) translateX(0); }
+      20%      { transform:translateY(-4px) translateX(-5px); }
+      40%      { transform:translateY(-4px) translateX(5px); }
+      60%      { transform:translateY(-4px) translateX(-3px); }
+      80%      { transform:translateY(-4px) translateX(3px); }
+    }
+    @keyframes formShake{
+      0%, 100% { transform:translateY(-6px) scale(1.008) translateX(0); }
+      20%      { transform:translateY(-6px) scale(1.008) translateX(-5px); }
+      40%      { transform:translateY(-6px) scale(1.008) translateX(5px); }
+      60%      { transform:translateY(-6px) scale(1.008) translateX(-3px); }
+      80%      { transform:translateY(-6px) scale(1.008) translateX(3px); }
+    }
+
+    /* Same snappier stagger for the cards on the sub-page you land on after
+       clicking an occasion card, and for its skeleton loading placeholders. */
+    #occasion-view .occ-card{ animation-duration:.45s; }
+    #occasion-view .occ-card:nth-child(1){ animation-delay:.02s; }
+    #occasion-view .occ-card:nth-child(2){ animation-delay:.06s; }
+    #occasion-view .occ-card:nth-child(3){ animation-delay:.10s; }
+    #occasion-view .occ-card:nth-child(4){ animation-delay:.14s; }
+    #occasion-view .occ-card:nth-child(5){ animation-delay:.18s; }
+    #occasion-view .occ-card:nth-child(6){ animation-delay:.22s; }
+    .skel-card{ animation-duration:.35s; }
+    .skel-card:nth-child(1){ animation-delay:.02s; }
+    .skel-card:nth-child(2){ animation-delay:.06s; }
+    .skel-card:nth-child(3){ animation-delay:.10s; }
+    .skel-card:nth-child(4){ animation-delay:.14s; }
+    .skel-card:nth-child(5){ animation-delay:.18s; }
+    .skel-card:nth-child(6){ animation-delay:.22s; }
+
+    /* Slightly stronger tap feedback since there's no mouse hover on touch */
+    .occ-card:active{ transform:translateY(-8px) scale(1.035); }
+    .style-card:active, .gal-card:active, .t-card:active{ transform:translateY(-6px) scale(1.035); }
+  }
+  @media (max-width:680px){
+    .nav-links{ display:none; }
+    .menu-toggle{ display:block; }
+    .occ-grid, .styles-grid{ grid-template-columns:1fr 1fr; }
+    .occ-card .occ-thumb{ height:150px; }
+    .style-thumb{ height:140px; }
+    .gal-card{ flex-basis:170px; padding:16px 12px; }
+    .gal-card img{ height:130px; }
+    .gal-track{ animation-duration:40s; gap:12px; }
+    .form-2col{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .topbar .wrap{ flex-direction:column; align-items:flex-start; }
+
+    /* Shorter, punchier entrance animation for narrow screens */
+    .reveal{ transition-duration:.45s; }
+    .occ-card:hover, .occ-card:active,
+    .style-card:hover, .style-card:active,
+    .gal-card:hover, .gal-card:active,
+    .t-card:hover, .t-card:active{ animation-duration:.35s; }
+
+    /* Same punchier timing applied to the sub-page cards + their skeleton
+       loading placeholders, and a faster page fade so the whole navigation
+       feels consistent with the rest of the site on phones. */
+    #occasion-view.active,
+    #main-view.page-return{ animation-duration:.4s; }
+    #occasion-view .occ-card,
+    .skel-card{ animation-duration:.4s; }
+
+    /* Contact form: even lighter lift on phones */
+    .contact-form:hover{ transform:translateY(-3px); }
+    .contact-form:focus-within{ transform:translateY(-4px); }
+    @keyframes formShakeHover{
+      0%, 100% { transform:translateY(-3px) translateX(0); }
+      20%      { transform:translateY(-3px) translateX(-4px); }
+      40%      { transform:translateY(-3px) translateX(4px); }
+      60%      { transform:translateY(-3px) translateX(-3px); }
+      80%      { transform:translateY(-3px) translateX(3px); }
+    }
+    @keyframes formShake{
+      0%, 100% { transform:translateY(-4px) translateX(0); }
+      20%      { transform:translateY(-4px) translateX(-4px); }
+      40%      { transform:translateY(-4px) translateX(4px); }
+      60%      { transform:translateY(-4px) translateX(-3px); }
+      80%      { transform:translateY(-4px) translateX(3px); }
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus{ transform:none; }
+
+    /* Slightly calmer logo + hero image motion on small screens */
+    .nav{ padding:6px 20px; }
+    .logo img{ height:52px; margin:-5px 0; animation-duration:4s, 6s; }
+    .hero-img-wrap{ animation-duration:3.6s; }
+  }
+
+  .occ-card .occ-thumb {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* ---------- OCCASION SUB-PAGE (generic) ---------- */
+  .occ-card.is-clickable{ cursor:pointer; }
+  .occ-card.is-clickable:hover{ box-shadow:0 26px 46px rgba(42,32,21,0.22); }
+
+  #occasion-view{ display:none; background:var(--cream); min-height:calc(100vh - 120px); }
+  #occasion-view.active{ display:block; animation:pageFadeSlideIn .55s ease-in-out both; }
+  body.hw-open #main-view{ display:none; }
+  #main-view.page-return{ animation:pageFadeSlideIn .5s ease-in-out both; }
+
+  @keyframes pageFadeSlideIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to  { opacity:1; transform:translateY(0); }
+  }
+
+  .hw-hero{ padding:70px 0 20px; text-align:center; }
+  .hw-hero .eyebrow{ color:var(--marigold-deep); animation:heroItemIn .5s ease-in-out both; }
+  .hw-hero h1{ font-size:clamp(2rem, 3.6vw, 2.8rem); margin-bottom:.8rem; animation:heroItemIn .55s ease-in-out .08s both; }
+  .hw-hero p{ color:var(--ink-soft); max-width:620px; margin:0 auto; animation:heroItemIn .55s ease-in-out .16s both; }
+  .hw-section{ padding:40px 0 120px; }
+
+  @keyframes heroItemIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to  { opacity:1; transform:translateY(0); }
+  }
+
+  /* Card entrance animation on sub-page */
+  @keyframes cardIn {
+    from { opacity:0; transform:translateY(24px) scale(.98); }
+    to   { opacity:1; transform:translateY(0) scale(1); }
+  }
+  #occasion-view .occ-card{ animation:cardIn .55s ease-in-out both; }
+  #occasion-view .occ-card:nth-child(1){ animation-delay:.02s; }
+  #occasion-view .occ-card:nth-child(2){ animation-delay:.10s; }
+  #occasion-view .occ-card:nth-child(3){ animation-delay:.18s; }
+  #occasion-view .occ-card:nth-child(4){ animation-delay:.26s; }
+  #occasion-view .occ-card:nth-child(5){ animation-delay:.34s; }
+  #occasion-view .occ-card:nth-child(6){ animation-delay:.42s; }
+
+  /* Skeleton loading cards shown briefly while the new page "loads" */
+  .skel-card{
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 20px;
+    height:280px; position:relative; overflow:hidden;
+    animation:cardIn .4s ease-in-out both;
+  }
+  .skel-card:nth-child(1){ animation-delay:.02s; }
+  .skel-card:nth-child(2){ animation-delay:.08s; }
+  .skel-card:nth-child(3){ animation-delay:.14s; }
+  .skel-card:nth-child(4){ animation-delay:.20s; }
+  .skel-card:nth-child(5){ animation-delay:.26s; }
+  .skel-card:nth-child(6){ animation-delay:.32s; }
+  .skel-block{ background:var(--linen); border-radius:4px; }
+  .skel-thumb{ height:150px; margin-bottom:16px; }
+  .skel-line{ height:12px; margin-bottom:10px; border-radius:3px; }
+  .skel-line.w-70{ width:70%; }
+  .skel-line.w-40{ width:40%; }
+  .skel-line.w-90{ width:90%; }
+  .skel-card::after{
+    content:''; position:absolute; top:0; left:-150%; width:150%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+    animation:skelShimmer 1.3s ease-in-out infinite;
+  }
+  @keyframes skelShimmer{
+    from{ left:-150%; }
+    to  { left:150%; }
+  }
+
+  /* Floating back-to-home button */
+  .float-back{
+    position:fixed; bottom:22px; left:22px; z-index:60;
+    background:var(--maroon); color:#fff;
+    padding:12px 20px; border-radius:40px;
+    display:none; align-items:center; gap:8px;
+    font-weight:700; font-size:.86rem; letter-spacing:.02em;
+    box-shadow:0 10px 24px rgba(124,42,27,0.35);
+    border:none; cursor:pointer;
+    font-family:'Karla', sans-serif;
+    transition:'background' .2s ease;
+  }
+  .float-back:hover{ background:#5A1E12; }
+  .float-back svg{ width:18px; height:18px; }
+  body.hw-open .float-back{ display:inline-flex; animation:slideInLeft .5s cubic-bezier(.34,1.4,.5,1) both, backFloat 2.4s ease-in-out .6s infinite; }
+
+  @keyframes slideInLeft{
+    from{ transform:translateX(-140%); opacity:0; }
+    to  { transform:translateX(0); opacity:1; }
+  }
+  @keyframes backFloat{
+    0%,100%{ transform:translateY(0) scale(1); }
+    30%    { transform:translateY(-9px) scale(1.04); }
+    60%    { transform:translateY(-4px) scale(1); }
+  }
+  .float-back:hover{ background:#5A1E12; animation-play-state:paused; transform:scale(1.08); }
+  @keyframes wiggle{
+    0%,92%,100%{ transform:translateX(0); }
+    94%{ transform:translateX(-4px); }
+    96%{ transform:translateX(4px); }
+    98%{ transform:translateX(-2px); }
+  }
+
+  /* Floating WhatsApp animation (edited existing button) */
+  @keyframes waPulse{
+    0%   { box-shadow:0 10px 24px rgba(0,0,0,0.25), 0 0 0 0 rgba(63,122,78,0.55); }
+    70%  { box-shadow:0 10px 24px rgba(0,0,0,0.25), 0 0 0 16px rgba(63,122,78,0); }
+    100% { box-shadow:0 10px 24px rgba(0,0,0,0.25), 0 0 0 0 rgba(63,122,78,0); }
+  }
+  @keyframes waFloat{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    25%    { transform:translateY(-10px) rotate(-6deg); }
+    50%    { transform:translateY(-14px) rotate(0deg); }
+    75%    { transform:translateY(-10px) rotate(6deg); }
+  }
+  .float-wa{ animation:waPulse 1.8s ease-out infinite, waFloat 2.6s ease-in-out infinite; }
+  .float-wa:hover{ animation-play-state:paused; transform:scale(1.12); }
+  body.hw-open .float-wa{ bottom:22px; right:22px; }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Serving Pakala, Singarayakonda & Nearby Ongole villages, since 2002 — Before 1 day booking available</span>
+    <div class="tb-links">
+      <a href="tel:+919948529872">Call +91 99485 29872</a>
+      <a href="https://wa.me/919948529872" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">
+      <img src="images/logo/shainy_decorations.png">
+    </a>
+    <div class="nav-links">
+      <a href="#occasions">Occasions</a>
+      <a href="#styles">Our Styles</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="menu-toggle" aria-label="menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#2A2015" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- ============ MAIN VIEW ============ -->
+<div id="main-view">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Singarayakonda's home & event florists</span>
+      <h1>Fresh flower decorations for every <span>celebration.</span></h1>
+      <p class="lead">From a simple pooja corner to a full wedding mandap, Shainy Decorations brings fresh marigold, roses and jasmine to your doorstep — designed, delivered and set up the same day if you need it.</p>
+      <div class="btn-row">
+        <a href="#occasions" class="btn btn-primary btn-fill-explore">Explore Occasions</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="rating-chip">
+        <span class="stars">★★★★★</span>
+        <div>
+          <div class="num">4.5 / 5</div>
+          <div class="sub">100+ Google reviews</div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img id="hero-random-img" src="images/background/flower-1.png" height="450px" alt="Fresh flower decoration by Shainy Decorations">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="garland">
+  <!-- <svg viewBox="0 0 640 26" fill="none">
+    <path d="M0 13 Q 20 24 40 13 T 80 13 T 120 13 T 160 13 T 200 13 T 240 13 T 280 13 T 320 13 T 360 13 T 400 13 T 440 13 T 480 13 T 520 13 T 560 13 T 600 13 T 640 13" stroke="#BE6F1C" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <g fill="#E08D2C">
+      <circle cx="20" cy="17" r="6"/><circle cx="60" cy="9" r="6"/><circle cx="100" cy="17" r="6"/><circle cx="140" cy="9" r="6"/>
+      <circle cx="180" cy="17" r="6"/><circle cx="220" cy="9" r="6"/><circle cx="260" cy="17" r="6"/><circle cx="300" cy="9" r="6"/>
+      <circle cx="340" cy="17" r="6"/><circle cx="380" cy="9" r="6"/><circle cx="420" cy="17" r="6"/><circle cx="460" cy="9" r="6"/>
+      <circle cx="500" cy="17" r="6"/><circle cx="540" cy="9" r="6"/><circle cx="580" cy="17" r="6"/><circle cx="620" cy="9" r="6"/>
+    </g>
+  </svg> -->
+</div>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="item"><div class="num">500+</div><div class="lbl">Events Decorated</div></div>
+    <div class="item"><div class="num">24 yrs</div><div class="lbl">Serving A.P</div></div>
+    <div class="item"><div class="num">4.8★</div><div class="lbl">Google Rating</div></div>
+    <div class="item"><div class="num">Before 1 day</div><div class="lbl">Booking Available</div></div>
+  </div>
+</div>
+
+<!-- ============ OCCASIONS ============ -->
+<section class="occasions" id="occasions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">book by occasion</span>
+      <h2>Flowers for every milestone</h2>
+      <p>Every package is customisable in size, colour palette and flower type — these prices are our starting points.</p>
+    </div>
+    <div class="occ-grid">
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('housewarming')" data-testid="occasion-card-housewarming">
+        <img src="images/occasions/Housewarming/img-1.jpeg" alt="Housewarming" class="occ-thumb" loading="lazy" />
+        <h3>Housewarming</h3>
+        <div class="price">From ₹9,999</div>
+        <p>Marigold torans, banana leaf entrance, floor rangoli in fresh petals.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('birthday')" data-testid="occasion-card-birthday">
+        <img src="images/occasions/Birthday/img-1.png" alt="Birthday" class="occ-thumb" loading="lazy" />
+        <h3>Birthday</h3>
+        <div class="price">From ₹5,999</div>
+        <p>Balloon &amp; fresh flower backdrops, table centrepieces, photo corners.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('wedding')" data-testid="occasion-card-wedding">
+        <img src="images/occasions/Wedding_Mandap/img-1.jpeg" alt="Wedding &amp; Mandap" class="occ-thumb" loading="lazy" />
+        <h3>Wedding &amp; Mandap</h3>
+        <div class="price">Price on request</div>
+        <p>Full mandap florals, stage backdrops, entrance and aisle decor.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('haldi')" data-testid="occasion-card-haldi">
+        <img src="images/occasions/Haldi_Ceremony/img-1.jpeg" alt="Haldi Ceremony" class="occ-thumb" loading="lazy" />
+        <h3>Haldi Ceremony</h3>
+        <div class="price">From ₹7,999</div>
+        <p>Yellow marigold canopy, floor seating decor, garlands for the couple.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('babyshower')" data-testid="occasion-card-babyshower">
+        <img src="images/occasions/Baby_Shower/img-1.jpeg" alt="Baby Shower" class="occ-thumb" loading="lazy" />
+        <h3>Baby Shower</h3>
+        <div class="price">From ₹9,999</div>
+        <p>Godh Bharai floral swings, pastel backdrops, floral rangoli welcome.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('pooja')" data-testid="occasion-card-pooja">
+        <img src="images/occasions/Pooja_Ganpati/img-1.jpeg" alt="Pooja &amp; Ganpati" class="occ-thumb" loading="lazy" />
+        <h3>Pooja &amp; Ganpati</h3>
+        <div class="price">Price on request</div>
+        <p>Fresh flower backdrops, garlands and floor decor for daily or festival pooja.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('engagement')" data-testid="occasion-card-engagement">
+        <img src="images/occasions/Engagement/img-1.jpeg" alt="Engagement" class="occ-thumb" loading="lazy" />
+        <h3>Engagement</h3>
+        <div class="price">From ₹15,999</div>
+        <p>Ring platter florals, stage backdrop, entrance arch in fresh blooms.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('anniversary')" data-testid="occasion-card-anniversary">
+        <img src="images/occasions/Death_Aniversary/img-1.jpeg" alt="Anniversary" class="occ-thumb" loading="lazy" />
+        <h3>Death Anniversary</h3>
+        <div class="price">From ₹7,999</div>
+        <p>Rose &amp; fairy-light backdrops, dinner table florals, room decoration.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="garland">
+  <!-- <svg viewBox="0 0 640 26" fill="none">
+    <path d="M0 13 Q 20 24 40 13 T 80 13 T 120 13 T 160 13 T 200 13 T 240 13 T 280 13 T 320 13 T 360 13 T 400 13 T 440 13 T 480 13 T 520 13 T 560 13 T 600 13 T 640 13" stroke="#BE6F1C" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <g fill="#7C2A1B">
+      <circle cx="20" cy="17" r="6"/><circle cx="60" cy="9" r="6"/><circle cx="100" cy="17" r="6"/><circle cx="140" cy="9" r="6"/>
+      <circle cx="180" cy="17" r="6"/><circle cx="220" cy="9" r="6"/><circle cx="260" cy="17" r="6"/><circle cx="300" cy="9" r="6"/>
+      <circle cx="340" cy="17" r="6"/><circle cx="380" cy="9" r="6"/><circle cx="420" cy="17" r="6"/><circle cx="460" cy="9" r="6"/>
+      <circle cx="500" cy="17" r="6"/><circle cx="540" cy="9" r="6"/><circle cx="580" cy="17" r="6"/><circle cx="620" cy="9" r="6"/>
+    </g>
+  </svg> -->
+</div>
+
+<!-- ============ STYLES ============ -->
+<section class="styles" id="styles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">how we design</span>
+      <h2>Rustic, natural, unmistakably fresh</h2>
+      <p>We lean on real marigold, banana leaf, terracotta and jute — not plastic backdrops — for a look that feels handmade, not printed.</p>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M50 20 C30 30 30 60 50 80 C70 60 70 30 50 20Z" fill="#4A5D38"/><circle cx="50" cy="50" r="12" fill="#E08D2C"/></svg> -->
+           <img src="images/our_styles/Marigold_Banana_Leaf.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our styles/Marigold & Banana Leaf.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Marigold &amp; Banana Leaf</h3>
+          <p>Traditional South Indian style — entrance torans, floor rangoli, temple-style garlands.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="24" fill="none" stroke="#B15A34" stroke-width="3" stroke-dasharray="4 5"/><circle cx="50" cy="50" r="10" fill="#EFB13C"/></svg> -->
+           <img src="images/our_styles/Jute_Wildflower.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our styles/Jute & Wildflower.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Jute &amp; Wildflower</h3>
+          <p>Earthy boho styling with jute drapes, dried grasses and loose seasonal flowers.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M50 25c10 0 18 8 18 18 0 14-18 32-18 32S32 57 32 43c0-10 8-18 18-18Z" fill="#7C2A1B"/></svg> -->
+           <img src="images/our_styles/Rose_Fairy_Light.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;"class="occ-thumb" onerror="this.src='images/our styles/Rose & Fairy Light.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Rose &amp; Fairy Light</h3>
+          <p>Soft romantic backdrops for anniversaries and proposals, roses paired with warm light.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M25 70c10-30 40-30 50-50" stroke="#4A5D38" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="70" cy="24" r="10" fill="#E08D2C"/></svg> -->
+           <img src="images/our_styles/Grand_Mandap_Floral.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Engagement" class="occ-thumb" onerror="this.src='images/our styles/Grand Mandap Floral.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Grand Mandap Floral</h3>
+          <p>Statement wedding installations — floral canopies, hanging garlands, layered backdrops.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">simple booking</span>
+      <h2>From enquiry to event, in three steps</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="step-num">1</div>
+        <h3>Tell us the occasion</h3>
+        <p>Message us on WhatsApp or call with your date, venue and budget — we'll suggest a package.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">2</div>
+        <h3>Customise the look</h3>
+        <p>Pick your colours and flower types. We share a design sketch before we confirm.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">3</div>
+        <h3>We decorate on-site</h3>
+        <p>Our team arrives early, sets everything up fresh, and clears away after your event if needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">recent work</span>
+      <h2>From the last few weeks</h2>
+      <p>A few of the setups our team has delivered recently across Pakala, Singarayakonda &amp; nearby Ongole villages.</p>
+    </div>
+    <div class="gal-slider" id="gal-slider">
+      <div class="gal-track" id="gal-track">
+        <div class="gal-card reveal">
+          <img src="images/recent_works/birthday.png" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Birthday setup — Kandukuru</h4>
+          <span>Birthday</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpati.jpeg" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Ganpati Decor — Singarayakonda</h4>
+          <span>pooja</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/engagement-2.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Engagement — Ongole</h4>
+          <span>Engagement</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/baby_shower.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Baby shower — Nellore</h4>
+          <span>Baby Shower</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/haldi.jpeg" alt="Haldi setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Haldi Setup — Kavali</h4>
+          <span>Haldi</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/Marriage.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Pakala</h4>
+          <span>Marriage</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/maturity_cermony.jpeg" alt="Maturity function decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Maturity Function — Kanumalla</h4>
+          <span>Maturity Function</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/marriage-1.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Karedu</h4>
+          <span>Marriage</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/Engagement-1.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Engagement — Kandukuru</h4>
+          <span>Engagement</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/temple.jpeg" alt="Temple decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Temple — Otturu</h4>
+          <span>Temple</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/pongalu.png" alt="Pongalu decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Pongalu — Pakala</h4>
+          <span>Pongalu</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpathi-4.png" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Ganpati Decor — Pakala</h4>
+          <span>Pooja</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/birthday-1.jpeg" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Birthday Setup — Nellore</h4>
+          <span>Birthday</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/maturity-1.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Baby Shower — Kavali</h4>
+          <span>Baby Shower</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/death_aniversary.jpeg" alt="Anniversary decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Death Anniversary — Pakala</h4>
+          <span>Anniversary</span>
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpati-1.png" alt="Ganpathi decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Ganpathi Decor — Peddapalem</h4>
+          <span>Ganpathi</span>
+        </div>
+        <!-- Exact duplicate of the 16 cards above (hidden from assistive tech) so
+             the -50% marquee animation loops back seamlessly with no visible jump -->
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/birthday.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Birthday setup — Kandukuru</h4>
+          <span>Birthday</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpati.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Ganpati Decor — Singarayakonda</h4>
+          <span>pooja</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/engagement-2.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Engagement — Ongole</h4>
+          <span>Engagement</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/baby_shower.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Baby shower — Nellore</h4>
+          <span>Baby Shower</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/haldi.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Haldi Setup — Kavali</h4>
+          <span>Haldi</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/Marriage.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Pakala</h4>
+          <span>Marriage</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/maturity_cermony.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Maturity Function — Kanumalla</h4>
+          <span>Maturity Function</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/marriage-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Karedu</h4>
+          <span>Marriage</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/Engagement-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Engagement — Kandukuru</h4>
+          <span>Engagement</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/temple.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Temple — Otturu</h4>
+          <span>Temple</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/pongalu.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Pongalu — Pakala</h4>
+          <span>Pongalu</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpathi-4.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Ganpati Decor — Pakala</h4>
+          <span>Pooja</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/birthday-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Birthday Setup — Nellore</h4>
+          <span>Birthday</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/maturity-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Baby Shower — Kavali</h4>
+          <span>Baby Shower</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/death_aniversary.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Death Anniversary — Pakala</h4>
+          <span>Anniversary</span>
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpati-1.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Ganpathi Decor — Peddapalem</h4>
+          <span>Ganpathi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">what clients say</span>
+      <h2>Loved across Andhra Pradesh</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal" id="t-card-0">
+        <div class="stars">★★★★★</div>
+        <p>"Booked our housewarming decoration two days before the date and the team still made it look like it took a week to plan. Beautiful marigold work."</p>
+        <div class="t-name">Lakshmi R.</div>
+        <div class="t-role">Griha Pravesh, Kandukuru</div>
+      </div>
+      <div class="t-card reveal" id="t-card-1">
+        <div class="stars">★★★★★</div>
+        <p>"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."</p>
+        <div class="t-name">Arjun &amp; Divya</div>
+        <div class="t-role">Wedding, Singarayakonda</div>
+      </div>
+      <div class="t-card reveal" id="t-card-2">
+        <div class="stars">★★★★★</div>
+        <p>"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."</p>
+        <div class="t-name">Rohit Shetty</div>
+        <div class="t-role">Ganpati Decor, Pakala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">get in touch</span>
+      <h2>Let's plan your decoration</h2>
+      <p>Reach out on WhatsApp for the fastest response, or fill in the form and our team will call you back within a few hours.</p>
+      <ul class="info-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-4-4-8-8.5-8-12.5A8 8 0 0 1 12 2a8 8 0 0 1 8 6.5c0 4-4 8.5-8 12.5Z"/><circle cx="12" cy="9" r="2.5"/></svg> Pakala, Singarayakonda, Andhra Pradesh 523101</li>
+        <li><i class="fa-solid fa-phone"></i> <a href="tel:+919948529872">+91 99485 29872</a></li>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:shainydecorations@gmail.com">shainydecorations@gmail.com</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Anytime 24/7 available.</li>
+      </ul>
+      <div class="areas">
+        <span class="area-chip">Pakala</span>
+        <span class="area-chip">Singarayakonda</span>
+        <span class="area-chip">Ongole</span>
+        <span class="area-chip">Kandukuru</span>
+        <span class="area-chip">Kavali</span>
+        <span class="area-chip">Nellore</span>
+        <span class="area-chip">+ surrounding Ongole villages</span>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Request a free quote</h3>
+      <form id="quote-form"
+            action="https://formsubmit.co/shainydecorations@gmail.com"
+            method="POST"
+            target="hiddenFormTarget"
+            onsubmit="handleQuoteSubmit(event)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Enquiry — Shainy Decorations">
+        <div class="form-2col">
+          <div class="form-row"><label for="name">Your Name</label><input id="name" name="Name" type="text" required></div>
+          <div class="form-row"><label for="phone">Phone Number</label><input id="phone" name="Phone" type="tel" required></div>
+        </div>
+        <div class="form-row">
+          <label for="occ">Occasion</label>
+          <select id="occ" name="Occasion">
+            <option>Housewarming</option>
+            <option>Birthday</option>
+            <option>Wedding &amp; Mandap</option>
+            <option>Haldi Ceremony</option>
+            <option>Baby Shower</option>
+            <option>Pooja &amp; Ganpati</option>
+            <option>Anniversary</option>
+            <option>Engagement</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row"><label for="date">Event Date</label><input id="date" name="Event Date" type="date"></div>
+        <div class="form-row"><label for="msg">Tell us more</label><textarea id="msg" name="Message" rows="3" placeholder="Venue, guest count, colour preferences..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Request</button>
+      </form>
+      <!-- Hidden iframe: lets the form post natively to email in the background
+           without ever navigating the visitor away from the page. -->
+      <iframe name="hiddenFormTarget" style="display:none;" title="form-submit-target"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <img src="images/logo/shainy_decorations.png">
+        </div>
+        <p>Fresh flower decorations for homes and events across Pakala, Singarayakonda &amp; Andhra Pradesh. Marigold, roses, jasmine — arranged the traditional way.</p>
+      </div>
+      <div>
+        <h4>Occasions</h4>
+        <ul>
+          <li><a href="#occasions">Housewarming</a></li>
+          <li><a href="#occasions">Wedding &amp; Mandap</a></li>
+          <li><a href="#occasions">Haldi Ceremony</a></li>
+          <li><a href="#occasions">Pooja &amp; Ganpati</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#styles">Our Styles</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Say Hello</h4>
+        <ul>
+          <li><a href="tel:+919948529872">+91 99485 29872</a></li>
+          <li><a href="https://wa.me/919948529872">WhatsApp Us</a></li>
+          <li><a href="mailto:shainydecorations@gmail.com">shainydecorations@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shainy Decorations, Singarayakonda, A.P.</span>
+      <span>Fresh flowers, delivered with care.</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /#main-view -->
+
+<!-- ============ OCCASION SUB-PAGE (dynamic) ============ -->
+<div id="occasion-view">
+  <!-- content injected by JS -->
+</div>
+
+<button type="button" class="float-back" onclick="closeOccasion()" data-testid="back-to-home-btn" aria-label="Back to Home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+  Back to Home
+</button>
+
+<button type="button" class="float-wa" aria-label="Chat on WhatsApp" onclick="openFloatingWhatsapp()">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.32C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.02.07-1.65-.1-.38-.1-.87-.28-1.5-.56-2.63-1.14-4.35-3.8-4.48-3.98-.13-.18-1.07-1.43-1.07-2.72 0-1.3.68-1.93.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.03.58.44.22.53.75 1.83.82 1.96.07.13.11.28.02.46-.1.18-.15.28-.3.44-.15.16-.31.35-.44.47-.15.15-.3.3-.13.6.17.3.75 1.24 1.6 2 .1.98 2.02 1.65 2.32 1.8.3.15.47.13.65-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.15 1.37z"/></svg>
+</button>
+
+<script>
+  // ---------- OCCASION PACKAGES DATA ----------
+  const PACKAGES = {
+    housewarming: {
+      eyebrow: 'housewarming décor',
+      title: 'Housewarming Packages',
+      intro: 'Handpicked packages for every kind of Griha Pravesh — from traditional marigold torans to grand floral entrances. Every package is fully customisable.',
+      items: [
+        { title:'Traditional Housewarming',  price:'From ₹9,999',  desc:'Classic marigold torans, banana leaf entrance and mango-leaf strings for an authentic Griha Pravesh look.', img:'https://images.pexels.com/photos/12718058/pexels-photo-12718058.jpeg?auto=compress&cs=tinysrgb&w=800' },
+        { title:'Modern Housewarming',       price:'From ₹14,999', desc:'Contemporary pastel florals, clean-line arches and minimal foliage for the new-age home.',              img:'images/our styles/Marigold & Banana Leaf.jpeg' },
+        { title:'Balloon Décor Housewarming',price:'From ₹11,999', desc:'Balloon arches paired with fresh flowers — perfect for a joyful, welcoming entrance and photo corners.', img:'images/recent works/birthday.png' },
+        { title:'Floral Housewarming',       price:'From ₹16,999', desc:'Roses, jasmine and marigold layered across the doorway, pooja room and mandir — fresh flowers everywhere.', img:'images/our styles/Jute & Wildflower.jpeg' },
+        { title:'Grand Housewarming',        price:'From ₹24,999', desc:'Full floral canopy entrance, floor rangoli in petals, backdrop for family photos and pooja stage decor.', img:'images/our styles/Grand Mandap Floral.jpeg' },
+        { title:'Budget Housewarming',       price:'From ₹5,999',  desc:'Simple marigold toran, pooja room garland and doorway florals — a warm welcome that won\'t stretch the budget.', img:'images/our styles/Rose & Fairy Light.jpeg' },
+      ]
+    },
+    birthday: {
+      eyebrow: 'birthday décor',
+      title: 'Birthday Packages',
+      intro: 'From tiny tots to milestone birthdays — colourful balloon arches, floral photo corners and cake-table setups made to celebrate your day.',
+      items: [
+        { title:'Kids Theme Birthday',    price:'From ₹4,999',  desc:'Balloon ceilings, cartoon backdrops, themed photo corners for the little ones.', img:'images/occasions/Birthday/img-1.png' },
+        { title:'Elegant Adult Birthday', price:'From ₹8,999',  desc:'Rose &amp; candle centrepieces, soft fairy-light backdrops and dinner-table florals.', img:'images/occasions/Birthday/img-2.jpeg' },
+        { title:'Milestone Birthday',     price:'From ₹14,999', desc:'Grand floral backdrops, entrance arch and stage — for 18th, 40th, 60th &amp; special years.', img:'images/occasions/Birthday/img-3.jpeg' },
+        { title:'Surprise Party Setup',   price:'From ₹6,999',  desc:'Balloon-filled room, floral welcome and cake-table decor, set up while they\'re away.', img:'images/occasions/Birthday/img-6.jpeg' },
+        { title:'Outdoor Garden Birthday',price:'From ₹11,999', desc:'Fairy-lights, floral columns and picnic-style seating for open-air celebrations.', img:'images/occasions/Birthday/img-4.jpeg' },
+        { title:'Simple Home Birthday',   price:'From ₹3,999',  desc:'Table centrepiece, balloon arch and cake corner — perfect for cosy home parties.', img:'images/occasions/Birthday/img-5.jpeg' },
+      ]
+    },
+    wedding: {
+      eyebrow: 'wedding & mandap décor',
+      title: 'Wedding & Mandap Packages',
+      intro: 'Full-service floral mandaps, reception stages, entrance arches and aisle decor — designed the traditional way with fresh flowers, not printed backdrops.',
+      items: [
+        { title:'Traditional Mandap',      price:'From ₹49,999',  desc:'Marigold &amp; banana-leaf mandap, four-pillar floral canopy in south-Indian style.', img:'images/occasions/Wedding_Mandap/img-1.jpeg' },
+        { title:'Royal Mandap',            price:'From ₹99,999',  desc:'Rose &amp; jasmine layered canopy, hanging garlands, aisle carpet in fresh petals.', img:'images/occasions/Wedding_Mandap/img-2.jpeg' },
+        { title:'Outdoor / Beach Wedding', price:'From ₹79,999',  desc:'Floral arch, foliage columns and pastel drape work — designed for open-air venues.', img:'images/occasions/Wedding_Mandap/img-3.jpeg' },
+        { title:'Reception Stage',         price:'From ₹39,999',  desc:'Rose backdrop, floral bride &amp; groom chairs, side florals and welcome arch.', img:'images/occasions/Wedding_Mandap/img-4.png' },
+        { title:'Entrance Arch Package',   price:'From ₹24,999',  desc:'Grand floral entrance arch with garland pillars — welcome guests in style.', img:'images/occasions/Wedding_Mandap/img-5.jpeg' },
+        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-6.jpeg' },
+        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-7.jpeg' },
+        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-8.png' },
+      ]
+    },
+    haldi: {
+      eyebrow: 'haldi décor',
+      title: 'Haldi Ceremony Packages',
+      intro: 'Bright yellows, fresh marigold and cheerful floral swings — Haldi setups that photograph beautifully and feel warm and traditional.',
+      items: [
+        { title:'Marigold Ring Backdrop',     price:'From ₹8,999',  desc:'Green-wall backdrop with a marigold floral ring, hanging garlands and gold kalash pots on a red &amp; yellow petal rangoli.', img:'images/occasions/Haldi_Ceremony/img-1.jpeg' },
+        { title:'Traditional Peetham Setup',  price:'From ₹9,999',  desc:'Banana-leaf backdrop with a yellow floral ring and beaded strands framing a carved wooden peetham, set on a bold orange rangoli.', img:'images/occasions/Haldi_Ceremony/img-2.jpeg' },
+        { title:'Marigold Garland Swag Décor',price:'From ₹7,499',  desc:'Layered marigold &amp; orange garland swags cascading over a banana-leaf wall with a floral emblem centrepiece.', img:'images/occasions/Haldi_Ceremony/img-3.jpeg' },
+        { title:'Rooftop Evening Haldi',      price:'From ₹12,999', desc:'Banana-leaf backdrop with marigold swags, a decorated peetham and a grand multicolour petal rangoli — perfect for open-air terrace functions.', img:'images/occasions/Haldi_Ceremony/img-4.jpeg' },
+        { title:'White Drape &amp; Marigold Frame', price:'From ₹10,999', desc:'Elegant white drape backdrop bordered in marigold, with a golden peetham and kalash pots on a red-and-yellow petal spread.', img:'images/occasions/Haldi_Ceremony/img-5.jpeg' },
+        { title:'Grand Multicolour Rangoli',  price:'From ₹13,999', desc:'Banana-leaf backdrop with marigold swags over a spectacular layered rangoli in red, orange, yellow and white petals.', img:'images/occasions/Haldi_Ceremony/img-6.jpeg' },
+        { title:'Ganesh Motif Banana Leaf',   price:'From ₹6,999',  desc:'Scalloped marigold garlands framing a banana-leaf wall with a striking red floral Ganesh motif and kalash pots below.', img:'images/occasions/Haldi_Ceremony/img-7.jpeg' },
+        { title:'Gerbera Flower Frame Décor', price:'From ₹9,499',  desc:'White drape backdrop framed in yellow &amp; white gerbera daisies, with hanging marigold strands and a red rose floral emblem.', img:'images/occasions/Haldi_Ceremony/img-8.jpeg' },
+      ]
+    },
+    babyshower: {
+      eyebrow: 'baby shower décor',
+      title: 'Baby Shower Packages',
+      intro: 'Soft pastels, floral swings and Godh Bharai setups — designs that feel gentle, warm and perfect for welcoming the little one.',
+      items: [
+        { title:'Pastel Baby Shower',      price:'From ₹9,999',  desc:'Blush pink &amp; sage-green florals, pastel drape backdrop and photo corner.', img:'images/occasions/Baby_Shower/img-2.jpeg' },
+        { title:'Godh Bharai Traditional', price:'From ₹8,999',  desc:'Yellow &amp; red marigold decor, floor seating and traditional rituals corner.', img:'images/occasions/Baby_Shower/img-1.jpeg' },
+        { title:'Balloon Baby Shower',     price:'From ₹7,999',  desc:'Pastel balloon arch, cake-table florals and name signage for the mom-to-be.', img:'images/occasions/Baby_Shower/img-3.jpeg' },
+        { title:'Floral Swing Setup',      price:'From ₹13,999', desc:'Decorated swing wrapped in fresh florals — the centrepiece of every Godh Bharai.', img:'images/occasions/Baby_Shower/img-4.jpeg' },
+        { title:'Themed Baby Shower',      price:'From ₹11,999', desc:'Cloud, moon &amp; star theme with soft lighting and pastel props for a dreamy setup.', img:'images/occasions/Baby_Shower/img-5.jpeg' },
+        { title:'Simple Baby Shower',      price:'From ₹5,999',  desc:'Petal rangoli, floral arch and small pooja setup for intimate home functions.', img:'images/occasions/Baby_Shower/img-6.jpeg' },
+        { title:'Themed Baby Shower',      price:'From ₹11,999', desc:'Cloud, moon &amp; star theme with soft lighting and pastel props for a dreamy setup.', img:'images/occasions/Baby_Shower/img-7.jpeg' },
+        { title:'Simple Baby Shower',      price:'From ₹5,999',  desc:'Petal rangoli, floral arch and small pooja setup for intimate home functions.', img:'images/occasions/Baby_Shower/img-8.jpeg' },
+      ]
+    },
+    pooja: {
+      eyebrow: 'pooja & ganpati décor',
+      title: 'Pooja & Ganpati Packages',
+      intro: 'From daily mandir garlands to full 10-day Ganpati mandap decor — fresh flowers arranged with reverence, on time, every festival.',
+      items: [
+        { title:'Ganpati Mandap',           price:'From ₹9,999',  desc:'Full floral canopy for Bappa with marigold, mango leaves and jasmine garlands.', img:'images/occasions/Pooja_Ganpati/img-1.jpeg' },
+        { title:'Daily Pooja Decor',        price:'From ₹1,999',  desc:'Weekly/daily mandir garlands, fresh flowers and pooja room refresh service.', img:'images/occasions/Pooja_Ganpati/img-2.png' },
+        { title:'Satyanarayana Pooja',      price:'From ₹4,999',  desc:'Banana-leaf floor setup, brass pot decor and marigold entrance for the ritual.', img:'images/occasions/Pooja_Ganpati/img-3.jpeg' },
+        { title:'Griha Pooja Package',      price:'From ₹7,999',  desc:'Full home pooja decor — entrance toran, floor rangoli, mandir &amp; kitchen florals.', img:'images/occasions/Pooja_Ganpati/img-4.jpeg' },
+        { title:'Festival Special',         price:'From ₹6,999',  desc:'Diwali, Navaratri, Sankranti — festival-specific floral &amp; light decoration packages.', img:'images/occasions/Pooja_Ganpati/img-5.jpeg' },
+        { title:'Complete Ganpati Setup',   price:'Price on request', desc:'10-day Ganpati decor with daily flower refresh, aarti stage &amp; visarjan farewell.', img:'images/occasions/Pooja_Ganpati/img-6.png' },
+        { title:'Festival Special',         price:'From ₹6,999',  desc:'Diwali, Navaratri, Sankranti — festival-specific floral &amp; light decoration packages.', img:'images/occasions/Pooja_Ganpati/img-7.png' },
+        { title:'Complete Ganpati Setup',   price:'Price on request', desc:'10-day Ganpati decor with daily flower refresh, aarti stage &amp; visarjan farewell.', img:'images/occasions/Pooja_Ganpati/img-8.jpeg' },
+      ]
+    },
+    anniversary: {
+      eyebrow: 'Death anniversary décor',
+      title: 'Death Anniversary Packages',
+      intro: 'Romantic rose backdrops, candle-lit dinners and grand milestone setups — anniversary decor that says everything without words.',
+      items: [
+        { title:'Romantic Room Decor',         price:'From ₹4,999',  desc:'Rose petals on bed, candle-lit floor arrangement and fairy-light heart backdrop.', img:'images/occasions/Death_Aniversary/img-1.jpeg' },
+        { title:'Anniversary Dinner Setup',    price:'From ₹6,999',  desc:'Table florals, tea-lights, rose walkway and personalised name signage.', img:'images/occasions/Death_Aniversary/img-2.jpeg' },
+        { title:'25th / 50th Anniversary',     price:'From ₹19,999', desc:'Grand stage backdrop, family photo wall and floral entrance for milestone years.', img:'images/occasions/Death_Aniversary/img-3.jpeg' },
+    ]
+    },
+    engagement: {
+      eyebrow: 'engagement décor',
+      title: 'Engagement Packages',
+      intro: 'Ring platters, stage backdrops and entrance arches — engagement setups designed to make every photograph look effortless.',
+      items: [
+        { title:'Traditional Engagement Stage',price:'From ₹15,999', desc:'Floral backdrop, decorated chairs and side arrangements in classic red &amp; gold.', img:'images/occasions/Engagement/img-1.jpeg' },
+        { title:'Ring Ceremony Platter',       price:'From ₹4,999',  desc:'Decorated ring platter with fresh rose &amp; jasmine — designed to complement the stage.', img:'images/occasions/Engagement/img-2.jpeg' },
+        { title:'Grand Engagement Arch',       price:'From ₹24,999', desc:'Full entrance arch + stage backdrop + welcome florals for a grand engagement look.', img:'images/occasions/Engagement/img-3.jpeg' },
+        { title:'Rose Engagement Backdrop',    price:'From ₹18,999', desc:'All-rose panel backdrop, hanging garlands and floral chairs — pure romance.', img:'images/occasions/Engagement/img-4.jpeg' },
+        { title:'Outdoor Engagement',          price:'From ₹21,999', desc:'Open-air floral arch, pastel drapes and lantern lighting for garden engagements.', img:'images/occasions/Engagement/img-5.jpeg' },
+        { title:'Modern Engagement Setup',     price:'From ₹19,999', desc:'Pastel + gold theme, minimal florals with statement lighting for a contemporary vibe.', img:'images/occasions/Engagement/img-6.jpeg' },
+        { title:'Outdoor Engagement',          price:'From ₹21,999', desc:'Open-air floral arch, pastel drapes and lantern lighting for garden engagements.', img:'images/occasions/Engagement/img-7.jpeg' },
+        { title:'Modern Engagement Setup',     price:'From ₹19,999', desc:'Pastel + gold theme, minimal florals with statement lighting for a contemporary vibe.', img:'images/occasions/Engagement/img-8.jpeg' },
+      ]
+    }
+  };
+
+  // Single generic fallback used only if an individual card's own image
+  // fails to load — this never overrides a working per-card image, so
+  // editing one card's `img` value above only ever changes that one card.
+  const GENERIC_FALLBACK_IMG = 'https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=800';
+
+  function openOccasion(key){
+    const data = PACKAGES[key];
+    if(!data) return;
+    const view = document.getElementById('occasion-view');
+    const skeletonCount = data.items.length;
+
+    // Step 1: render the hero immediately + skeleton "loading" cards with a shimmer.
+    view.innerHTML = `
+      <section class="hw-hero">
+        <div class="wrap">
+          <span class="eyebrow">${data.eyebrow}</span>
+          <h1>${data.title}</h1>
+          <p>${data.intro}</p>
+        </div>
+      </section>
+      <section class="hw-section">
+        <div class="wrap">
+          <div class="occ-grid" id="occ-grid-${key}">
+            ${Array.from({length: skeletonCount}).map(() => `
+              <div class="skel-card">
+                <div class="skel-block skel-thumb"></div>
+                <div class="skel-block skel-line w-70"></div>
+                <div class="skel-block skel-line w-40"></div>
+                <div class="skel-block skel-line w-90"></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+    document.body.classList.add('hw-open');
+    view.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Step 2: after a brief loading beat, swap skeletons for the real package
+    // cards, which animate in with the existing staggered cardIn entrance.
+    setTimeout(() => {
+      const grid = document.getElementById(`occ-grid-${key}`);
+      if(!grid) return;
+      grid.innerHTML = data.items.map((it, i) => `
+        <div class="occ-card" data-testid="pkg-${key}-${i}">
+          <img src="${it.img}" alt="${it.title}" class="occ-thumb" loading="lazy" onerror="this.onerror=null; this.src='${GENERIC_FALLBACK_IMG}';" />
+          <h3>${it.title}</h3>
+          <div class="price">${it.price}</div>
+          <p>${it.desc}</p>
+        </div>
+      `).join('');
+    }, 550);
+  }
+  function closeOccasion(){
+    document.body.classList.remove('hw-open');
+    document.getElementById('occasion-view').classList.remove('active');
+    const main = document.getElementById('main-view');
+    if(main){
+      main.classList.remove('page-return');
+      // Force reflow so the animation restarts every time this class is re-added
+      void main.offsetWidth;
+      main.classList.add('page-return');
+      setTimeout(() => main.classList.remove('page-return'), 600);
+    }
+    const occ = document.getElementById('occasions');
+    if(occ) occ.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  // ---------- CONTACT FORM: sends to BOTH email and WhatsApp ----------
+  // Email: the form submits NATIVELY into a hidden iframe — silent, no popup,
+  // no page navigation, delivered straight to the owner's inbox.
+  // WhatsApp: opened in parallel via wa.me with the enquiry pre-filled. Note —
+  // WhatsApp itself always requires one tap on ITS OWN "Send" button before a
+  // message actually delivers; no website can skip that step for the visitor
+  // or the owner. That's a WhatsApp platform rule, not something this code
+  // controls.
+  //
+  // IMPORTANT ONE-TIME SETUP: the first time this form is submitted after
+  // publishing, FormSubmit sends a confirmation email to
+  // shainydecorations@gmail.com asking the owner to click "activate" — after
+  // that one click, every enquiry is delivered to email automatically with no
+  // further action needed from anyone.
+  const WA_NUMBER = '919948529872';
+
+  // Default introduction sent whenever no custom message is supplied — used
+  // both by the floating WhatsApp button and as the fallback "Tell us more"
+  // text for the quote form, so it reaches the owner via WhatsApp AND email.
+  const DEFAULT_INTRO =
+    "Hi Shainy Decorations! I found your website and I'm interested in your " +
+    "fresh flower decoration services — marigold, roses and jasmine setups for " +
+    "homes and events across Pakala, Singarayakonda & Andhra Pradesh. Could you " +
+    "share more details and pricing?";
+
+  // ---------- FLOATING WHATSAPP BUTTON ----------
+  function openFloatingWhatsapp(){
+    const text = encodeURIComponent(DEFAULT_INTRO);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
+  }
+
+  function handleQuoteSubmit(e){
+    const form = e.target;
+    const btn  = form.querySelector('button[type="submit"]');
+    const name  = (document.getElementById('name').value  || '').trim();
+    const phone = (document.getElementById('phone').value || '').trim();
+    const occ   = document.getElementById('occ').value || '';
+    const date  = document.getElementById('date').value || '';
+    const msgEl = document.getElementById('msg');
+    let msg     = (msgEl.value || '').trim();
+
+    if(!name || !phone){
+      e.preventDefault();
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+
+    // If the visitor left "Tell us more" blank, fall back to the default
+    // introduction so the owner still gets context — on WhatsApp AND in the
+    // email (the textarea's value is updated before the native form submit
+    // fires, so FormSubmit picks it up too).
+    if(!msg){
+      msg = DEFAULT_INTRO;
+      msgEl.value = DEFAULT_INTRO;
+    }
+
+    // Open WhatsApp with the enquiry pre-filled (owner just needs to tap Send).
+    const waText = `*New Enquiry — Shainy Decorations*%0A%0A` +
+                   `*Name:* ${encodeURIComponent(name)}%0A` +
+                   `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                   `*Occasion:* ${encodeURIComponent(occ)}%0A` +
+                   `*Event Date:* ${encodeURIComponent(date || 'Not specified')}%0A` +
+                   `*Message:* ${encodeURIComponent(msg)}`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${waText}`, '_blank');
+
+    // Do NOT preventDefault here — the browser's real native submission
+    // still needs to fire (into the hidden iframe) so the email goes out
+    // silently in the background. We just update the button UI around it.
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    setTimeout(() => {
+      btn.textContent = 'We\u2019ll call you shortly!';
+    }, 800);
+
+    setTimeout(() => {
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }, 5500);
+  }
+
+  // ---------- TESTIMONIALS: rotate through an expanded pool with a
+  // periodic "refresh" fade/slide animation, pausing while hovered ----------
+  const TESTIMONIALS = [
+    { text:'"Booked our housewarming decoration two days before the date and the team still made it look like it took a week to plan. Beautiful marigold work."', name:'Lakshmi R.', role:'Griha Pravesh, Kandukuru' },
+    { text:'"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."', name:'Arjun & Divya', role:'Wedding, Singarayakonda' },
+    { text:'"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."', name:'Rohit Shetty', role:'Ganpati Decor, Pakala' },
+    { text:'"The Ganpati decor for our society festival was stunning — vibrant marigolds and fresh jasmine, delivered right on schedule."', name:'Priya Nair', role:'Pooja Decor, Ongole' },
+    { text:'"Our anniversary evening looked like a five-star setup. The fresh rose arch was the highlight of the whole night."', name:'Sunil & Meena', role:'Anniversary, Kavali' },
+    { text:'"Quick replies on WhatsApp, fair pricing, and the haldi function decoration turned out absolutely gorgeous."', name:'Deepika K.', role:'Haldi Ceremony, Nellore' }
+  ];
+  const tCards = ['t-card-0','t-card-1','t-card-2'].map(id => document.getElementById(id)).filter(Boolean);
+  let tOffset = 0;
+  function fillTestimonialCard(card, data){
+    card.querySelector('p').textContent = data.text;
+    card.querySelector('.t-name').textContent = data.name;
+    card.querySelector('.t-role').textContent = data.role;
+  }
+  function refreshTestimonials(){
+    tCards.forEach(c => c.classList.add('card-refresh-out'));
+    setTimeout(() => {
+      tOffset = (tOffset + 1) % TESTIMONIALS.length;
+      tCards.forEach((c, i) => {
+        fillTestimonialCard(c, TESTIMONIALS[(tOffset + i) % TESTIMONIALS.length]);
+        c.classList.remove('card-refresh-out');
+        c.classList.add('card-refresh-in');
+      });
+      setTimeout(() => tCards.forEach(c => c.classList.remove('card-refresh-in')), 520);
+    }, 400);
+  }
+  if(tCards.length){
+    let tTimer = setInterval(refreshTestimonials, 5000);
+    const tGrid = document.querySelector('.t-grid');
+    if(tGrid){
+      tGrid.addEventListener('mouseenter', () => clearInterval(tTimer));
+      tGrid.addEventListener('mouseleave', () => { tTimer = setInterval(refreshTestimonials, 5000); });
+    }
+  }
+
+  // ---------- HERO: show a random decoration photo each visit ----------
+  const HERO_IMAGES = [
+    'images/background/flower-1.png',
+    'images/background/flower-2.png',
+    'images/background/flower-3.png',
+    'images/background/flower-4.png',
+    'images/background/flower-5.png',
+    'images/background/flower-6.png',
+  ];
+  const heroImg = document.getElementById('hero-random-img');
+  if(heroImg){
+    const pick = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+    heroImg.onerror = () => { heroImg.onerror = null; heroImg.src = 'images/background/flower-1.png'; };
+    heroImg.src = pick;
+  }
+
+  // ---------- REVEAL ANIMATIONS ----------
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // ---------- GALLERY: pause the auto-slide while the visitor drags/scrolls
+  // it manually, then resume smoothly once they let go ----------
+  const galSlider = document.getElementById('gal-slider');
+  const galTrack  = document.getElementById('gal-track');
+  if(galSlider && galTrack){
+    let resumeTimer;
+    const pauseSlide = () => { galTrack.classList.add('is-paused'); clearTimeout(resumeTimer); };
+    const scheduleResume = () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(()=> galTrack.classList.remove('is-paused'), 2200);
+    };
+    ['pointerdown','touchstart','wheel'].forEach(evt=>galSlider.addEventListener(evt, pauseSlide, {passive:true}));
+    ['pointerup','touchend','scroll'].forEach(evt=>galSlider.addEventListener(evt, scheduleResume, {passive:true}));
+  }
+
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', ()=>{
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText += open ? '' : 'position:absolute; top:64px; left:0; right:0; background:#FBF2E1; flex-direction:column; padding:20px 32px; border-bottom:1px solid rgba(42,32,21,0.15); gap:16px; z-index:100;';
+  });
+
+  // ---------- IN-PAGE NAV: works even from the occasion sub-page ----------
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const hash = a.getAttribute('href');
+      if(!hash || hash === '#') return;
+      e.preventDefault();
+      // If we're on the occasion sub-page, return to the main view first
+      if(document.body.classList.contains('hw-open')){
+        document.body.classList.remove('hw-open');
+        const ov = document.getElementById('occasion-view');
+        if(ov) ov.classList.remove('active');
+      }
+      // Close mobile menu if it's open
+      if(links && window.innerWidth <= 820){ links.style.display = 'none'; }
+      const target = hash === '#top' ? null : document.querySelector(hash);
+      setTimeout(() => {
+        if(hash === '#top' || !target){ window.scrollTo({ top:0, behavior:'smooth' }); }
+        else { target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+      }, 60);
+    });
+  });
+</script>
+
+<!-- <script>
+// ===== Occasion image configuration =====
+// const occasionImages={
+//  housewarming:["images/occuasions/haldi/img-1.jpg","images/background/flower-1.png","images/housewarming/house3.jpg"],
+//  birthday:["images/occuasions/haldi/img-1.jpeg","images/birthday/birthday2.jpg"],
+//  wedding:["images/wedding/wedding1.jpg","images/wedding/wedding2.jpg"],
+//  haldi:["img-1.jpeg","img-2.jpeg"],
+//  babyshower:["images/babyshower/baby1.jpg","images/babyshower/baby2.jpg"],
+//  pooja:["images/pooja/pooja1.jpg","images/pooja/pooja2.jpg"],
+//  anniversary:["images/anniversary/anniversary1.jpg","images/anniversary/anniversary2.jpg"],
+//  engagement:["images/engagement/eng1.jpg","images/engagement/eng2.jpg"]
+// };
+// // Replace image paths above with your own images.
+// </script> -->
+
+</body>
+</html>
+
