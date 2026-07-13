@@ -53,20 +53,23 @@
   header{ position:sticky; top:0; z-index:50; background:rgba(251,242,225,0.95); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:8px 32px; max-width:1180px; margin:0 auto; }
   .logo{ display:flex; align-items:center; gap:10px; font-family:'Yeseva One', serif; font-size:1.5rem; color:var(--maroon); overflow:visible; }
-  .logo img{ height:82px; width:auto; display:block; margin:-12px 0; transition:transform .3s ease-in-out, filter .3s ease-in-out; animation:logoSway 3s ease-in-out infinite, logoColorShift 6s linear infinite; transform-origin:center; }
-  .logo:hover img{ animation:none; transform:translateX(9px); filter:drop-shadow(0 6px 10px rgba(224,141,44,0.4)); }
-  @keyframes logoSway{
-    0%, 100% { transform:translateX(0); }
-    25%      { transform:translateX(-8px); }
-    75%      { transform:translateX(8px); }
-  }
-  /* Cycles the logo gently through hue while pulsing a soft glow */
+  .logo img{ height:82px; width:auto; display:block; margin:-12px 0; transition:transform .3s ease-in-out, filter .3s ease-in-out; animation:logoColorShift 15s ease-in-out infinite; transform-origin:center; }
+  .logo:hover img{ animation:none; transform:translateX(9px) scale(1); filter:drop-shadow(0 6px 10px rgba(224,141,44,0.4)); }
+  /* Cycles the logo through five looks — black, white, gold, pink and teal —
+     with a gentle side-to-side sway, and zooms in/out right as each colour
+     change happens so the size pulse and colour pulse land together. */
   @keyframes logoColorShift{
-    0%   { filter:hue-rotate(0deg) saturate(1) drop-shadow(0 2px 4px rgba(224,141,44,0)); }
-    25%  { filter:hue-rotate(90deg) saturate(1.25) drop-shadow(0 4px 10px rgba(224,141,44,0.35)); }
-    50%  { filter:hue-rotate(180deg) saturate(1.4) drop-shadow(0 4px 14px rgba(224,141,44,0.55)); }
-    75%  { filter:hue-rotate(270deg) saturate(1.25) drop-shadow(0 4px 10px rgba(224,141,44,0.35)); }
-    100% { filter:hue-rotate(360deg) saturate(1) drop-shadow(0 2px 4px rgba(224,141,44,0)); }
+    0%   { transform:translateX(0) scale(1);        filter:brightness(0) saturate(100%) drop-shadow(0 2px 4px rgba(42,32,21,0.2)); } /* black */
+    10%  { transform:translateX(-4px) scale(1.16); } /* zoom in while shifting to white */
+    20%  { transform:translateX(3px) scale(1);       filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(42,32,21,0.15)); } /* white */
+    30%  { transform:translateX(0) scale(1.16); }     /* zoom in while shifting to gold */
+    40%  { transform:translateX(-3px) scale(1);       filter:brightness(0) saturate(100%) invert(64%) sepia(59%) saturate(1573%) hue-rotate(1deg) brightness(103%) contrast(93%) drop-shadow(0 2px 6px rgba(224,141,44,0.4)); } /* gold */
+    50%  { transform:translateX(3px) scale(1.16); }   /* zoom in while shifting to pink */
+    60%  { transform:translateX(0) scale(1);          filter:brightness(0) saturate(100%) invert(21%) sepia(90%) saturate(3200%) hue-rotate(300deg) brightness(98%) contrast(101%) drop-shadow(0 2px 6px rgba(224,50,140,0.4)); } /* pink */
+    70%  { transform:translateX(-4px) scale(1.16); }  /* zoom in while shifting to teal */
+    80%  { transform:translateX(3px) scale(1);        filter:brightness(0) saturate(100%) invert(55%) sepia(75%) saturate(500%) hue-rotate(140deg) brightness(95%) contrast(101%) drop-shadow(0 2px 6px rgba(20,180,170,0.4)); } /* teal */
+    90%  { transform:translateX(0) scale(1.16); }     /* zoom in while shifting back to black */
+    100% { transform:translateX(0) scale(1);          filter:brightness(0) saturate(100%) drop-shadow(0 2px 4px rgba(42,32,21,0.2)); } /* back to black */
   }
   @media (prefers-reduced-motion: reduce){ .logo img{ animation:none; } }
   .nav-links{ display:flex; gap:30px; align-items:center; }
@@ -78,9 +81,13 @@
   .btn-primary{ background:var(--marigold); color:#fff; }
   .btn-primary:hover{ background:var(--marigold-deep); transform:translateY(-2px); }
 
-  /* Explore Occasions: background sweeps in on hover, sweeps back out on leave */
+  /* Explore Occasions: background sweeps in on hover, sweeps back out on leave.
+     While idle it also flows through a continuous multi-colour gradient. */
   .btn-fill-explore{
-    position:relative; overflow:hidden; z-index:1; background:var(--marigold);
+    position:relative; overflow:hidden; z-index:1;
+    background:linear-gradient(90deg, var(--marigold), var(--terracotta), var(--maroon), var(--turmeric), var(--leaf), var(--marigold));
+    background-size:300% 100%;
+    animation:btnColorShift 6s linear infinite;
   }
   .btn-fill-explore::before{
     content:""; position:absolute; inset:0; z-index:-1;
@@ -88,12 +95,40 @@
     transform:scaleX(0); transform-origin:right center;
     transition:transform .45s ease-in-out;
   }
-  .btn-fill-explore:hover{ background:var(--marigold); transform:translateY(-2px); }
+  @keyframes btnColorShift{
+    0%   { background-position:0% 50%; }
+    100% { background-position:300% 50%; }
+  }
+  .btn-fill-explore:hover{ animation-play-state:paused; background:var(--marigold); transform:translateY(-2px); }
   .btn-fill-explore:hover::before{ transform:scaleX(1); transform-origin:left center; }
-  .btn-fill-explore:active{ background:var(--marigold); transform:translateY(-1px) scale(.98); }
+  .btn-fill-explore:active{ animation-play-state:paused; background:var(--marigold); transform:translateY(-1px) scale(.98); }
   .btn-fill-explore:active::before{ transform:scaleX(1); transform-origin:left center; transition-duration:.25s; }
   @media (prefers-reduced-motion: reduce){
+    .btn-fill-explore{ animation:none; }
     .btn-fill-explore::before{ transition:none; }
+  }
+
+  /* Send Request (contact form): same flowing multi-colour treatment as
+     Explore Occasions, so the two feel like a matching pair. */
+  .btn-fill-send{
+    position:relative; overflow:hidden; z-index:1;
+    background:linear-gradient(90deg, var(--maroon), var(--marigold), var(--turmeric), var(--terracotta), var(--leaf), var(--maroon));
+    background-size:300% 100%;
+    animation:btnColorShift 6s linear infinite;
+  }
+  .btn-fill-send::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:var(--marigold-deep);
+    transform:scaleX(0); transform-origin:right center;
+    transition:transform .45s ease-in-out;
+  }
+  .btn-fill-send:hover{ animation-play-state:paused; background:var(--marigold); transform:translateY(-2px); }
+  .btn-fill-send:hover::before{ transform:scaleX(1); transform-origin:left center; }
+  .btn-fill-send:active{ animation-play-state:paused; background:var(--marigold); transform:translateY(-1px) scale(.98); }
+  .btn-fill-send:active::before{ transform:scaleX(1); transform-origin:left center; transition-duration:.25s; }
+  @media (prefers-reduced-motion: reduce){
+    .btn-fill-send{ animation:none; }
+    .btn-fill-send::before{ transition:none; }
   }
   .btn-whatsapp{ background:#3F7A4E; color:#fff; }
   .btn-whatsapp:hover{ background:#2F5F3B; transform:translateY(-2px); }
@@ -113,34 +148,79 @@
   }
   .hero-art svg{ width:100%; max-width:430px; }
   .hero-img-wrap{
-    animation:heroImgBreathe 4.4s ease-in-out infinite;
+    animation:heroImgBreathe 5.5s ease-in-out infinite;
     will-change:transform;
   }
   .hero-img-wrap:hover{ animation-play-state:paused; }
   .hero-art img{
     border-radius:10px;
     transition:box-shadow .3s ease-in-out, transform .3s ease-in-out;
+    animation:heroImgColorShift 10s ease-in-out infinite, heroImgZoom 4s ease-in-out infinite;
   }
-  .hero-art img:hover{ box-shadow:0 26px 48px rgba(42,32,21,0.28); }
+  .hero-art img:hover{ box-shadow:0 26px 48px rgba(42,32,21,0.28); animation-play-state:paused; }
   @keyframes heroImgBreathe{
     0%, 100% { transform:scale(1) translateY(0); }
     50%      { transform:scale(1.06) translateY(-12px); }
   }
-  @media (prefers-reduced-motion: reduce){ .hero-img-wrap{ animation:none; } }
-  /* Google review badge: fixed in place, does not move with the image animation */
+  /* Zoom in/out pulse on the flower photo itself, layered on top of the
+     wrapper's slower breathing motion, so the image gently grows and
+     shrinks as it sits on the page. */
+  @keyframes heroImgZoom{
+    0%, 100% { transform:scale(1); }
+    50%      { transform:scale(1.09); }
+  }
+  /* Wider, busier colour-cycling glow across the hero flower photo — more
+     hue/saturation/contrast stops than before, so the drift feels more
+     alive while the photo still reads naturally. */
+  @keyframes heroImgColorShift{
+    0%   { filter:hue-rotate(0deg) saturate(1) brightness(1) contrast(1); }
+    15%  { filter:hue-rotate(30deg) saturate(1.3) brightness(1.05) contrast(1.05); }
+    30%  { filter:hue-rotate(-25deg) saturate(1.45) brightness(1.08) contrast(1.1); }
+    45%  { filter:hue-rotate(45deg) saturate(1.35) brightness(1.04) contrast(1.05); }
+    60%  { filter:hue-rotate(-35deg) saturate(1.5) brightness(1.1) contrast(1.12); }
+    75%  { filter:hue-rotate(20deg) saturate(1.25) brightness(1.03) contrast(1.03); }
+    90%  { filter:hue-rotate(-10deg) saturate(1.1) brightness(1.01) contrast(1); }
+    100% { filter:hue-rotate(0deg) saturate(1) brightness(1) contrast(1); }
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-img-wrap{ animation:none; } .hero-art img{ animation:none; } }
+  /* Google review badge: fixed in place, does not move with the image
+     animation. Now a flip-card — it auto-flips periodically to reveal a
+     "Verified on Google" back face, and also flips on hover/tap. Its
+     background colour is set randomly by JS on every page load/refresh. */
   .rating-chip{
-    position:absolute; bottom:6%; left:0; background:#fff; border:1px solid var(--line); border-radius:8px;
+    position:absolute; bottom:6%; left:0; z-index:3;
+    width:190px; height:58px; perspective:1200px;
+  }
+  .rating-chip-inner{
+    position:relative; width:100%; height:100%;
+    transform-style:preserve-3d;
+    animation:chipAutoFlip 7s ease-in-out infinite;
+    transition:transform .3s ease-in-out;
+  }
+  .rating-chip:hover .rating-chip-inner{ animation-play-state:paused; transform:rotateY(180deg); }
+  @keyframes chipAutoFlip{
+    0%, 38% { transform:rotateY(0deg); }
+    50%, 88%{ transform:rotateY(180deg); }
+    100%    { transform:rotateY(360deg); }
+  }
+  .rating-chip-face{
+    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    background:#fff; border:1px solid var(--line); border-radius:8px;
     padding:10px 16px; display:flex; gap:10px; align-items:center;
     box-shadow:0 18px 40px rgba(42,32,21,0.28), 0 4px 12px rgba(224,141,44,0.18);
-    z-index:3; transition:transform .3s ease-in-out, box-shadow .3s ease-in-out;
+    transition:transform .3s ease-in-out, box-shadow .3s ease-in-out, background-color .5s ease-in-out;
   }
-  .rating-chip:hover{
-    transform:translateY(-4px);
+  .rating-chip:hover .rating-chip-face{
     box-shadow:0 26px 52px rgba(42,32,21,0.34), 0 6px 16px rgba(224,141,44,0.26);
   }
+  .rating-chip-back{ transform:rotateY(180deg); }
+  .rating-chip-back i{ font-size:1.4rem; color:var(--marigold-deep); }
   .rating-chip .stars{ color:var(--marigold); font-size:1rem; letter-spacing:1px; }
   .rating-chip .num{ font-weight:700; font-size:.85rem; color:var(--ink); }
   .rating-chip .sub{ font-size:.72rem; color:var(--ink-soft); }
+  @media (prefers-reduced-motion: reduce){
+    .rating-chip-inner{ animation:none; }
+  }
 
 
   .strip{ background:var(--leaf-deep); color:#F3E4C7; padding:20px 0; }
@@ -156,9 +236,9 @@
 
   /* ---------- OCCASIONS GRID ---------- */
   .occasions{ padding:90px 0 70px; }
-  .occ-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .occ-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:15px; }
   .occ-card{
-    background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 20px; text-align:center;
+    background:#f7f5f5; border:1px solid var(--line); border-radius:6px; padding:15px 1.5px; text-align:center;
     transition:transform .3s ease-in-out, box-shadow .3s ease-in-out; position:relative; overflow:hidden;
   }
   .occ-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--marigold), var(--maroon)); }
@@ -188,8 +268,8 @@
     box-shadow:0 20px 36px rgba(42,32,21,0.16);
     animation:cardHoverPopSoft .45s ease-in-out;
   }
-  .style-thumb{ height:190px; display:flex; align-items:center; justify-content:center; background:#fff; overflow:hidden; }
-  .style-thumb img.occ-thumb{ width:100%; height:100%; object-fit:cover; border-radius:0; margin-bottom:0; }
+  .style-thumb{ height:260px; display:flex; align-items:center; justify-content:center; background:beige; overflow:hidden; }
+  .style-thumb img.occ-thumb{ width:97%; height:95%; object-fit:cover; border-radius:0; margin-bottom:0;box-shadow: 5px 5px 10px rgb(5, 5, 5); }
   .style-thumb svg{ width:100px; height:100px; transition:transform .35s ease-in-out; }
   .style-card:hover .style-thumb svg{ transform:scale(1.08); }
   .style-body{ padding:18px 18px 22px; }
@@ -204,7 +284,7 @@
 
   /* ---------- HOW IT WORKS ---------- */
   .how{ padding:90px 0; }
-  .how-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px; counter-reset:step; }
+  .how-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; counter-reset:step; }
   .how-step{ text-align:center; position:relative; }
   .how-step .step-num{
     width:54px; height:54px; border-radius:50%; background:var(--maroon); color:#fff;
@@ -243,10 +323,10 @@
     to  { transform:translateX(-50%); }
   }
   .gal-card{
-    flex:0 0 250px; background:rgba(243,228,199,0.06); border:1px solid rgba(243,228,199,0.18);
-    border-radius:6px; padding:22px 16px; text-align:center; transition:transform .3s ease-in-out, background .3s ease-in-out;
+    flex:0 0 320px; background:rgba(243,228,199,0.06); border:1px solid rgba(243,228,199,0.18);
+    border-radius:6px; padding:5px 5px; text-align:center; transition:transform .3s ease-in-out, 'background' .3s ease-in-out;
   }
-  .gal-card img{ width:100%; height:190px; object-fit:cover; border-radius:5px; margin-bottom:14px; }
+  .gal-card img{ width:100%; height:300px; object-fit:cover; border-radius:5px; margin-bottom:10px; box-shadow: 2px 2px 10px rgb(113, 126, 96); }
   .gal-card:hover{
     transform:translateY(-8px) scale(1.03);
     background:rgba(243,228,199,0.14);
@@ -294,14 +374,15 @@
 
   /* ---------- CONTACT / SERVICE AREA ---------- */
   .contact{ padding:90px 0; background:var(--linen); }
-  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; perspective:1400px; }
   .contact h2{ font-size:2rem; margin-bottom:1rem; }
   .contact p{ color:var(--ink-soft); margin-bottom:1.5rem; }
   .info-list{ list-style:none; }
   .info-list li{ display:flex; gap:12px; padding:12px 0; border-bottom:1px dashed var(--line); font-size:.94rem; }
   .info-list li:last-child{ border-bottom:none; }
-  .info-list svg{ width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); }
-  .info-list li > i.fa-solid{ width:20px; font-size:18px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); text-align:center; }
+  .info-list svg{ width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); transition:transform .3s ease-in-out, color .3s ease-in-out; }
+  .info-list li > i.fa-solid{ width:20px; font-size:18px; flex-shrink:0; margin-top:2px; color:var(--marigold-deep); text-align:center; transition:transform .3s ease-in-out, color .3s ease-in-out; }
+  .info-list li:hover svg, .info-list li:hover > i.fa-solid{ transform:scale(1.25) rotate(-8deg); color:var(--maroon); }
   .info-list a{ color:var(--maroon); text-decoration:none; font-weight:600; }
   .info-list a:hover{ text-decoration:underline; }
   .areas{ margin-top:1.4rem; display:flex; flex-wrap:wrap; gap:8px; }
@@ -311,19 +392,30 @@
     background:#fff; border-radius:8px; border:1.5px solid var(--line); padding:30px;
     transition:transform .35s ease-in-out, box-shadow .35s ease-in-out, border-color .35s ease-in-out;
     animation:formIdleGlow 4.5s ease-in-out infinite;
+    transform-style:preserve-3d;
   }
   @keyframes formIdleGlow{
     0%, 100% { box-shadow:0 8px 20px rgba(42,32,21,0.07); }
     50%      { box-shadow:0 14px 32px rgba(224,141,44,0.16); }
   }
+  /* Flip-card animation: the whole form spins a full turn on its vertical
+     axis when a visitor taps/holds it (touch) or focuses into a field.
+     Hovering the form (desktop and responsive alike) no longer triggers
+     the flip — it just lifts smoothly with the usual shadow/border glow;
+     the flip is reserved for active/focus interaction only. */
   .contact-form:hover{
-    animation:formShakeHover .5s ease-in-out;
     transform:translateY(-6px);
     box-shadow:0 22px 40px rgba(42,32,21,0.16);
     border-color:var(--marigold);
   }
+  .contact-form:active{
+    animation:formFlipHover .55s ease-in-out;
+    transform:translateY(-6px) scale(.99);
+    box-shadow:0 22px 40px rgba(42,32,21,0.16);
+    border-color:var(--marigold);
+  }
   .contact-form:focus-within{
-    animation:formFocusPulse .55s ease-in-out, formShake .45s ease-in-out;
+    animation:formFocusPulse .55s ease-in-out, formFlipActive .75s ease-in-out;
     transform:translateY(-9px) scale(1.012);
     box-shadow:0 30px 54px rgba(224,141,44,0.28);
     border-color:var(--marigold-deep);
@@ -332,32 +424,61 @@
     0%   { box-shadow:0 0 0 0 rgba(224,141,44,0.35); }
     100% { box-shadow:0 30px 54px rgba(224,141,44,0.28); }
   }
-  /* Shake feedback the moment a visitor hovers the contact form */
-  @keyframes formShakeHover{
-    0%, 100% { transform:translateY(-6px) translateX(0); }
-    20%      { transform:translateY(-6px) translateX(-6px); }
-    40%      { transform:translateY(-6px) translateX(6px); }
-    60%      { transform:translateY(-6px) translateX(-4px); }
-    80%      { transform:translateY(-6px) translateX(4px); }
+  /* Flip feedback the moment a visitor hovers or taps/holds the contact form */
+  @keyframes formFlipHover{
+    0%   { transform:translateY(-6px) rotateY(0deg); }
+    50%  { transform:translateY(-6px) rotateY(180deg); }
+    100% { transform:translateY(-6px) rotateY(360deg); }
   }
-  /* Shake feedback the moment a visitor clicks/taps into the contact form */
-  @keyframes formShake{
-    0%, 100% { transform:translateY(-9px) scale(1.012) translateX(0); }
-    20%      { transform:translateY(-9px) scale(1.012) translateX(-6px); }
-    40%      { transform:translateY(-9px) scale(1.012) translateX(6px); }
-    60%      { transform:translateY(-9px) scale(1.012) translateX(-4px); }
-    80%      { transform:translateY(-9px) scale(1.012) translateX(4px); }
+  /* Flip feedback the moment a visitor clicks/taps into a field (focus) */
+  @keyframes formFlipActive{
+    0%   { transform:translateY(-9px) scale(1.012) rotateY(0deg); }
+    50%  { transform:translateY(-9px) scale(1.012) rotateY(180deg); }
+    100% { transform:translateY(-9px) scale(1.012) rotateY(360deg); }
   }
   @media (prefers-reduced-motion: reduce){
-    .contact-form:hover{ animation:none; }
+    .contact-form:hover, .contact-form:active{ animation:none; }
     .contact-form:focus-within{ animation:formFocusPulse .55s ease-in-out; }
   }
   @media (prefers-reduced-motion: reduce){ .contact-form{ animation:none; } }
   .contact-form h3{ font-size:1.3rem; margin-bottom:1.2rem; transition:color .3s ease-in-out; }
   .contact-form:focus-within h3{ color:var(--marigold-deep); }
-  .form-row{ margin-bottom:14px; }
+  .form-row{ margin-bottom:14px; position:relative; }
+  /* Fields cascade in, one after another, the moment the contact form
+     scrolls into view (the form itself already carries the .reveal class,
+     which the IntersectionObserver flips to .in). */
+  .contact-form .form-row{
+    opacity:0; transform:translateY(16px);
+    transition:opacity .5s ease-in-out, transform .5s ease-in-out;
+  }
+  .contact-form.in .form-row{ opacity:1; transform:translateY(0); }
+  .contact-form.in .form-2col .form-row:nth-child(1){ transition-delay:.05s; }
+  .contact-form.in .form-2col .form-row:nth-child(2){ transition-delay:.12s; }
+  .contact-form.in .form-2col ~ .form-row:nth-of-type(1){ transition-delay:.19s; }
+  .contact-form.in .form-2col ~ .form-row:nth-of-type(2){ transition-delay:.26s; }
+  .contact-form.in .form-2col ~ .form-row:nth-of-type(3){ transition-delay:.33s; }
+  .contact-form.in button[type="submit"]{
+    opacity:0; transform:translateY(16px);
+    animation:formBtnIn .5s ease-in-out .4s forwards;
+  }
+  @keyframes formBtnIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .contact-form .form-row, .contact-form.in .form-row{ opacity:1; transform:none; transition:none; }
+    .contact-form.in button[type="submit"]{ opacity:1; transform:none; animation:none; }
+  }
   .form-row label{ display:block; font-size:.82rem; font-weight:700; margin-bottom:6px; color:var(--ink); transition:color .25s ease-in-out; }
   .form-row:focus-within label{ color:var(--marigold-deep); }
+  /* Animated underline that sweeps in from the left whenever a field
+     gains focus — sits just under the input/select/textarea. */
+  .form-row::after{
+    content:''; position:absolute; left:2px; right:2px; bottom:-3px; height:2px;
+    background:var(--marigold-deep); border-radius:2px;
+    transform:scaleX(0); transform-origin:left center;
+    transition:transform .35s ease-in-out; pointer-events:none;
+  }
+  .form-row:focus-within::after{ transform:scaleX(1); }
   .form-row input, .form-row select, .form-row textarea{
     width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:4px; font-family:'Karla', sans-serif; font-size:.94rem; background:var(--cream);
     transition:border-color .25s ease-in-out, box-shadow .25s ease-in-out, transform .25s ease-in-out, background .25s ease-in-out;
@@ -386,11 +507,23 @@
   }
   @media (prefers-reduced-motion: reduce){ .contact-form button[type="submit"]::after{ animation:none; } }
 
+  /* One-shot celebratory pop when the enquiry has gone through */
+  .contact-form button[type="submit"].btn-success-pop{
+    animation:btnSuccessPop .55s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes btnSuccessPop{
+    0%   { transform:scale(1); }
+    35%  { transform:scale(1.08); }
+    60%  { transform:scale(.96); }
+    100% { transform:scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce){ .contact-form button[type="submit"].btn-success-pop{ animation:none; } }
+
   /* ---------- FOOTER ---------- */
   footer{ background:var(--maroon); color:rgba(251,242,225,0.85); padding:56px 0 26px; }
   .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px; padding-bottom:40px; border-bottom:1px solid rgba(251,242,225,0.2); }
-  .foot-logo{ display:flex; align-items:center; gap:10px; font-family:'Yeseva One', serif; font-size:1.35rem; color:var(--cream); margin-bottom:12px; }
-  .foot-logo img{ height:80px; width:auto; display:block; background:var(--cream); border-radius:4px; padding:2px 4px; }
+  .foot-logo{ display:flex; align-items:center; gap:10px; font-family:'Yeseva One', serif; font-size:1.35rem; color:#ffffff; margin-bottom:12px; }
+  .foot-logo img{ height:80px; width:auto; display:block; }
   footer p{ font-size:.88rem; color:rgba(251,242,225,0.65); max-width:280px; }
   footer h4{ color:var(--cream); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; font-family:'Karla',sans-serif; font-weight:700; }
   footer ul{ list-style:none; }
@@ -418,6 +551,100 @@
     from{ transform:rotate(0deg); }
     to  { transform:rotate(360deg); }
   }
+  /* ---------- FLOATING WHATSAPP "CLOUD" TIP (mobile only) ---------- */
+  /* A genuine puffy-cloud shaped bubble sitting diagonally above-left of
+     the WhatsApp button, nudging phone visitors to switch to "Desktop
+     site" for a better experience. Hidden completely on desktop — only
+     ever enabled (and precisely positioned/sized) inside the
+     max-width:820px media query further down, and re-appears on every
+     page load/refresh (not remembered/dismissed permanently). */
+  .wa-cloud-tip{
+    position:fixed; right:78px; bottom:18px; z-index:59;
+    width:172px; padding:16px 16px 14px;
+    background:#fff; color:var(--ink); font-family:'Karla', sans-serif;
+    font-size:.74rem; font-weight:700; line-height:1.3; text-align:center;
+    border-radius:22px;
+    display:none; opacity:0; pointer-events:none;
+    transform:scale(.9);
+    transition:opacity .35s ease-in-out, transform .35s ease-in-out, right .3s ease-in-out, bottom .3s ease-in-out, width .3s ease-in-out;
+  }
+  .wa-cloud-tip.show{
+    display:block; opacity:1; pointer-events:auto; transform:scale(1);
+    animation:cloudFloat 3.4s ease-in-out infinite, cloudMulticolor 4.5s linear infinite;
+  }
+  .wa-cloud-tip span{ position:relative; z-index:2; }
+  /* Puffy cloud bumps — three overlapping circles along the top edge,
+     plus a couple of small trailing "tail" circles on the right pointing
+     toward the WhatsApp button, giving it a real cloud silhouette. */
+  .wa-cloud-tip::before, .wa-cloud-tip::after, .wa-cloud-tip .bump{
+    content:''; position:absolute; background:#fff; border-radius:50%; z-index:1;
+  }
+  .wa-cloud-tip::before{ width:38px; height:38px; top:-16px; left:14px; }
+  .wa-cloud-tip::after{  width:30px; height:30px; top:-10px; right:38px; }
+  .wa-cloud-tip .bump{   width:52px; height:52px; top:-24px; left:52px; }
+  .wa-cloud-tip .tail-1, .wa-cloud-tip .tail-2{
+    content:''; position:absolute; background:#fff; border-radius:50%; z-index:1;
+  }
+  .wa-cloud-tip .tail-1{ width:14px; height:14px; bottom:6px; right:-8px; }
+  .wa-cloud-tip .tail-2{ width:8px; height:8px; bottom:-2px; right:-16px; }
+  .wa-cloud-tip .tip-close{
+    position:absolute; top:-4px; right:2px; width:20px; height:20px; border-radius:50%;
+    background:var(--maroon); color:#fff; font-size:12px; line-height:1; z-index:3;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; border:none;
+    box-shadow:0 3px 8px rgba(0,0,0,0.3);
+  }
+  @keyframes cloudFloat{
+    0%, 100%{ transform:translateY(0) scale(1); }
+    50%     { transform:translateY(-9px) scale(1); }
+  }
+  /* Rainbow glow that cycles around the whole cloud silhouette — the
+     "multicolor effect" — layered under a soft neutral shadow for depth. */
+  @keyframes cloudMulticolor{
+    0%  { box-shadow:0 0 18px 5px rgba(255,99,132,.55),  0 0 32px 12px rgba(255,159,64,.30), 0 10px 20px rgba(0,0,0,.18); }
+    16% { box-shadow:0 0 18px 5px rgba(255,205,86,.55),  0 0 32px 12px rgba(75,192,192,.30), 0 10px 20px rgba(0,0,0,.18); }
+    33% { box-shadow:0 0 18px 5px rgba(75,192,192,.55),  0 0 32px 12px rgba(54,162,235,.30), 0 10px 20px rgba(0,0,0,.18); }
+    50% { box-shadow:0 0 18px 5px rgba(54,162,235,.55),  0 0 32px 12px rgba(153,102,255,.30), 0 10px 20px rgba(0,0,0,.18); }
+    66% { box-shadow:0 0 18px 5px rgba(153,102,255,.55), 0 0 32px 12px rgba(255,99,132,.30), 0 10px 20px rgba(0,0,0,.18); }
+    83% { box-shadow:0 0 18px 5px rgba(255,99,132,.55),  0 0 32px 12px rgba(255,205,86,.30), 0 10px 20px rgba(0,0,0,.18); }
+    100%{ box-shadow:0 0 18px 5px rgba(255,99,132,.55),  0 0 32px 12px rgba(255,159,64,.30), 0 10px 20px rgba(0,0,0,.18); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wa-cloud-tip.show{ animation:none; }
+  }
+
+  /* ---------- IMAGE LIGHTBOX (Our Styles / Gallery / Occasion cards) ---------- */
+  .lightbox-overlay{
+    position:fixed; inset:0; z-index:200; background:rgba(20,15,8,0.86);
+    display:flex; align-items:center; justify-content:center; padding:40px 20px;
+    opacity:0; visibility:hidden; transition:opacity .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .lightbox-overlay.active{ opacity:1; visibility:visible; }
+  .lightbox-overlay .lightbox-figure{
+    position:relative; max-width:min(90vw,900px); max-height:88vh;
+    transform:scale(.92); transition:transform .3s ease-in-out;
+  }
+  .lightbox-overlay.active .lightbox-figure{ transform:scale(1); }
+  .lightbox-overlay img{
+    max-width:100%; max-height:88vh; width:auto; height:auto;
+    border-radius:8px; display:block; margin:0 auto;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .lightbox-overlay .lightbox-caption{
+    text-align:center; color:var(--cream); font-size:.85rem; margin-top:12px; opacity:.85;
+  }
+  .lightbox-close{
+    position:absolute; top:-18px; right:-18px; width:38px; height:38px; border-radius:50%;
+    background:var(--marigold); color:#fff; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:20px; line-height:1;
+    box-shadow:0 6px 16px rgba(0,0,0,0.35); transition:background .2s ease, transform .2s ease;
+  }
+  .lightbox-close:hover{ background:var(--marigold-deep); transform:scale(1.08); }
+  .styles-grid .style-thumb img.occ-thumb,
+  .gallery .gal-card img.occ-thumb,
+  #occasion-view .occ-card img.occ-thumb{
+    cursor:zoom-in;
+  }
+
   /* ---------- REVEAL / MAIN-PAGE CARD LOADING ---------- */
   .reveal{ opacity:0; transform:translateY(24px) scale(.97); transition:opacity .6s ease-in-out, transform .6s ease-in-out; }
   .reveal.in{ opacity:1; transform:translateY(0) scale(1); }
@@ -450,19 +677,40 @@
   .t-card:active{ animation:cardHoverPopSoft .45s ease-in-out; transform:translateY(-8px) scale(1.02); box-shadow:0 24px 42px rgba(42,32,21,0.2); }
 
   /* ---------- RESPONSIVE ---------- */
+  /* The cloud tip is only ever meant for phones/tablets in responsive
+     layout — desktop visitors never see it, regardless of JS state.
+     On responsive layout it sits diagonally above-left of the WhatsApp
+     button (rather than level with it) and is sized a touch smaller. */
+  @media (max-width:820px){
+    .wa-cloud-tip.show{ display:block; }
+    .wa-cloud-tip{
+      right:70px; bottom:84px;
+      width:156px; padding:14px 14px 12px;
+      font-size:.71rem; border-radius:20px;
+    }
+    .wa-cloud-tip::before{ width:34px; height:34px; top:-14px; left:12px; }
+    .wa-cloud-tip::after{  width:27px; height:27px; top:-9px; right:34px; }
+    .wa-cloud-tip .bump{   width:46px; height:46px; top:-21px; left:46px; }
+    .wa-cloud-tip .tail-1{ width:12px; height:12px; bottom:5px; right:-7px; }
+    .wa-cloud-tip .tail-2{ width:7px; height:7px; bottom:-2px; right:-14px; }
+    .wa-cloud-tip .tip-close{ width:18px; height:18px; top:-3px; right:1px; font-size:11px; }
+  }
+  @media (min-width:821px){
+    .wa-cloud-tip{ display:none !important; }
+  }
   @media (max-width:980px){
     .nav{ padding:7px 28px; }
     .logo img{ height:68px; margin:-9px 0; }
     .hero-grid{ grid-template-columns:1fr; }
     .hero-art{ order:-1; margin-bottom:6px; }
-    .hero-img-wrap{ animation-duration:4s; }
+    .hero-img-wrap{ animation-duration:5s; }
     .hero-art img{ max-width:300px; }
-    .occ-grid, .styles-grid{ grid-template-columns:repeat(2,1fr); }
+    .occ-grid, .styles-grid{ grid-template-columns:autorepeat(2,1fr); }
     .how-grid, .t-grid{ grid-template-columns:1fr; }
     .occ-card .occ-thumb{ height:200px; }
-    .style-thumb{ height:170px; }
-    .gal-card{ flex-basis:210px; }
-    .gal-card img{ height:160px; }
+    .style-thumb{ height:210px; }
+    .gal-card{ flex-basis:260px; }
+    .gal-card img{ height:210px; }
     .gal-track{ animation-duration:52s; }
     .contact-grid{ grid-template-columns:1fr; }
     .foot-grid{ grid-template-columns:1fr 1fr; row-gap:30px; }
@@ -485,22 +733,21 @@
     .styles-grid > .reveal:nth-child(4){ transition-delay:.17s; }
 
     /* Contact form: slightly gentler lift on tablet/touch so it doesn't
-       feel jumpy without a precise mouse hover */
+       feel jumpy without a precise mouse hover. Hovering no longer
+       triggers the flip on responsive layouts either — just a smooth
+       lift, matching desktop. */
     .contact-form:hover{ transform:translateY(-4px); }
+    .contact-form:active{ transform:translateY(-4px) scale(.99); }
     .contact-form:focus-within{ transform:translateY(-6px) scale(1.008); }
-    @keyframes formShakeHover{
-      0%, 100% { transform:translateY(-4px) translateX(0); }
-      20%      { transform:translateY(-4px) translateX(-5px); }
-      40%      { transform:translateY(-4px) translateX(5px); }
-      60%      { transform:translateY(-4px) translateX(-3px); }
-      80%      { transform:translateY(-4px) translateX(3px); }
+    @keyframes formFlipHover{
+      0%   { transform:translateY(-4px) rotateY(0deg); }
+      50%  { transform:translateY(-4px) rotateY(180deg); }
+      100% { transform:translateY(-4px) rotateY(360deg); }
     }
-    @keyframes formShake{
-      0%, 100% { transform:translateY(-6px) scale(1.008) translateX(0); }
-      20%      { transform:translateY(-6px) scale(1.008) translateX(-5px); }
-      40%      { transform:translateY(-6px) scale(1.008) translateX(5px); }
-      60%      { transform:translateY(-6px) scale(1.008) translateX(-3px); }
-      80%      { transform:translateY(-6px) scale(1.008) translateX(3px); }
+    @keyframes formFlipActive{
+      0%   { transform:translateY(-6px) scale(1.008) rotateY(0deg); }
+      50%  { transform:translateY(-6px) scale(1.008) rotateY(180deg); }
+      100% { transform:translateY(-6px) scale(1.008) rotateY(360deg); }
     }
 
     /* Same snappier stagger for the cards on the sub-page you land on after
@@ -529,9 +776,9 @@
     .menu-toggle{ display:block; }
     .occ-grid, .styles-grid{ grid-template-columns:1fr 1fr; }
     .occ-card .occ-thumb{ height:150px; }
-    .style-thumb{ height:140px; }
-    .gal-card{ flex-basis:170px; padding:16px 12px; }
-    .gal-card img{ height:130px; }
+    .style-thumb{ height:180px; }
+    .gal-card{ flex-basis:200px; padding:16px 12px; }
+    .gal-card img{ height:170px; }
     .gal-track{ animation-duration:40s; gap:12px; }
     .form-2col{ grid-template-columns:1fr; }
     .foot-grid{ grid-template-columns:1fr; }
@@ -552,37 +799,37 @@
     #occasion-view .occ-card,
     .skel-card{ animation-duration:.4s; }
 
-    /* Contact form: even lighter lift on phones */
+    /* Contact form: even lighter lift on phones. Hovering no longer
+       triggers the flip on responsive layouts either — just a smooth
+       lift, matching desktop. */
     .contact-form:hover{ transform:translateY(-3px); }
+    .contact-form:active{ transform:translateY(-3px) scale(.99); }
     .contact-form:focus-within{ transform:translateY(-4px); }
-    @keyframes formShakeHover{
-      0%, 100% { transform:translateY(-3px) translateX(0); }
-      20%      { transform:translateY(-3px) translateX(-4px); }
-      40%      { transform:translateY(-3px) translateX(4px); }
-      60%      { transform:translateY(-3px) translateX(-3px); }
-      80%      { transform:translateY(-3px) translateX(3px); }
+    @keyframes formFlipHover{
+      0%   { transform:translateY(-3px) rotateY(0deg); }
+      50%  { transform:translateY(-3px) rotateY(180deg); }
+      100% { transform:translateY(-3px) rotateY(360deg); }
     }
-    @keyframes formShake{
-      0%, 100% { transform:translateY(-4px) translateX(0); }
-      20%      { transform:translateY(-4px) translateX(-4px); }
-      40%      { transform:translateY(-4px) translateX(4px); }
-      60%      { transform:translateY(-4px) translateX(-3px); }
-      80%      { transform:translateY(-4px) translateX(3px); }
+    @keyframes formFlipActive{
+      0%   { transform:translateY(-4px) rotateY(0deg); }
+      50%  { transform:translateY(-4px) rotateY(180deg); }
+      100% { transform:translateY(-4px) rotateY(360deg); }
     }
     .form-row input:focus, .form-row select:focus, .form-row textarea:focus{ transform:none; }
 
     /* Slightly calmer logo + hero image motion on small screens */
     .nav{ padding:6px 20px; }
-    .logo img{ height:52px; margin:-5px 0; animation-duration:4s, 6s; }
-    .hero-img-wrap{ animation-duration:3.6s; }
+    .logo img{ height:52px; margin:-5px 0; animation-duration:11s; }
+    .hero-img-wrap{ animation-duration:4.5s; }
   }
 
   .occ-card .occ-thumb {
     width: 100%;
-    height: 230px;
+    height: 245px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-bottom: 12px;
+    box-shadow: 5px 5px 20px rgb(31, 30, 30);
     display: block;
   }
 
@@ -707,7 +954,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <span>Serving Pakala, Singarayakonda & Nearby Ongole villages, since 2002 — Before 1 day booking available</span>
+    <span>Serving Pakala, Singarayakonda, Kandukur, Kavali, nearby Nellore & Ongole villages, since 2002 — Before 1 day booking available</span>
     <div class="tb-links">
       <a href="tel:+919948529872">Call +91 99485 29872</a>
       <a href="https://wa.me/919948529872" target="_blank" rel="noopener">WhatsApp Us</a>
@@ -748,11 +995,22 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="rating-chip">
-        <span class="stars">★★★★★</span>
-        <div>
-          <div class="num">4.5 / 5</div>
-          <div class="sub">100+ Google reviews</div>
+      <div class="rating-chip" id="rating-chip">
+        <div class="rating-chip-inner">
+          <div class="rating-chip-face rating-chip-front">
+            <span class="stars">★★★★</span>
+            <div>
+              <div class="num">4.0 / 5</div>
+              <div class="sub">100+ Google reviews</div>
+            </div>
+          </div>
+          <div class="rating-chip-face rating-chip-back">
+            <i class="fa-brands fa-google" aria-hidden="true"></i>
+            <div>
+              <div class="num">Verified</div>
+              <div class="sub">On Google Reviews</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="hero-img-wrap">
@@ -778,8 +1036,8 @@
 <div class="strip">
   <div class="wrap">
     <div class="item"><div class="num">500+</div><div class="lbl">Events Decorated</div></div>
-    <div class="item"><div class="num">24 yrs</div><div class="lbl">Serving A.P</div></div>
-    <div class="item"><div class="num">4.8★</div><div class="lbl">Google Rating</div></div>
+    <div class="item"><div class="num">24 yrs</div><div class="lbl">Serving Nearby Ongole & Nellore Villages</div></div>
+    <div class="item"><div class="num">4.0★</div><div class="lbl">Google Rating</div></div>
     <div class="item"><div class="num">Before 1 day</div><div class="lbl">Booking Available</div></div>
   </div>
 </div>
@@ -790,13 +1048,15 @@
     <div class="section-head reveal">
       <span class="eyebrow">book by occasion</span>
       <h2>Flowers for every milestone</h2>
-      <p>Every package is customisable in size, colour palette and flower type — these prices are our starting points.</p>
+      <p>Every package is customisable in size, colour palette and flower type — these prices are our starting points,
+        prices may vary based on your location and transport.
+      </p>
     </div>
     <div class="occ-grid">
 
       <div class="occ-card reveal is-clickable" onclick="openOccasion('housewarming')" data-testid="occasion-card-housewarming">
         <img src="images/occasions/Housewarming/img-1.jpeg" alt="Housewarming" class="occ-thumb" loading="lazy" />
-        <h3>Housewarming</h3>
+        <h3>Temple & Housewarming</h3>
         <div class="price">From ₹9,999</div>
         <p>Marigold torans, banana leaf entrance, floor rangoli in fresh petals.</p>
       </div>
@@ -811,7 +1071,7 @@
       <div class="occ-card reveal is-clickable" onclick="openOccasion('wedding')" data-testid="occasion-card-wedding">
         <img src="images/occasions/Wedding_Mandap/img-1.jpeg" alt="Wedding &amp; Mandap" class="occ-thumb" loading="lazy" />
         <h3>Wedding &amp; Mandap</h3>
-        <div class="price">Price on request</div>
+        <div class="price">From 20,999</div>
         <p>Full mandap florals, stage backdrops, entrance and aisle decor.</p>
       </div>
 
@@ -824,15 +1084,15 @@
 
       <div class="occ-card reveal is-clickable" onclick="openOccasion('babyshower')" data-testid="occasion-card-babyshower">
         <img src="images/occasions/Baby_Shower/img-1.jpeg" alt="Baby Shower" class="occ-thumb" loading="lazy" />
-        <h3>Baby Shower</h3>
+        <h3>Baby Shower & Maturity function</h3>
         <div class="price">From ₹9,999</div>
-        <p>Godh Bharai floral swings, pastel backdrops, floral rangoli welcome.</p>
+        <p>Luxurious and grand, built around with flowers and elegant ring-arch setups.</p>
       </div>
 
       <div class="occ-card reveal is-clickable" onclick="openOccasion('pooja')" data-testid="occasion-card-pooja">
         <img src="images/occasions/Pooja_Ganpati/img-1.jpeg" alt="Pooja &amp; Ganpati" class="occ-thumb" loading="lazy" />
-        <h3>Pooja &amp; Ganpati</h3>
-        <div class="price">Price on request</div>
+        <h3>Pooja &amp; procession</h3>
+        <div class="price">From 19,999</div>
         <p>Fresh flower backdrops, garlands and floor decor for daily or festival pooja.</p>
       </div>
 
@@ -847,15 +1107,15 @@
         <img src="images/occasions/Death_Aniversary/img-1.jpeg" alt="Anniversary" class="occ-thumb" loading="lazy" />
         <h3>Death Anniversary</h3>
         <div class="price">From ₹7,999</div>
-        <p>Rose &amp; fairy-light backdrops, dinner table florals, room decoration.</p>
+        <p>A dignified floral tribute crafted with peaceful white blooms, delicate garlands & glowing oil lamps.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<div class="garland">
-  <!-- <svg viewBox="0 0 640 26" fill="none">
+<!-- <div class="garland">
+   <svg viewBox="0 0 640 26" fill="none">
     <path d="M0 13 Q 20 24 40 13 T 80 13 T 120 13 T 160 13 T 200 13 T 240 13 T 280 13 T 320 13 T 360 13 T 400 13 T 440 13 T 480 13 T 520 13 T 560 13 T 600 13 T 640 13" stroke="#BE6F1C" stroke-width="1.5" fill="none" opacity="0.5"/>
     <g fill="#7C2A1B">
       <circle cx="20" cy="17" r="6"/><circle cx="60" cy="9" r="6"/><circle cx="100" cy="17" r="6"/><circle cx="140" cy="9" r="6"/>
@@ -863,8 +1123,8 @@
       <circle cx="340" cy="17" r="6"/><circle cx="380" cy="9" r="6"/><circle cx="420" cy="17" r="6"/><circle cx="460" cy="9" r="6"/>
       <circle cx="500" cy="17" r="6"/><circle cx="540" cy="9" r="6"/><circle cx="580" cy="17" r="6"/><circle cx="620" cy="9" r="6"/>
     </g>
-  </svg> -->
-</div>
+  </svg> 
+</div>  -->
 
 <!-- ============ STYLES ============ -->
 <section class="styles" id="styles">
@@ -878,7 +1138,7 @@
       <div class="style-card reveal">
         <div class="style-thumb">
           <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M50 20 C30 30 30 60 50 80 C70 60 70 30 50 20Z" fill="#4A5D38"/><circle cx="50" cy="50" r="12" fill="#E08D2C"/></svg> -->
-           <img src="images/our_styles/Marigold_Banana_Leaf.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our styles/Marigold & Banana Leaf.jpeg'; this.onerror=null;" />
+           <img src="images/our_styles/Marigold_Banana_Leaf.jpeg" alt="Marigold & Banana Leaf" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our_styles/Marigold_Banana_Leaf.jpeg'; this.onerror=null;" />
         </div>
         <div class="style-body">
           <h3>Marigold &amp; Banana Leaf</h3>
@@ -888,7 +1148,7 @@
       <div class="style-card reveal">
         <div class="style-thumb">
           <!-- <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="24" fill="none" stroke="#B15A34" stroke-width="3" stroke-dasharray="4 5"/><circle cx="50" cy="50" r="10" fill="#EFB13C"/></svg> -->
-           <img src="images/our_styles/Jute_Wildflower.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our styles/Jute & Wildflower.jpeg'; this.onerror=null;" />
+           <img src="images/our_styles/Jute_Wildflower.jpeg" alt="Jute & Wildflower" width="95%" height="95%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/our_styles/Jute_Wildflower.jpeg'; this.onerror=null;" />
         </div>
         <div class="style-body">
           <h3>Jute &amp; Wildflower</h3>
@@ -898,7 +1158,7 @@
       <div class="style-card reveal">
         <div class="style-thumb">
           <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M50 25c10 0 18 8 18 18 0 14-18 32-18 32S32 57 32 43c0-10 8-18 18-18Z" fill="#7C2A1B"/></svg> -->
-           <img src="images/our_styles/Rose_Fairy_Light.jpeg" alt="Engagement" width="95%" height="95%" style="border-radius: 5px;"class="occ-thumb" onerror="this.src='images/our styles/Rose & Fairy Light.jpeg'; this.onerror=null;" />
+           <img src="images/our_styles/Rose_Fairy_Light.jpeg" alt="Rose & Fairy Light" width="95%" height="95%" style="border-radius: 5px;"class="occ-thumb" onerror="this.src='images/our_styles/Rose_Fairy_Light.jpeg'; this.onerror=null;" />
         </div>
         <div class="style-body">
           <h3>Rose &amp; Fairy Light</h3>
@@ -908,11 +1168,41 @@
       <div class="style-card reveal">
         <div class="style-thumb">
           <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M25 70c10-30 40-30 50-50" stroke="#4A5D38" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="70" cy="24" r="10" fill="#E08D2C"/></svg> -->
-           <img src="images/our_styles/Grand_Mandap_Floral.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Engagement" class="occ-thumb" onerror="this.src='images/our styles/Grand Mandap Floral.jpeg'; this.onerror=null;" />
+           <img src="images/our_styles/Grand_Mandap_Floral.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Grand Mandap Floral" class="occ-thumb" onerror="this.src='images/our_styles/Grand_Mandap_Floral.jpeg'; this.onerror=null;" />
         </div>
         <div class="style-body">
           <h3>Grand Mandap Floral</h3>
           <p>Statement wedding installations — floral canopies, hanging garlands, layered backdrops.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M25 70c10-30 40-30 50-50" stroke="#4A5D38" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="70" cy="24" r="10" fill="#E08D2C"/></svg> -->
+           <img src="images/our_styles/balloon_arch.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Dreamy Balloon Arches" class="occ-thumb" onerror="this.src='images/our_styles/balloon_arch.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Dreamy Balloon Arches</h3>
+          <p>A vibrant and playful decor style featuring colorful balloon arches.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M25 70c10-30 40-30 50-50" stroke="#4A5D38" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="70" cy="24" r="10" fill="#E08D2C"/></svg> -->
+           <img src="images/our_styles/cloth_works.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Fabric Fantasy" class="occ-thumb" onerror="this.src='images/our_styles/cloth_works.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Fabric Fantasy</h3>
+          <p>Soft pastel-toned fabrics folded into intricate pleats and sweeping swags for a fresh, modern, and picture-perfect backdrop.</p>
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <!-- <svg viewBox="0 0 100 100" fill="none"><path d="M25 70c10-30 40-30 50-50" stroke="#4A5D38" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="70" cy="24" r="10" fill="#E08D2C"/></svg> -->
+           <img src="images/our_styles/temple_setup.jpeg" width="95%" height="95%" style="border-radius: 5px;" alt="Golden Temple Arch Decor" class="occ-thumb" onerror="this.src='images/our_styles/temple_setup.jpeg'; this.onerror=null;" />
+        </div>
+        <div class="style-body">
+          <h3>Golden Temple Arch Decor</h3>
+          <p>A lavish altar framing deity idols with ornate carved temple motifs, layered flower arrangements fit for major festivals and sacred rituals.</p>
         </div>
       </div>
     </div>
@@ -924,23 +1214,29 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">simple booking</span>
-      <h2>From enquiry to event, in three steps</h2>
+      <h2>From enquiry to event, in four steps</h2>
     </div>
     <div class="how-grid">
       <div class="how-step reveal">
         <div class="step-num">1</div>
         <h3>Tell us the occasion</h3>
-        <p>Message us on WhatsApp or call with your date, venue and budget — we'll suggest a package.</p>
+        <p>Message us on WhatsApp or call with your date, venue and budget — we'll suggest a package,
+        </p>
       </div>
       <div class="how-step reveal">
         <div class="step-num">2</div>
+        <h3>Location & Transport</h3>
+        <p>prices may vary based on your location and transport.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">3</div>
         <h3>Customise the look</h3>
         <p>Pick your colours and flower types. We share a design sketch before we confirm.</p>
       </div>
       <div class="how-step reveal">
-        <div class="step-num">3</div>
+        <div class="step-num">4</div>
         <h3>We decorate on-site</h3>
-        <p>Our team arrives early, sets everything up fresh, and clears away after your event if needed.</p>
+        <p>Our team will arrives early, sets everything up fresh.</p>
       </div>
     </div>
   </div>
@@ -952,13 +1248,13 @@
     <div class="section-head reveal">
       <span class="eyebrow">recent work</span>
       <h2>From the last few weeks</h2>
-      <p>A few of the setups our team has delivered recently across Pakala, Singarayakonda &amp; nearby Ongole villages.</p>
+      <p>A few of the setups our team has delivered recently across Pakala, Singarayakonda, Kandukur, Kavali, nearby Nellore & Ongole villages.</p>
     </div>
     <div class="gal-slider" id="gal-slider">
       <div class="gal-track" id="gal-track">
         <div class="gal-card reveal">
           <img src="images/recent_works/birthday.png" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Birthday setup — Kandukuru</h4>
+          <h4>Birthday setup — Kandukur</h4>
           <span>Birthday</span>
         </div>
         <div class="gal-card reveal">
@@ -998,12 +1294,12 @@
         </div>
         <div class="gal-card reveal">
           <img src="images/recent_works/Engagement-1.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Engagement — Kandukuru</h4>
+          <h4>Engagement — Kandukur</h4>
           <span>Engagement</span>
         </div>
         <div class="gal-card reveal">
           <img src="images/recent_works/temple.jpeg" alt="Temple decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Temple — Otturu</h4>
+          <h4>Temple — Kanumalla</h4>
           <span>Temple</span>
         </div>
         <div class="gal-card reveal">
@@ -1040,7 +1336,7 @@
              the -50% marquee animation loops back seamlessly with no visible jump -->
         <div class="gal-card" aria-hidden="true">
           <img src="images/recent_works/birthday.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Birthday setup — Kandukuru</h4>
+          <h4>Birthday setup — Kandukur</h4>
           <span>Birthday</span>
         </div>
         <div class="gal-card" aria-hidden="true">
@@ -1080,12 +1376,12 @@
         </div>
         <div class="gal-card" aria-hidden="true">
           <img src="images/recent_works/Engagement-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Engagement — Kandukuru</h4>
+          <h4>Engagement — Kandukur</h4>
           <span>Engagement</span>
         </div>
         <div class="gal-card" aria-hidden="true">
           <img src="images/recent_works/temple.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Temple — Otturu</h4>
+          <h4>Temple — Kanumalla</h4>
           <span>Temple</span>
         </div>
         <div class="gal-card" aria-hidden="true">
@@ -1206,7 +1502,7 @@
         </div>
         <div class="form-row"><label for="date">Event Date</label><input id="date" name="Event Date" type="date"></div>
         <div class="form-row"><label for="msg">Tell us more</label><textarea id="msg" name="Message" rows="3" placeholder="Venue, guest count, colour preferences..."></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Request</button>
+        <button type="submit" class="btn btn-primary btn-fill-send" style="width:100%; justify-content:center;">Send Request</button>
       </form>
       <!-- Hidden iframe: lets the form post natively to email in the background
            without ever navigating the visitor away from the page. -->
@@ -1223,7 +1519,7 @@
         <div class="foot-logo">
           <img src="images/logo/shainy_decorations.png">
         </div>
-        <p>Fresh flower decorations for homes and events across Pakala, Singarayakonda &amp; Andhra Pradesh. Marigold, roses, jasmine — arranged the traditional way.</p>
+        <p>Fresh flower decorations for homes and events across Pakala, Singarayakonda, Kandukur, Kavali,nearby Nellore & Ongole villages. Marigold, roses, jasmine — arranged the traditional way.</p>
       </div>
       <div>
         <h4>Occasions</h4>
@@ -1271,24 +1567,40 @@
   Back to Home
 </button>
 
+<!-- Cloud-style tip to the left of the WhatsApp button — mobile/responsive only -->
+<div class="wa-cloud-tip" id="wa-cloud-tip" role="status">
+  <span class="bump" aria-hidden="true"></span>
+  <span class="tail-1" aria-hidden="true"></span>
+  <span class="tail-2" aria-hidden="true"></span>
+  <button type="button" class="tip-close" aria-label="Dismiss tip" onclick="dismissCloudTip(event)">&times;</button>
+  <span>For better experience, enable Desktop site in your browser</span>
+</div>
+
 <button type="button" class="float-wa" aria-label="Chat on WhatsApp" onclick="openFloatingWhatsapp()">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.32C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.02.07-1.65-.1-.38-.1-.87-.28-1.5-.56-2.63-1.14-4.35-3.8-4.48-3.98-.13-.18-1.07-1.43-1.07-2.72 0-1.3.68-1.93.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.03.58.44.22.53.75 1.83.82 1.96.07.13.11.28.02.46-.1.18-.15.28-.3.44-.15.16-.31.35-.44.47-.15.15-.3.3-.13.6.17.3.75 1.24 1.6 2 .1.98 2.02 1.65 2.32 1.8.3.15.47.13.65-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.15 1.37z"/></svg>
 </button>
+
+<!-- Shared image lightbox: opened when an "Our Styles", "Gallery" or
+     occasion sub-page package image is clicked. -->
+<div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox(event)" aria-hidden="true">
+  <div class="lightbox-figure" onclick="event.stopPropagation()">
+    <button type="button" class="lightbox-close" aria-label="Close image" onclick="closeLightbox(event)">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
 
 <script>
   // ---------- OCCASION PACKAGES DATA ----------
   const PACKAGES = {
     housewarming: {
-      eyebrow: 'housewarming décor',
-      title: 'Housewarming Packages',
+      eyebrow: 'Temple & housewarming décor',
+      title: 'Temple & Housewarming Packages',
       intro: 'Handpicked packages for every kind of Griha Pravesh — from traditional marigold torans to grand floral entrances. Every package is fully customisable.',
       items: [
-        { title:'Traditional Housewarming',  price:'From ₹9,999',  desc:'Classic marigold torans, banana leaf entrance and mango-leaf strings for an authentic Griha Pravesh look.', img:'https://images.pexels.com/photos/12718058/pexels-photo-12718058.jpeg?auto=compress&cs=tinysrgb&w=800' },
-        { title:'Modern Housewarming',       price:'From ₹14,999', desc:'Contemporary pastel florals, clean-line arches and minimal foliage for the new-age home.',              img:'images/our styles/Marigold & Banana Leaf.jpeg' },
-        { title:'Balloon Décor Housewarming',price:'From ₹11,999', desc:'Balloon arches paired with fresh flowers — perfect for a joyful, welcoming entrance and photo corners.', img:'images/recent works/birthday.png' },
-        { title:'Floral Housewarming',       price:'From ₹16,999', desc:'Roses, jasmine and marigold layered across the doorway, pooja room and mandir — fresh flowers everywhere.', img:'images/our styles/Jute & Wildflower.jpeg' },
-        { title:'Grand Housewarming',        price:'From ₹24,999', desc:'Full floral canopy entrance, floor rangoli in petals, backdrop for family photos and pooja stage decor.', img:'images/our styles/Grand Mandap Floral.jpeg' },
-        { title:'Budget Housewarming',       price:'From ₹5,999',  desc:'Simple marigold toran, pooja room garland and doorway florals — a warm welcome that won\'t stretch the budget.', img:'images/our styles/Rose & Fairy Light.jpeg' },
+        { title:'Vibrant Floral Portal',        price:'From ₹11,999', desc:'A traditional grand archway densely adorned with multicolored gerbera headers, lush greenery accents, and layered vertical floral garlands in romantic warm hues.', img:'images/occasions/Housewarming/img-1.jpeg' },
+        { title:'Blush Floral Gateway',       price:'From ₹5,999',  desc:'A romantic doorway design featuring soft pink side drapes tied back elegantly, topped with a colorful gerbera floral header and hanging yellow flower tassels.', img:'images/occasions/Housewarming/img-2.jpeg' },
+        { title:'Divine Temple - Entrance Garland Decor',       price:'From ₹34,999',  desc:'A lavish temple entrance decoration featuring cascading marigold and mango leaf ceiling drapes, paired with dense vertical columns of white chrysanthemums, yellow marigolds, and red gerberas flanking the sacred doorway guarded by lions.', img:'images/occasions/Housewarming/img-3.jpeg' },
       ]
     },
     birthday: {
@@ -1296,12 +1608,12 @@
       title: 'Birthday Packages',
       intro: 'From tiny tots to milestone birthdays — colourful balloon arches, floral photo corners and cake-table setups made to celebrate your day.',
       items: [
-        { title:'Kids Theme Birthday',    price:'From ₹4,999',  desc:'Balloon ceilings, cartoon backdrops, themed photo corners for the little ones.', img:'images/occasions/Birthday/img-1.png' },
-        { title:'Elegant Adult Birthday', price:'From ₹8,999',  desc:'Rose &amp; candle centrepieces, soft fairy-light backdrops and dinner-table florals.', img:'images/occasions/Birthday/img-2.jpeg' },
-        { title:'Milestone Birthday',     price:'From ₹14,999', desc:'Grand floral backdrops, entrance arch and stage — for 18th, 40th, 60th &amp; special years.', img:'images/occasions/Birthday/img-3.jpeg' },
+        { title:'Boss Baby Stage',    price:'From ₹11,999',  desc:'Premium Boss Baby-themed stage with balloon arch, customized backdrop, and elegant seating for a memorable first birthday. Perfect for luxury celebrations.', img:'images/occasions/Birthday/img-1.png' },
+        { title:'Balloon Ring Arch', price:'From ₹3,999',  desc:'Elegant circular balloon arch in premium colors, ideal for birthdays, baby showers, and photo booths. Simple, stylish, and eye-catching.', img:'images/occasions/Birthday/img-2.jpeg' },
+        { title:'Floral Backdrop',     price:'From ₹8,999', desc:'Traditional flower and leaf decoration designed for birthdays, housewarmings, and family events. Fresh, colorful, and elegant.', img:'images/occasions/Birthday/img-3.jpeg' },
         { title:'Surprise Party Setup',   price:'From ₹6,999',  desc:'Balloon-filled room, floral welcome and cake-table decor, set up while they\'re away.', img:'images/occasions/Birthday/img-6.jpeg' },
-        { title:'Outdoor Garden Birthday',price:'From ₹11,999', desc:'Fairy-lights, floral columns and picnic-style seating for open-air celebrations.', img:'images/occasions/Birthday/img-4.jpeg' },
-        { title:'Simple Home Birthday',   price:'From ₹3,999',  desc:'Table centrepiece, balloon arch and cake corner — perfect for cosy home parties.', img:'images/occasions/Birthday/img-5.jpeg' },
+        { title:'Grass Wall Setup',price:'From ₹4,999', desc:'Green grass backdrop with balloon flowers and birthday décor. Perfect for home celebrations and photos.', img:'images/occasions/Birthday/img-4.jpeg' },
+        { title:'Royal Stage Decor',   price:'From ₹8,999',  desc:'Grand stage decoration with balloons, flowers, lighting, and premium seating. Designed to create unforgettable celebrations.', img:'images/occasions/Birthday/img-5.jpeg' },
       ]
     },
     wedding: {
@@ -1309,14 +1621,21 @@
       title: 'Wedding & Mandap Packages',
       intro: 'Full-service floral mandaps, reception stages, entrance arches and aisle decor — designed the traditional way with fresh flowers, not printed backdrops.',
       items: [
-        { title:'Traditional Mandap',      price:'From ₹49,999',  desc:'Marigold &amp; banana-leaf mandap, four-pillar floral canopy in south-Indian style.', img:'images/occasions/Wedding_Mandap/img-1.jpeg' },
-        { title:'Royal Mandap',            price:'From ₹99,999',  desc:'Rose &amp; jasmine layered canopy, hanging garlands, aisle carpet in fresh petals.', img:'images/occasions/Wedding_Mandap/img-2.jpeg' },
-        { title:'Outdoor / Beach Wedding', price:'From ₹79,999',  desc:'Floral arch, foliage columns and pastel drape work — designed for open-air venues.', img:'images/occasions/Wedding_Mandap/img-3.jpeg' },
-        { title:'Reception Stage',         price:'From ₹39,999',  desc:'Rose backdrop, floral bride &amp; groom chairs, side florals and welcome arch.', img:'images/occasions/Wedding_Mandap/img-4.png' },
-        { title:'Entrance Arch Package',   price:'From ₹24,999',  desc:'Grand floral entrance arch with garland pillars — welcome guests in style.', img:'images/occasions/Wedding_Mandap/img-5.jpeg' },
-        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-6.jpeg' },
-        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-7.jpeg' },
-        { title:'Complete Wedding Package',price:'Price on request', desc:'Mandap + reception stage + entrance + aisle + pooja decor — end-to-end wedding florals.', img:'images/occasions/Wedding_Mandap/img-8.png' },
+        { title:'White Draped Stage',      price:'From ₹20,999',  desc:'Features white fabric backdrops accentuated with ambient uplighting, three circular floral canopies draped overhead, a silver royal sofa, and flower arrangements along the stage front.', img:'images/occasions/Wedding_Mandap/img-1.jpeg' },
+        { title:'Chandelier Elegance',     price:'From ₹34,999',  desc:'A contemporary stage setup featuring soft white drapes, hanging warm chandeliers, a lush floral top border with purple and white blooms, an elegant curved sofa, and a dense floral border along the bottom.', img:'images/occasions/Wedding_Mandap/img-2.jpeg' },
+        { title:'Temple Mandap',           price:'From ₹36,999',  desc:'A traditional wedding mandap featuring carved golden pillars, dense white gerbera and red rose borders, hanging jasmine garlands, and gold deity statues against a green backdrop.', img:'images/occasions/Wedding_Mandap/img-3.jpeg' },
+        { title:'Floral Backdrop',         price:'From ₹22,999',  desc:'A clean, wide stage setup with a white pleated backdrop, red side drapes, a top floral arch, leaf/flower accent arrangements, and vibrant floral arrangements lining the stage front.', img:'images/occasions/Wedding_Mandap/img-4.png' },
+        { title:'Grand Mandap',   price:'From ₹29,999',  desc:'A heavily decorated traditional mandap featuring dense multi-colored flower garlands (yellow, orange, purple, red), golden pillars, framed fabric arches, and central deity statues.', img:'images/occasions/Wedding_Mandap/img-5.jpeg' },
+        { title:'Arch Stage',price:'From ₹25,999', desc:'A traditional stage decor featuring a dense archway of colorful flowers, gold side pillars, heart-shaped floral wreaths, banana leaf motifs, and a central deity idol.', img:'images/occasions/Wedding_Mandap/img-6.jpeg' },
+        { title:'Divine Motif',price:'From ₹21,999', desc:'Features blue printed backdrops with golden Shankha (conch) and Chakra motifs, a central green backdrop with a large Namam flower arrangement, top floral borders, and gold pillars.', img:'images/occasions/Wedding_Mandap/img-7.jpeg' },
+        { title:'Festive Lounge',price:'From ₹26,999', desc:'Bright and traditional setup using yellow fabric backdrop panels, a green artificial grass center, floral arch framing the royal sofa, and vibrant red, pink, and yellow floral borders.', img:'images/occasions/Wedding_Mandap/img-8.png' },
+        { title:'Royal Gopuram',            price:'From ₹31,999',  desc:' A royal traditional setup featuring a carved golden top gopuram/crown, floral spiraled side pillars, central framed deities, red and white floral panels, and patterned lower stage draping.', img:'images/occasions/Wedding_Mandap/img-10.jpeg' },
+        { title:'Peacock Stage',   price:'From ₹21,999',  desc:'A lavish setup featuring peacock and swan top motifs, heart-shaped flower frames, banana-leaf stars, and a central deity idol surrounded by colorful blooms.', img:'images/occasions/Wedding_Mandap/img-13.jpeg' },
+        { title:'Heart Mandap',price:'From ₹28,999', desc:'Features twin gold deity idols centered inside an arch of pink and white flowers, flanked by heart-shaped floral wreaths and a rich multi-layered floral canopy top.', img:'images/occasions/Wedding_Mandap/img-14.jpeg' },
+        { title:'Entrance Arch',price:'From ₹7,999', desc:'Outdoor venue entrance setup featuring a simple orange fabric archway, hanging paper lanterns overhead, and a large welcome board framed in yellow fabric and florals.', img:'images/occasions/Wedding_Mandap/img-15.jpeg' },
+        { title:'Royal Temple Floral Mandap',   price:'From ₹21,999',  desc:'A grand floral mandap with elegant pillars, fresh flower garlands, and a divine backdrop, creating a majestic temple ambiance.', img:'images/occasions/Wedding_Mandap/img-17.jpeg' },
+        { title:'Divine Blossom Stage',price:'From ₹11,999', desc:'A premium artificial floral stage featuring luxurious garlands, golden pillars, and a graceful backdrop for sacred ceremonies.', img:'images/occasions/Wedding_Mandap/img-18.jpeg' },
+        { title:'Swan Paradise Floral Decor',price:'From ₹15,499', desc:'An premium artificial floral setup with elegant swan pillars, vibrant flower arrangements, and premium hanging garlands.', img:'images/occasions/Wedding_Mandap/img-19.jpeg' },
       ]
     },
     haldi: {
@@ -1324,44 +1643,54 @@
       title: 'Haldi Ceremony Packages',
       intro: 'Bright yellows, fresh marigold and cheerful floral swings — Haldi setups that photograph beautifully and feel warm and traditional.',
       items: [
-        { title:'Marigold Ring Backdrop',     price:'From ₹8,999',  desc:'Green-wall backdrop with a marigold floral ring, hanging garlands and gold kalash pots on a red &amp; yellow petal rangoli.', img:'images/occasions/Haldi_Ceremony/img-1.jpeg' },
-        { title:'Traditional Peetham Setup',  price:'From ₹9,999',  desc:'Banana-leaf backdrop with a yellow floral ring and beaded strands framing a carved wooden peetham, set on a bold orange rangoli.', img:'images/occasions/Haldi_Ceremony/img-2.jpeg' },
-        { title:'Marigold Garland Swag Décor',price:'From ₹7,499',  desc:'Layered marigold &amp; orange garland swags cascading over a banana-leaf wall with a floral emblem centrepiece.', img:'images/occasions/Haldi_Ceremony/img-3.jpeg' },
-        { title:'Rooftop Evening Haldi',      price:'From ₹12,999', desc:'Banana-leaf backdrop with marigold swags, a decorated peetham and a grand multicolour petal rangoli — perfect for open-air terrace functions.', img:'images/occasions/Haldi_Ceremony/img-4.jpeg' },
-        { title:'White Drape &amp; Marigold Frame', price:'From ₹10,999', desc:'Elegant white drape backdrop bordered in marigold, with a golden peetham and kalash pots on a red-and-yellow petal spread.', img:'images/occasions/Haldi_Ceremony/img-5.jpeg' },
-        { title:'Grand Multicolour Rangoli',  price:'From ₹13,999', desc:'Banana-leaf backdrop with marigold swags over a spectacular layered rangoli in red, orange, yellow and white petals.', img:'images/occasions/Haldi_Ceremony/img-6.jpeg' },
-        { title:'Ganesh Motif Banana Leaf',   price:'From ₹6,999',  desc:'Scalloped marigold garlands framing a banana-leaf wall with a striking red floral Ganesh motif and kalash pots below.', img:'images/occasions/Haldi_Ceremony/img-7.jpeg' },
-        { title:'Gerbera Flower Frame Décor', price:'From ₹9,499',  desc:'White drape backdrop framed in yellow &amp; white gerbera daisies, with hanging marigold strands and a red rose floral emblem.', img:'images/occasions/Haldi_Ceremony/img-8.jpeg' },
+        { title:'Marigold Ring Backdrop',     price:'From ₹11,999',  desc:'Green-wall backdrop with a marigold floral ring, hanging garlands and gold kalash pots on a red &amp; yellow petal rangoli.', img:'images/occasions/Haldi_Ceremony/img-1.jpeg' },
+        { title:'Traditional Peetham Setup',  price:'From ₹14,999',  desc:'Banana-leaf backdrop with a yellow floral ring and beaded strands framing a carved wooden peetham, set on a bold orange rangoli.', img:'images/occasions/Haldi_Ceremony/img-2.jpeg' },
+        { title:'Marigold Garland Swag Décor',price:'From ₹11,999',  desc:'Layered marigold &amp; orange garland swags cascading over a banana-leaf wall with a floral emblem centrepiece.', img:'images/occasions/Haldi_Ceremony/img-3.jpeg' },
+        { title:'Rooftop Evening Haldi',      price:'From ₹10,499', desc:'Banana-leaf backdrop with marigold swags, a decorated peetham and a grand multicolour petal rangoli — perfect for open-air terrace functions.', img:'images/occasions/Haldi_Ceremony/img-4.jpeg' },
+        { title:'White Drape &amp; Marigold Frame', price:'From ₹12,999', desc:'Elegant white drape backdrop bordered in marigold, with a golden peetham and kalash pots on a red-and-yellow petal spread.', img:'images/occasions/Haldi_Ceremony/img-5.jpeg' },
+        { title:'Grand Multicolour Rangoli',  price:'From ₹14,999', desc:'Banana-leaf backdrop with marigold swags over a spectacular layered rangoli in red, orange, yellow and white petals.', img:'images/occasions/Haldi_Ceremony/img-6.jpeg' },
+        { title:'Ganesh Motif Banana Leaf',   price:'From ₹8,999',  desc:'Scalloped marigold garlands framing a banana-leaf wall with a striking red floral Ganesh motif and kalash pots below.', img:'images/occasions/Haldi_Ceremony/img-7.jpeg' },
+        { title:'Gerbera Flower Frame Décor', price:'From ₹11,999',  desc:'White drape backdrop framed in yellow &amp; white gerbera daisies, with hanging marigold strands and a red rose floral emblem.', img:'images/occasions/Haldi_Ceremony/img-8.jpeg' },
       ]
     },
     babyshower: {
-      eyebrow: 'baby shower décor',
-      title: 'Baby Shower Packages',
+      eyebrow: 'baby shower & Maturity function décor',
+      title: 'Baby Shower & Maturity function Packages',
       intro: 'Soft pastels, floral swings and Godh Bharai setups — designs that feel gentle, warm and perfect for welcoming the little one.',
       items: [
-        { title:'Pastel Baby Shower',      price:'From ₹9,999',  desc:'Blush pink &amp; sage-green florals, pastel drape backdrop and photo corner.', img:'images/occasions/Baby_Shower/img-2.jpeg' },
-        { title:'Godh Bharai Traditional', price:'From ₹8,999',  desc:'Yellow &amp; red marigold decor, floor seating and traditional rituals corner.', img:'images/occasions/Baby_Shower/img-1.jpeg' },
-        { title:'Balloon Baby Shower',     price:'From ₹7,999',  desc:'Pastel balloon arch, cake-table florals and name signage for the mom-to-be.', img:'images/occasions/Baby_Shower/img-3.jpeg' },
-        { title:'Floral Swing Setup',      price:'From ₹13,999', desc:'Decorated swing wrapped in fresh florals — the centrepiece of every Godh Bharai.', img:'images/occasions/Baby_Shower/img-4.jpeg' },
-        { title:'Themed Baby Shower',      price:'From ₹11,999', desc:'Cloud, moon &amp; star theme with soft lighting and pastel props for a dreamy setup.', img:'images/occasions/Baby_Shower/img-5.jpeg' },
-        { title:'Simple Baby Shower',      price:'From ₹5,999',  desc:'Petal rangoli, floral arch and small pooja setup for intimate home functions.', img:'images/occasions/Baby_Shower/img-6.jpeg' },
-        { title:'Themed Baby Shower',      price:'From ₹11,999', desc:'Cloud, moon &amp; star theme with soft lighting and pastel props for a dreamy setup.', img:'images/occasions/Baby_Shower/img-7.jpeg' },
-        { title:'Simple Baby Shower',      price:'From ₹5,999',  desc:'Petal rangoli, floral arch and small pooja setup for intimate home functions.', img:'images/occasions/Baby_Shower/img-8.jpeg' },
+        { title:'Spectrum Fan',      price:'From ₹11,999',  desc:'A dynamic multi-color fabric fan backdrop framed by rich floral borders, golden pillars, star-shaped foliage motifs, and a classical royal sofa.', img:'images/occasions/Baby_Shower/img-2.jpeg' },
+        { title:'Romantic Heart', price:'From ₹13,999',  desc:'A vibrant pink gerbera flower heart arch paired with soft white drapes, peach sequin swags, side floral pedestals, and an ornate antique sofa.', img:'images/occasions/Baby_Shower/img-1.jpeg' },
+        { title:'Eco Traditional',     price:'From ₹10,999',  desc:'A traditional banana leaf backdrop featuring heavy marigold garlands, a mother-child white silhouette motif, and a colorful rangoli-style floral floor carpet.', img:'images/occasions/Baby_Shower/img-3.jpeg' },
+        { title:'Grand Floral Arc',      price:'From ₹24,999', desc:'A spacious stage setting with multi-tiered gerbera archways, lush green backdrop, warm yellow drapes, and fabric-wrapped floral pedestals.', img:'images/occasions/Baby_Shower/img-4.jpeg' },
+        { title:'Glowing Heart',      price:'From ₹12,999', desc:'A romantic heart-shaped pink floral arch surrounded by warm fairy string lights, sheer white drapery, and stylish blue fabric-wrapped flower pedestals.', img:'images/occasions/Baby_Shower/img-5.jpeg' },
+        { title:'Festive Yellow',      price:'From ₹8,999',  desc:'A sunny yellow cloth backdrop decorated with marigold square patches, hanging paper birds, vibrant tassels, and a central golden throne chair.', img:'images/occasions/Baby_Shower/img-6.jpeg' },
+        { title:'Sacred Foliage',      price:'From ₹11,999', desc:'A banana leaf wall layered with vertical yellow and orange marigold strands, a top gerbera header band, and a central white-and-red ornate chair.', img:'images/occasions/Baby_Shower/img-7.jpeg' },
+        { title:'Colorful Garden',      price:'From ₹15,999',  desc:'A wide stage design with a dense multi-color gerbera border arch, white pleated backdrop drapes, floral pedestals, and front-stage floral arrangements.', img:'images/occasions/Baby_Shower/img-8.jpeg' },
+        { title:'Ganesha Grace',      price:'From ₹10,499',  desc:'A traditional banana leaf backdrop with heavy marigold side curtains, a central marigold Lord Ganesha idol motif, white flower swags, and a high-back red throne.', img:'images/occasions/Baby_Shower/img-9.jpeg' },
+        { title:'Elegant Drapery',      price:'From ₹11,999', desc:'A classic backdrop setup with layered gold, white, and coral-pink fabric drapes, topped with colorful gerbera floral headers, leaf accents, and a silver carved sofa.', img:'images/occasions/Baby_Shower/img-10.jpeg' },
+        { title:'Canopy Elegance',      price:'From ₹9,999',  desc:'A dome-shaped orange and green fabric canopy decorated with dense red-and-white floral rings, hanging leaf art motifs, and a carved wooden-gold sofa.', img:'images/occasions/Baby_Shower/img-11.jpeg' },
       ]
     },
     pooja: {
-      eyebrow: 'pooja & ganpati décor',
-      title: 'Pooja & Ganpati Packages',
+      eyebrow: 'ganpathi pooja & procession décor',
+      title: 'Ganpathi Pooja & procession Packages',
       intro: 'From daily mandir garlands to full 10-day Ganpati mandap decor — fresh flowers arranged with reverence, on time, every festival.',
       items: [
-        { title:'Ganpati Mandap',           price:'From ₹9,999',  desc:'Full floral canopy for Bappa with marigold, mango leaves and jasmine garlands.', img:'images/occasions/Pooja_Ganpati/img-1.jpeg' },
-        { title:'Daily Pooja Decor',        price:'From ₹1,999',  desc:'Weekly/daily mandir garlands, fresh flowers and pooja room refresh service.', img:'images/occasions/Pooja_Ganpati/img-2.png' },
-        { title:'Satyanarayana Pooja',      price:'From ₹4,999',  desc:'Banana-leaf floor setup, brass pot decor and marigold entrance for the ritual.', img:'images/occasions/Pooja_Ganpati/img-3.jpeg' },
-        { title:'Griha Pooja Package',      price:'From ₹7,999',  desc:'Full home pooja decor — entrance toran, floor rangoli, mandir &amp; kitchen florals.', img:'images/occasions/Pooja_Ganpati/img-4.jpeg' },
-        { title:'Festival Special',         price:'From ₹6,999',  desc:'Diwali, Navaratri, Sankranti — festival-specific floral &amp; light decoration packages.', img:'images/occasions/Pooja_Ganpati/img-5.jpeg' },
-        { title:'Complete Ganpati Setup',   price:'Price on request', desc:'10-day Ganpati decor with daily flower refresh, aarti stage &amp; visarjan farewell.', img:'images/occasions/Pooja_Ganpati/img-6.png' },
-        { title:'Festival Special',         price:'From ₹6,999',  desc:'Diwali, Navaratri, Sankranti — festival-specific floral &amp; light decoration packages.', img:'images/occasions/Pooja_Ganpati/img-7.png' },
-        { title:'Complete Ganpati Setup',   price:'Price on request', desc:'10-day Ganpati decor with daily flower refresh, aarti stage &amp; visarjan farewell.', img:'images/occasions/Pooja_Ganpati/img-8.jpeg' },
+        { title:'Golden Bloom Canopy Mandap',price:'From ₹19,999',  desc:'A vibrant outdoor pandal featuring an intricate temple-style canopy layered with bright yellow and pink gerbera floral garlands, orchid strings, and fresh greenery framing the idol.', img:'images/occasions/Pooja_Ganpati/img-1.jpeg' },
+        { title:'Ganesh Chaturthi - Divine Chariot Halo',        price:'From ₹25,999',  desc:'A spectacular multi-tiered floral backdrop forming a grand circular halo behind Lord Ganesha, framed by divine figures and rich marigold and chrysanthemum decor.', img:'images/occasions/Pooja_Ganpati/img-2.png' },
+        { title:'Sacred Crown Prabhavali',      price:'From ₹34,999',  desc:'A traditional floral prabhavali backdrop made of white, yellow, and red gerberas with hanging marigold garlands framing a seated Lord Ganesha idol.', img:'images/occasions/Pooja_Ganpati/img-3.jpeg' },
+        { title:'Swastik Grace Arch',      price:'From ₹39,999',  desc:'An eye-catching circular floral arch patterned with pink, white, and yellow blooms, topped with a floral Swastik symbol for auspicious blessings.', img:'images/occasions/Pooja_Ganpati/img-4.jpeg' },
+        { title:'Grand Elephant-Eared Backdrop',         price:'From ₹41,999',  desc:"A massive, elobrate floral arrangement shaped like Ganesha's ears, crafted with white and pink chrysanthemums, marigolds, and leafy accents.", img:'images/occasions/Pooja_Ganpati/img-5.jpeg' },
+        { title:'Royal Rose Aura',   price:'From ₹39,999', desc:'A regal dark-backdrop floral arrangement featuring concentric rings of vibrant roses, chrysanthemums, and orchids radiating around the idol.', img:'images/occasions/Pooja_Ganpati/img-6.png' },
+        { title:'Illuminated Temple Procession Frame',         price:'From ₹59,999',  desc:'Diwali, Navaratri— festival-specific floral A night-procession floral arch with multi-layered pink, red, white, and yellow chrysanthemum borders, illuminated by warm festive lighting.', img:'images/occasions/Pooja_Ganpati/img-7.png' },
+        { title:'Lion-Throned Floral Halo',   price:'From ₹29,999', desc:'A grand open-air idol decor featuring a multi-colored gerbera arch surrounding a majestic Ganesha idol seated between twin lions.', img:'images/occasions/Pooja_Ganpati/img-8.jpeg' },
+        { title:'Brahmotsavam',      price:'From ₹34,999',  desc:'A magnificent layered floral backdrop shaped like a grand Multi-headed Cobra (Adishesha hood) framing the deity, crafted with pink, white, orange, and yellow gerbera flowers with vertical marigold strands.', img:'images/occasions/Pooja_Ganpati/img-9.png' },
+        { title:'Radiant Rainbow Prabhavali',      price:'From ₹37,999',  desc:"A classic festive backdrop with Lord Shiva's structure on top with flowers, floral wings and layered rainbow arches composed of vibrant marigold and chrysanthemum strands.", img:'images/occasions/Pooja_Ganpati/img-11.png' },
+        { title:'Canopy Chariot Bloom Mandap',         price:'From ₹26,999',  desc:"A festive procession setup featuring an overhead floral dome/canopy adorned with multicolored gerberas, hanging marigold tassel fringes, and a patterned backdrop.", img:'images/occasions/Pooja_Ganpati/img-11.jpeg' },
+        { title:'Durga Pooja - Sacred Trishul Floral Arch',   price:'From ₹5,999',desc:'A clean, vibrant altar decor featuring a curved floral arch with red, orange, white, and yellow gerberas, paired with vertical marigold skirtings framing a golden Goddess idol with a Trishul.', img:'images/occasions/Pooja_Ganpati/img-12.jpeg' },
+        { title:'Peacock & Trishul Vehicle Decor',         price:'From ₹26,999',  desc:'A festive tractor/chariot decoration featuring a semicircular gerbera front grill arrangement, golden peacock accents, and an arched floral canopy for the deity.', img:'images/occasions/Pooja_Ganpati/img-13.jpeg' },
+        { title:'Temple Utsavam - Illuminated Adishesha Prabhavali',   price:'From ₹38,999', desc:'A grand, wide-winged floral backdrop resembling a multi-colored serpent hood, richly layered with pink, white, yellow, and orange flowers, backlit and spotlighted for night celebrations.', img:'images/occasions/Pooja_Ganpati/img-14.png' },
+        { title:'Divine Floral Arch',   price:'From ₹49,999', desc:'A breathtaking floral arch crafted with vibrant fresh blooms, creating a majestic backdrop for the Goddess idol and adding elegance to every sacred celebration.', img:'images/occasions/Pooja_Ganpati/img-10.png' },
       ]
     },
     anniversary: {
@@ -1369,9 +1698,14 @@
       title: 'Death Anniversary Packages',
       intro: 'Romantic rose backdrops, candle-lit dinners and grand milestone setups — anniversary decor that says everything without words.',
       items: [
-        { title:'Romantic Room Decor',         price:'From ₹4,999',  desc:'Rose petals on bed, candle-lit floor arrangement and fairy-light heart backdrop.', img:'images/occasions/Death_Aniversary/img-1.jpeg' },
-        { title:'Anniversary Dinner Setup',    price:'From ₹6,999',  desc:'Table florals, tea-lights, rose walkway and personalised name signage.', img:'images/occasions/Death_Aniversary/img-2.jpeg' },
-        { title:'25th / 50th Anniversary',     price:'From ₹19,999', desc:'Grand stage backdrop, family photo wall and floral entrance for milestone years.', img:'images/occasions/Death_Aniversary/img-3.jpeg' },
+        { title:'Remembrance Memorial Arch',         price:'From ₹14,999',  desc:'A framed backdrop with a personalized portrait banner, surrounded by white flower pillars with pink initials, an overhead header of vibrant chrysanthemums, and hanging flower garlands.', img:'images/occasions/Death_Aniversary/img-1.jpeg' },
+        { title:'Peaceful Tribute Stage',    price:'From ₹16,999',  desc:'An altar setup featuring golden pillars, a draped mandap canopy, marigold garlands, and front stage floral borders surrounding the portrait.', img:'images/occasions/Death_Aniversary/img-2.jpeg' },
+        { title:'Eternal Memory Floral Oval Frame',     price:'From ₹16,999', desc:"A tribute frame featuring an oval border composed of gerberas, orchids, and baby’s breath, anchored by an overhead arch of white lilies and orchids.", img:'images/occasions/Death_Aniversary/img-3.jpeg' },
+        { title:'Royal Floral Tribute',         price:'From ₹14,999',  desc:'A majestic floral tribute featuring a grand portrait frame, elegant pillars, and fresh blossoms that honor a cherished soul with dignity and grace. ', img:'images/occasions/Death_Aniversary/img-4.jpeg' },
+        { title:'White Serenity Memorial',    price:'From ₹9,999',  desc:'A peaceful white floral backdrop with delicate hanging garlands, symbolizing purity, peace, and everlasting remembrance.', img:'images/occasions/Death_Aniversary/img-5.jpeg' },
+        { title:'Premium Remembrance Frame',     price:'From ₹11,999', desc:"A vibrant floral memorial display crafted with premium flowers to create a respectful and elegant tribute.", img:'images/occasions/Death_Aniversary/img-6.jpeg' },
+        { title:'Classic Floral Tribute',    price:'From ₹7,999',  desc:'A traditional floral frame decorated with colorful fresh flowers, offering a simple yet graceful remembrance setting.', img:'images/occasions/Death_Aniversary/img-7.jpeg' },
+        { title:'Eternal Blossom Memorial',     price:'From ₹9,999', desc:"An elegant floral arrangement with fresh garlands and premium blooms, designed to create a serene atmosphere of remembrance.", img:'images/occasions/Death_Aniversary/img-8.jpeg' },
     ]
     },
     engagement: {
@@ -1379,14 +1713,14 @@
       title: 'Engagement Packages',
       intro: 'Ring platters, stage backdrops and entrance arches — engagement setups designed to make every photograph look effortless.',
       items: [
-        { title:'Traditional Engagement Stage',price:'From ₹15,999', desc:'Floral backdrop, decorated chairs and side arrangements in classic red &amp; gold.', img:'images/occasions/Engagement/img-1.jpeg' },
-        { title:'Ring Ceremony Platter',       price:'From ₹4,999',  desc:'Decorated ring platter with fresh rose &amp; jasmine — designed to complement the stage.', img:'images/occasions/Engagement/img-2.jpeg' },
-        { title:'Grand Engagement Arch',       price:'From ₹24,999', desc:'Full entrance arch + stage backdrop + welcome florals for a grand engagement look.', img:'images/occasions/Engagement/img-3.jpeg' },
-        { title:'Rose Engagement Backdrop',    price:'From ₹18,999', desc:'All-rose panel backdrop, hanging garlands and floral chairs — pure romance.', img:'images/occasions/Engagement/img-4.jpeg' },
-        { title:'Outdoor Engagement',          price:'From ₹21,999', desc:'Open-air floral arch, pastel drapes and lantern lighting for garden engagements.', img:'images/occasions/Engagement/img-5.jpeg' },
-        { title:'Modern Engagement Setup',     price:'From ₹19,999', desc:'Pastel + gold theme, minimal florals with statement lighting for a contemporary vibe.', img:'images/occasions/Engagement/img-6.jpeg' },
-        { title:'Outdoor Engagement',          price:'From ₹21,999', desc:'Open-air floral arch, pastel drapes and lantern lighting for garden engagements.', img:'images/occasions/Engagement/img-7.jpeg' },
-        { title:'Modern Engagement Setup',     price:'From ₹19,999', desc:'Pastel + gold theme, minimal florals with statement lighting for a contemporary vibe.', img:'images/occasions/Engagement/img-8.jpeg' },
+        { title:'Garden Romance',price:'From ₹35,999', desc:'A romantic foliage backdrop featuring a grand floral arch, delicate hanging chandeliers, lush greenery walls, and a regal golden sofa framed by colorful stage blossoms.', img:'images/occasions/Engagement/img-1.jpeg' },
+        { title:'Midnight Serenade',       price:'From ₹44,999',  desc:'An intimate white backdrop illuminated with warm fairy lights and custom monogram initials, bordered by dense white floral frames and low-stage floral borders.', img:'images/occasions/Engagement/img-2.jpeg' },
+        { title:'Enchanted Love',       price:'From ₹39,999', desc:'A fairytale setting featuring a modern gold-frame structure with cascading white wisteria strands, dense floral headers, and a chic plush couch.', img:'images/occasions/Engagement/img-3.jpeg' },
+        { title:'Forever Hearts',    price:'From ₹28,999', desc:'Interlocking floral ring arches filled with pink and white gerberas against deep red drapes, paired with a silver carved loveseat.', img:'images/occasions/Engagement/img-4.jpeg' },
+        { title:'Twilight Romance',          price:'From ₹34,999', desc:'Ambient blue and white lighting paired with flowing sheer drapes, hanging warm chandeliers, and a modern tufted settee framed with purple-and-white blooms.', img:'images/occasions/Engagement/img-5.jpeg' },
+        { title:'Sunset Passion',     price:'From ₹19,999', desc:'Warm coral and peach drapery highlighted by vibrant floral headers, side flower urn pedestals, and an ornate gold-framed sofa.', img:'images/occasions/Engagement/img-6.jpeg' },
+        { title:'Sweet Devotion',          price:'From ₹29,999', desc:'Geometric floral arches draped in pink and white gerbera strings surrounding a grand golden sofa with clean white sheer backdrop panels.', img:'images/occasions/Engagement/img-7.jpeg' },
+        { title:'Moonlight Passion',     price:'From ₹24,999', desc:'Mood-lit stage arrangement featuring glowing neon-blue and magenta uplighting, hanging floral tassels overhead, and a vintage throne sofa.', img:'images/occasions/Engagement/img-8.jpeg' },
       ]
     }
   };
@@ -1476,19 +1810,53 @@
   // further action needed from anyone.
   const WA_NUMBER = '919948529872';
 
-  // Default introduction sent whenever no custom message is supplied — used
-  // both by the floating WhatsApp button and as the fallback "Tell us more"
-  // text for the quote form, so it reaches the owner via WhatsApp AND email.
-  const DEFAULT_INTRO =
+  // Greeting + website introduction used specifically by the floating
+  // WhatsApp button. Note: WhatsApp's "click to chat" links can only
+  // pre-fill the message box — the visitor still taps WhatsApp's own
+  // Send button to actually send it (that's a WhatsApp platform rule, no
+  // website can skip it). This is the closest a static site can get to
+  // "the visitor receives an introduction" without a chatbot/auto-reply
+  // service on the business's end.
+
+
+  const FLOATING_WA_GREETING =
+    // "Hello!  Welcome to Shainy Decorations  fresh flower decoration " +
+    // "specialists based in Singarayakonda, Kandukuru,nearby Nellore and Ongole villages . " +
+    // "We create beautiful marigold, rose & jasmine decor for housewarmings, weddings & mandaps, " +
+    // "haldi ceremonies, birthdays, baby showers, pooja & Ganpati functions, " +
+    // "engagements and anniversaries. How can we help you plan your special day?";
     "Hi Shainy Decorations! I found your website and I'm interested in your " +
-    "fresh flower decoration services — marigold, roses and jasmine setups for " +
-    "homes and events across Pakala, Singarayakonda & Andhra Pradesh. Could you " +
-    "share more details and pricing?";
+    "fresh flower decoration services — Could you please share more details about your services and pricing?" ;
+
+
+  // Default introduction sent whenever no custom message is supplied — used
+  // as the fallback "Tell us more" text for the quote form, so it reaches
+  // the owner via WhatsApp AND email.
+  // const DEFAULT_INTRO =
+  //   "Hi Shainy Decorations! I found your website and I'm interested in your " +
+  //   "fresh flower decoration services — marigold, roses and jasmine setups for " +
+  //   "homes and events across Pakala, Singarayakonda & Andhra Pradesh. Could you " +
+  //   "share more details and pricing?";
 
   // ---------- FLOATING WHATSAPP BUTTON ----------
+  // Opens WhatsApp with the greeting pre-filled (visitor still taps WhatsApp's
+  // own Send button — that's a WhatsApp platform rule no website can skip),
+  // AND fires a silent background email to the owner via the same FormSubmit
+  // endpoint the quote form uses, so the enquiry reaches both channels.
   function openFloatingWhatsapp(){
-    const text = encodeURIComponent(DEFAULT_INTRO);
+    const text = encodeURIComponent(FLOATING_WA_GREETING);
     window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
+
+    fetch('https://formsubmit.co/ajax/shainydecorations@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New WhatsApp Chat — Shainy Decorations Website',
+        _template: 'table',
+        Source: 'Floating WhatsApp button',
+        Message: FLOATING_WA_GREETING
+      })
+    }).catch(()=>{ /* silent fail — the WhatsApp chat still opens either way */ });
   }
 
   function handleQuoteSubmit(e){
@@ -1534,6 +1902,8 @@
 
     setTimeout(() => {
       btn.textContent = 'We\u2019ll call you shortly!';
+      btn.classList.add('btn-success-pop');
+      setTimeout(() => btn.classList.remove('btn-success-pop'), 600);
     }, 800);
 
     setTimeout(() => {
@@ -1550,7 +1920,7 @@
     { text:'"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."', name:'Arjun & Divya', role:'Wedding, Singarayakonda' },
     { text:'"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."', name:'Rohit Shetty', role:'Ganpati Decor, Pakala' },
     { text:'"The Ganpati decor for our society festival was stunning — vibrant marigolds and fresh jasmine, delivered right on schedule."', name:'Priya Nair', role:'Pooja Decor, Ongole' },
-    { text:'"Our anniversary evening looked like a five-star setup. The fresh rose arch was the highlight of the whole night."', name:'Sunil & Meena', role:'Anniversary, Kavali' },
+    { text:'"Our engagement evening looked like a five-star setup. The fresh rose arch was the highlight of the whole night."', name:'Sunil & Meena', role:'Engagement, Kavali' },
     { text:'"Quick replies on WhatsApp, fair pricing, and the haldi function decoration turned out absolutely gorgeous."', name:'Deepika K.', role:'Haldi Ceremony, Nellore' }
   ];
   const tCards = ['t-card-0','t-card-1','t-card-2'].map(id => document.getElementById(id)).filter(Boolean);
@@ -1647,22 +2017,84 @@
       }, 60);
     });
   });
+
+  // ---------- GOOGLE REVIEW FLIP CARD: random background every refresh ----------
+  const CHIP_COLORS = ['#FFFFFF', '#FFF3E0', '#FDEBD3', '#F3E4C7', '#EAF3EC', '#FCEEF0', '#FFF8E1', '#E8F0FE'];
+  const chipFaces = document.querySelectorAll('.rating-chip-face');
+  if(chipFaces.length){
+    const chipColor = CHIP_COLORS[Math.floor(Math.random() * CHIP_COLORS.length)];
+    chipFaces.forEach(f => { f.style.backgroundColor = chipColor; });
+  }
+
+  // ---------- WHATSAPP CLOUD TIP (responsive/mobile only) ----------
+  // Nudges phone visitors toward "Desktop site" for a better experience.
+  // Only ever shown under the 820px mobile breakpoint used elsewhere on
+  // this site; stays hidden on desktop no matter what. It is NOT
+  // remembered across visits — it shows again every time the page is
+  // loaded/refreshed. The close button only hides it for the current
+  // page view; a refresh brings it back.
+  const MOBILE_BREAKPOINT = 820;
+  const waCloudTip = document.getElementById('wa-cloud-tip');
+  let cloudTipDismissed = false;
+  function syncCloudTip(){
+    if(!waCloudTip) return;
+    if(window.innerWidth <= MOBILE_BREAKPOINT && !cloudTipDismissed){
+      waCloudTip.classList.add('show');
+    } else {
+      waCloudTip.classList.remove('show');
+    }
+  }
+  function dismissCloudTip(e){
+    if(e) e.stopPropagation();
+    cloudTipDismissed = true;
+    if(waCloudTip) waCloudTip.classList.remove('show');
+  }
+  syncCloudTip();
+  window.addEventListener('resize', syncCloudTip);
+
+  // ---------- IMAGE LIGHTBOX ----------
+  // Shared by "Our Styles", "Gallery" and the occasion sub-page package
+  // cards — clicking any of those images opens it full-size on screen,
+  // styled the same way in every section, on both desktop and mobile.
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxImg     = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  function openLightbox(src, alt){
+    if(!lightboxOverlay || !lightboxImg || !src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightboxCaption.textContent = alt || '';
+    lightboxOverlay.classList.add('active');
+    lightboxOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e){
+    if(e) e.stopPropagation();
+    if(!lightboxOverlay) return;
+    lightboxOverlay.classList.remove('active');
+    lightboxOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', (e) => {
+    const img = e.target;
+    if(img.tagName !== 'IMG' || !img.classList.contains('occ-thumb')) return;
+    // Only "Our Styles", "Gallery" and occasion sub-page package images —
+    // NOT the homepage occasion cards, which still navigate to their
+    // sub-page as before.
+    const inStyles    = img.closest('.styles-grid');
+    const inGallery    = img.closest('.gallery');
+    const inOccPackage = img.closest('#occasion-view .occ-card');
+    if(inStyles || inGallery || inOccPackage){
+      openLightbox(img.currentSrc || img.src, img.alt);
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && lightboxOverlay && lightboxOverlay.classList.contains('active')){
+      closeLightbox();
+    }
+  });
 </script>
 
-<!-- <script>
-// ===== Occasion image configuration =====
-// const occasionImages={
-//  housewarming:["images/occuasions/haldi/img-1.jpg","images/background/flower-1.png","images/housewarming/house3.jpg"],
-//  birthday:["images/occuasions/haldi/img-1.jpeg","images/birthday/birthday2.jpg"],
-//  wedding:["images/wedding/wedding1.jpg","images/wedding/wedding2.jpg"],
-//  haldi:["img-1.jpeg","img-2.jpeg"],
-//  babyshower:["images/babyshower/baby1.jpg","images/babyshower/baby2.jpg"],
-//  pooja:["images/pooja/pooja1.jpg","images/pooja/pooja2.jpg"],
-//  anniversary:["images/anniversary/anniversary1.jpg","images/anniversary/anniversary2.jpg"],
-//  engagement:["images/engagement/eng1.jpg","images/engagement/eng2.jpg"]
-// };
-// // Replace image paths above with your own images.
-// </script> -->
 
 </body>
 </html>
