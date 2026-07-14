@@ -280,6 +280,30 @@
   .style-thumb video{ width:97%; height:95%; object-fit:cover; border-radius:0; background:#000; box-shadow:5px 5px 10px rgb(5,5,5); }
   .videos{ background:var(--cream); }
 
+  /* Video previews autoplay muted/looping with native controls hidden;
+     a play badge hints that clicking opens the full video with controls. */
+  .vid-trigger{ position:relative; cursor:pointer; }
+  .vid-trigger video{ pointer-events:none; border-radius: 5px;margin-bottom: 10px;margin-top: 5px;} /* prevents the native controls flashing on tap */
+  .vid-trigger::after{
+    content:""; position:absolute; inset:0; margin:auto; width:56px; height:56px;
+    background:rgba(42,32,21,0.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FBF2E1'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/22px no-repeat;
+    border-radius:50%; opacity:0; transform:scale(.8);
+    transition:opacity .25s ease-in-out, transform .25s ease-in-out;
+    pointer-events:none;
+  }
+  .vid-trigger:hover::after, .vid-trigger:active::after{ opacity:1; transform:scale(1); }
+
+  /* "Explore More Videos" — right-aligned, sits under the 4-card grid */
+  .videos-more-row{ display:flex; justify-content:flex-start; margin-top:26px; }
+
+  /* Video cards used on the "Explore More Videos" sub-page — same card
+     chrome as the occasion package cards, sized to hold a video preview. */
+  #occasion-view .vid-card{ text-align:left; padding:0; overflow:hidden; }
+  #occasion-view .vid-card .vid-thumb{ height:190px; }
+  #occasion-view .vid-card .vid-thumb video{ width:100%; height:100%; object-fit:cover; display:block; box-shadow:none; border-radius: 10px;}
+  #occasion-view .vid-card .vid-body{ padding:14px 16px 18px; }
+  #occasion-view .vid-card .vid-body h3{ font-size:1rem; margin-bottom:0;}
+
   @keyframes cardHoverPopSoft{
     0%   { transform:translateY(0) scale(1); }
     45%  { transform:translateY(-12px) scale(1.03); }
@@ -485,7 +509,7 @@
   .form-row:focus-within::after{ transform:scaleX(1); }
   .form-row input, .form-row select, .form-row textarea{
     width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:4px; font-family:'Karla', sans-serif; font-size:.94rem; background:var(--cream);
-    transition:border-color .25s ease-in-out, box-shadow .25s ease-in-out, transform .25s ease-in-out, background .25s ease-in-out;
+    transition:border-color .25s ease-in-out, box-shadow .25s ease-in-out, transform .25s ease-in-out, 'background' .25s ease-in-out;
   }
   .form-row input:hover, .form-row select:hover, .form-row textarea:hover{ border-color:var(--marigold); }
   .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
@@ -640,13 +664,21 @@
     position:absolute; top:-18px; right:-18px; width:38px; height:38px; border-radius:50%;
     background:var(--marigold); color:#fff; border:none; cursor:pointer;
     display:flex; align-items:center; justify-content:center; font-size:20px; line-height:1;
-    box-shadow:0 6px 16px rgba(0,0,0,0.35); transition:background .2s ease, transform .2s ease;
+    box-shadow:0 6px 16px rgba(0,0,0,0.35); transition:'background '.2s ease, transform .2s ease;
   }
   .lightbox-close:hover{ background:var(--marigold-deep); transform:scale(1.08); }
   .styles-grid .style-thumb img.occ-thumb,
   .gallery .gal-card img.occ-thumb,
   #occasion-view .occ-card img.occ-thumb{
     cursor:zoom-in;
+  }
+
+  /* ---------- VIDEO LIGHTBOX (click any video preview to open it) ---------- */
+  .video-lightbox-figure{ width:min(90vw,760px); }
+  #lightbox-video{
+    max-width:100%; max-height:80vh; width:100%; height:auto; display:block; margin:0 auto;
+    border-radius:8px; background:#000;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.35);
   }
 
   /* ---------- REVEAL / MAIN-PAGE CARD LOADING ---------- */
@@ -1144,7 +1176,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">how we design</span>
-      <h2>Rustic, natural, unmistakably fresh</h2>
+      <h2>Rustic, natural & fresh</h2>
       <p>We lean on real marigold, banana leaf, terracotta and jute — not plastic backdrops — for a look that feels handmade, not printed.</p>
     </div>
     <div class="styles-grid">
@@ -1410,8 +1442,8 @@
     </div>
     <div class="styles-grid">
       <div class="style-card reveal">
-        <div class="style-thumb">
-          <video controls preload="metadata" poster="images/our_videos/img-1.png">
+        <div class="style-thumb vid-trigger">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/our_videos/img-1.png">
             <source src="images/our_videos/video-1.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -1422,8 +1454,8 @@
         </div>
       </div>
       <div class="style-card reveal">
-        <div class="style-thumb">
-          <video controls preload="metadata" poster="images/our_videos/img-2.jpeg">
+        <div class="style-thumb vid-trigger">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/our_videos/img-2.jpeg">
             <source src="images/our_videos/video-2.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -1434,8 +1466,8 @@
         </div>
       </div>
       <div class="style-card reveal">
-        <div class="style-thumb">
-          <video controls preload="metadata" poster="images/our_videos/img-3.jpeg">
+        <div class="style-thumb vid-trigger">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/our_videos/img-3.jpeg">
             <source src="images/our_videos/video-3.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -1446,8 +1478,8 @@
         </div>
       </div>
       <div class="style-card reveal">
-        <div class="style-thumb">
-          <video controls preload="metadata" poster="images/our_videos/img-4.jpeg">
+        <div class="style-thumb vid-trigger">
+          <video autoplay muted loop playsinline preload="metadata" poster="images/our_videos/img-4.jpeg">
             <source src="images/our_videos/video-4.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -1458,6 +1490,9 @@
         </div>
       </div>
     </div>
+    <!-- <div class="videos-more-row reveal">
+      <button type="button" class="btn btn-primary btn-fill-explore" onclick="openMoreVideos()" data-testid="explore-more-videos-btn">Explore More Videos</button>
+    </div> -->
   </div>
 </section>
 
@@ -1565,7 +1600,7 @@
         <div class="form-row">
           <label for="occ">Occasion</label>
           <select id="occ" name="Occasion">
-            <option>Housewarming</option>
+            <option>Temple & Housewarming</option>
             <option>Birthday</option>
             <option>Wedding &amp; Mandap</option>
             <option>Haldi Ceremony</option>
@@ -1664,6 +1699,17 @@
     <button type="button" class="lightbox-close" aria-label="Close image" onclick="closeLightbox(event)">&times;</button>
     <img src="" alt="" id="lightbox-img">
     <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- Shared video lightbox: opened when any autoplaying video preview
+     (Our Videos section, or the Explore More Videos sub-page) is clicked.
+     Only the clicked video opens here, full-size, with controls shown. -->
+<div class="lightbox-overlay video-lightbox-overlay" id="video-lightbox-overlay" onclick="closeVideoLightbox(event)" aria-hidden="true">
+  <div class="lightbox-figure video-lightbox-figure" onclick="event.stopPropagation()">
+    <button type="button" class="lightbox-close" aria-label="Close video" onclick="closeVideoLightbox(event)">&times;</button>
+    <video id="lightbox-video" controls playsinline></video>
+    <div class="lightbox-caption" id="lightbox-video-caption"></div>
   </div>
 </div>
 
@@ -1878,6 +1924,77 @@
   // editing one card's `img` value above only ever changes that one card.
   const GENERIC_FALLBACK_IMG = 'https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=800';
 
+  // ---------- MORE VIDEOS (shown on the "Explore More Videos" sub-page) ----------
+  // NOTE: reusing the same 4 clips/posters as the homepage "Our videos" grid as
+  // placeholders — swap in additional real video/poster files here as they
+  // become available (same {title, poster, src} shape).
+
+  //------------------------------video added code------you will uncomment that below code-----------//
+
+  // const MORE_VIDEOS = [
+  //   { title:'Dasara - uregimpu',  poster:'images/our_videos/img-1.png',   src:'images/our_videos/video-1.mp4' },
+  //   { title:'Temple Mandap',      poster:'images/our_videos/img-2.jpeg',  src:'images/our_videos/video-2.mp4' },
+  //   { title:'Divine Motif',       poster:'images/our_videos/img-3.jpeg',  src:'images/our_videos/video-3.mp4' },
+  //   { title:'Grand Mandap',       poster:'images/our_videos/img-4.jpeg',  src:'images/our_videos/video-4.mp4' },
+  //   { title:'Entrance Toran',     poster:'images/our_videos/img-1.png',   src:'images/our_videos/video-1.mp4' },
+  //   { title:'Wedding Stage Reveal', poster:'images/our_videos/img-2.jpeg', src:'images/our_videos/video-2.mp4' },
+  //   { title:'Floral Close-up',    poster:'images/our_videos/img-3.jpeg',  src:'images/our_videos/video-3.mp4' },
+  //   { title:'Festival Altar',     poster:'images/our_videos/img-4.jpeg',  src:'images/our_videos/video-4.mp4' },
+  // ];
+
+
+
+  let lastReturnTarget = 'occasions';
+
+  // Tracks which sub-page is currently open ('occasion' or 'videos') so
+  // closeOccasion() knows where on the home page to scroll back to.
+  function openMoreVideos(){
+    const view = document.getElementById('occasion-view');
+    const skeletonCount = MORE_VIDEOS.length;
+
+    view.innerHTML = `
+      <section class="hw-hero">
+        <div class="wrap">
+          <span class="eyebrow">see it in motion</span>
+          <h1>All Our Videos</h1>
+          <p>More clips from real setups — walk through the decor, the lighting and the little details you won't catch in a photo.</p>
+        </div>
+      </section>
+      <section class="hw-section">
+        <div class="wrap">
+          <div class="occ-grid" id="occ-grid-videos">
+            ${Array.from({length: skeletonCount}).map(() => `
+              <div class="skel-card">
+                <div class="skel-block skel-thumb"></div>
+                <div class="skel-block skel-line w-70"></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+    lastReturnTarget = 'videos';
+    document.body.classList.add('hw-open');
+    view.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(() => {
+      const grid = document.getElementById('occ-grid-videos');
+      if(!grid) return;
+      grid.innerHTML = MORE_VIDEOS.map((it, i) => `
+        <div class="occ-card vid-card" data-testid="more-video-${i}">
+          <div class="vid-thumb vid-trigger">
+            <video autoplay muted loop playsinline preload="metadata" poster="${it.poster}">
+              <source src="${it.src}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="vid-body"><h3>${it.title}</h3></div>
+        </div>
+      `).join('');
+    }, 550);
+  }
+
   function openOccasion(key){
     const data = PACKAGES[key];
     if(!data) return;
@@ -1908,6 +2025,7 @@
         </div>
       </section>
     `;
+    lastReturnTarget = 'occasions';
     document.body.classList.add('hw-open');
     view.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1938,7 +2056,7 @@
       main.classList.add('page-return');
       setTimeout(() => main.classList.remove('page-return'), 600);
     }
-    const occ = document.getElementById('occasions');
+    const occ = document.getElementById(lastReturnTarget);
     if(occ) occ.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -2239,6 +2357,63 @@
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && lightboxOverlay && lightboxOverlay.classList.contains('active')){
       closeLightbox();
+    }
+  });
+
+  // ---------- VIDEO LIGHTBOX ----------
+  // Shared by the "Our videos" section and the "Explore More Videos"
+  // sub-page. Every video preview in those grids autoplays muted, on
+  // loop, with its native controls hidden (see .vid-trigger). Clicking
+  // a preview opens ONLY that chosen video, full-size, with controls
+  // shown and sound on — every other preview keeps quietly looping
+  // in the background.
+  const videoLightboxOverlay = document.getElementById('video-lightbox-overlay');
+  const lightboxVideo        = document.getElementById('lightbox-video');
+  const lightboxVideoCaption = document.getElementById('lightbox-video-caption');
+
+  function openVideoLightbox(src, poster, caption){
+    if(!videoLightboxOverlay || !lightboxVideo || !src) return;
+    // Pause every background preview so only the opened video plays/has sound.
+    document.querySelectorAll('.vid-trigger video').forEach(v => v.pause());
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('poster');
+    if(poster) lightboxVideo.setAttribute('poster', poster);
+    lightboxVideo.src = src;
+    lightboxVideo.muted = false;
+    lightboxVideoCaption.textContent = caption || '';
+    videoLightboxOverlay.classList.add('active');
+    videoLightboxOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lightboxVideo.currentTime = 0;
+    lightboxVideo.play().catch(() => {});
+  }
+  function closeVideoLightbox(e){
+    if(e) e.stopPropagation();
+    if(!videoLightboxOverlay) return;
+    videoLightboxOverlay.classList.remove('active');
+    videoLightboxOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+    // Resume the muted background previews now that the lightbox is closed.
+    document.querySelectorAll('.vid-trigger video').forEach(v => { v.play().catch(() => {}); });
+  }
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.vid-trigger');
+    if(!trigger) return;
+    const video = trigger.querySelector('video');
+    if(!video) return;
+    const source = video.querySelector('source');
+    const src    = source ? source.src : video.currentSrc;
+    const poster = video.getAttribute('poster');
+    const card   = trigger.closest('.style-card, .vid-card');
+    const title  = card ? (card.querySelector('h3') || {}).textContent : '';
+    openVideoLightbox(src, poster, title);
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && videoLightboxOverlay && videoLightboxOverlay.classList.contains('active')){
+      closeVideoLightbox();
     }
   });
 </script>
