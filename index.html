@@ -276,6 +276,10 @@
   .style-body h3{ font-size:1.05rem; margin-bottom:.35rem; }
   .style-body p{ font-size:.85rem; color:var(--ink-soft); }
 
+  /* ---------- OUR VIDEOS (video cards, same footprint as Our Styles) ---------- */
+  .style-thumb video{ width:97%; height:95%; object-fit:cover; border-radius:0; background:#000; box-shadow:5px 5px 10px rgb(5,5,5); }
+  .videos{ background:var(--cream); }
+
   @keyframes cardHoverPopSoft{
     0%   { transform:translateY(0) scale(1); }
     45%  { transform:translateY(-12px) scale(1.03); }
@@ -330,12 +334,12 @@
   .gal-card:hover{
     transform:translateY(-8px) scale(1.03);
     background:rgba(243,228,199,0.14);
-    box-shadow:0 18px 30px rgba(0,0,0,0.25);
+    box-shadow:10px 18px 30px rgba(0,0,0,0.25);
     animation:cardHoverPopSoft .45s ease-in-out;
   }
   .gal-card svg{ width:60px; height:60px; margin:0 auto 12px; transition:transform .3s ease-in-out; }
   .gal-card:hover svg{ transform:scale(1.1); }
-  .gal-card h4{ font-family:'Karla', sans-serif; font-weight:700; font-size:.92rem; color:var(--cream); margin-bottom:4px; }
+  .gal-card h4{ font-family:'Karla', sans-serif; font-weight:700; font-size:.92rem; color:var(--cream); margin-bottom:10px;margin-top:10px; }
   .gal-card span{ font-size:.75rem; color:var(--turmeric); }
   @media (prefers-reduced-motion: reduce){ .gal-track{ animation:none; } }
 
@@ -971,6 +975,7 @@
       <a href="#occasions">Occasions</a>
       <a href="#styles">Our Styles</a>
       <a href="#gallery">Gallery</a>
+      <a href="#videos"> Videos</a>
       <a href="#how">How It Works</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1069,10 +1074,17 @@
       </div>
 
       <div class="occ-card reveal is-clickable" onclick="openOccasion('wedding')" data-testid="occasion-card-wedding">
-        <img src="images/occasions/Wedding_Mandap/img-1.jpeg" alt="Wedding &amp; Mandap" class="occ-thumb" loading="lazy" />
+        <img src="images/occasions/Wedding_Mandap/img-9.png" alt="Wedding &amp; Mandap" class="occ-thumb" loading="lazy" />
         <h3>Wedding &amp; Mandap</h3>
         <div class="price">From 20,999</div>
         <p>Full mandap florals, stage backdrops, entrance and aisle decor.</p>
+      </div>
+
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('engagement')" data-testid="occasion-card-engagement">
+        <img src="images/occasions/Engagement/img-1.jpeg" alt="Engagement" class="occ-thumb" loading="lazy" />
+        <h3>Engagement & Reception</h3>
+        <div class="price">From ₹15,999</div>
+        <p>Ring platter florals, stage backdrop, entrance arch in fresh blooms.</p>
       </div>
 
       <div class="occ-card reveal is-clickable" onclick="openOccasion('haldi')" data-testid="occasion-card-haldi">
@@ -1096,13 +1108,14 @@
         <p>Fresh flower backdrops, garlands and floor decor for daily or festival pooja.</p>
       </div>
 
-      <div class="occ-card reveal is-clickable" onclick="openOccasion('engagement')" data-testid="occasion-card-engagement">
-        <img src="images/occasions/Engagement/img-1.jpeg" alt="Engagement" class="occ-thumb" loading="lazy" />
-        <h3>Engagement</h3>
-        <div class="price">From ₹15,999</div>
-        <p>Ring platter florals, stage backdrop, entrance arch in fresh blooms.</p>
+      <div class="occ-card reveal is-clickable" onclick="openOccasion('cardecor')" data-testid="occasion-card-pooja">
+        <img src="images/occasions/Car_Decor/img-3.jpeg" alt="Pooja &amp; Ganpati" class="occ-thumb" loading="lazy" />
+        <h3>Car Decor</h3>
+        <div class="price">From 19,999</div>
+        <p>Elegant fresh flower car decoration, beautifully designed to make your special journey unforgettable.</p>
       </div>
 
+    
       <div class="occ-card reveal is-clickable" onclick="openOccasion('anniversary')" data-testid="occasion-card-anniversary">
         <img src="images/occasions/Death_Aniversary/img-1.jpeg" alt="Anniversary" class="occ-thumb" loading="lazy" />
         <h3>Death Anniversary</h3>
@@ -1209,6 +1222,245 @@
   </div>
 </section>
 
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">recent work</span>
+      <h2>From the last few weeks</h2>
+      <p>A few of the setups our team has delivered recently across Pakala, Singarayakonda, Kandukur, Kavali, nearby Nellore & Ongole villages.</p>
+    </div>
+    <div class="gal-slider" id="gal-slider">
+      <div class="gal-track" id="gal-track">
+        <div class="gal-card reveal">
+          <img src="images/recent_works/birthday.png" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Birthday setup — Kandukur</h4>
+          <!-- <span>Birthday</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpati.jpeg" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Ganpati Decor — Singarayakonda</h4>
+          <!-- <span>pooja</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/engagement-2.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Reception — Ongole</h4>
+          <!-- <span>Engagement</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/baby_shower.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Baby shower — Nellore</h4>
+          <!-- <span>Baby Shower</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/haldi.jpeg" alt="Haldi setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Haldi Setup — Kavali</h4>
+          <!-- <span>Haldi</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/Marriage.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Pakala</h4>
+          <!-- <span>Marriage</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/maturity_cermony.jpeg" alt="Maturity function decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Maturity Function — Kanumalla</h4>
+          <!-- <span>Maturity Function</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/marriage-1.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Karedu</h4>
+          <!-- <span>Marriage</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/Engagement-1.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Engagement — Kandukur</h4>
+          <!-- <span>Engagement</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/temple.jpeg" alt="Temple decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Temple — Kanumalla</h4>
+          <!-- <span>Temple</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/pongalu.png" alt="Pongalu decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Pongalu — Pakala</h4>
+          <!-- <span>Pongalu</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpathi-4.png" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Ganpati Decor — Pakala</h4>
+          <!-- <span>Pooja</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/birthday-1.jpeg" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Birthday Setup — Nellore</h4>
+          <!-- <span>Birthday</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/maturity-1.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Baby Shower — Kavali</h4>
+          <!-- <span>Baby Shower</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/death_aniversary.jpeg" alt="Anniversary decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Death Anniversary — Pakala</h4>
+          <!-- <span>Anniversary</span> -->
+        </div>
+        <div class="gal-card reveal">
+          <img src="images/recent_works/ganpati-1.png" alt="Ganpathi decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Ganpati Decor — Peddapalem</h4>
+          <!-- <span>Ganpathi</span> -->
+        </div>
+        <!-- Exact duplicate of the 16 cards above (hidden from assistive tech) so
+             the -50% marquee animation loops back seamlessly with no visible jump -->
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/birthday.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Birthday setup — Kandukur</h4>
+          <!-- <span>Birthday</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpati.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Ganpati Decor — Singarayakonda</h4>
+          <!-- <span>pooja</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/engagement-2.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Reception — Ongole</h4>
+          <!-- <span>Engagement</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/baby_shower.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Baby shower — Nellore</h4>
+          <!-- <span>Baby Shower</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/haldi.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Haldi Setup — Kavali</h4>
+          <!-- <span>Haldi</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/Marriage.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Pakala</h4>
+          <!-- <span>Marriage</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/maturity_cermony.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Maturity Function — Kanumalla</h4>
+          <!-- <span>Maturity Function</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/marriage-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Marriage Decor — Karedu</h4>
+          <!-- <span>Marriage</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/Engagement-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
+          <h4>Engagement — Kandukur</h4>
+          <!-- <span>Engagement</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/temple.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
+          <h4>Temple — Kanumalla</h4>
+          <!-- <span>Temple</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/pongalu.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
+          <h4>Pongalu — Pakala</h4>
+          <!-- <span>Pongalu</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpathi-4.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
+          <h4>Ganpati Decor — Pakala</h4>
+          <!-- <span>Pooja</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/birthday-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Birthday Setup — Nellore</h4>
+          <!-- <span>Birthday</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/maturity-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Baby Shower — Kavali</h4>
+          <!-- <span>Baby Shower</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/death_aniversary.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Death Anniversary — Pakala</h4>
+          <!-- <span>Anniversary</span> -->
+        </div>
+        <div class="gal-card" aria-hidden="true">
+          <img src="images/recent_works/ganpati-1.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
+          <h4>Ganpati Decor — Peddapalem</h4>
+          <!-- <span>Ganpati</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR VIDEOS ============ -->
+<section class="styles videos" id="videos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">see it in motion</span>
+      <h2>Our videos</h2>
+      <p>Short clips from real setups — walk through the decor, the lighting and the little details you won't catch in a photo.</p>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <video controls preload="metadata" poster="images/our_videos/img-1.png">
+            <source src="images/our_videos/video-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="style-body">
+          <h3>Dasara - uregimpu</h3>
+          <!-- <p>A walkthrough of a traditional South Indian entrance toran and floor rangoli setup.</p> -->
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <video controls preload="metadata" poster="images/our_videos/img-2.jpeg">
+            <source src="images/our_videos/video-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="style-body">
+          <h3>Temple Mandap</h3>
+          <!-- <p>A closer look at a full wedding mandap build, from bare stage to finished canopy.</p> -->
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <video controls preload="metadata" poster="images/our_videos/img-3.jpeg">
+            <source src="images/our_videos/video-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="style-body">
+          <h3>Divine Motif</h3>
+          <!-- <p>Watch a colourful balloon arch come together for a birthday celebration.</p> -->
+        </div>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-thumb">
+          <video controls preload="metadata" poster="images/our_videos/img-4.jpeg">
+            <source src="images/our_videos/video-4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="style-body">
+          <h3>Grand Mandap</h3>
+          <!-- <p>A tour of a temple-style altar decorated for a festival, framed in flowers and gold.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ HOW IT WORKS ============ -->
 <section class="how" id="how">
   <div class="wrap">
@@ -1242,183 +1494,6 @@
   </div>
 </section>
 
-<!-- ============ GALLERY ============ -->
-<section class="gallery" id="gallery">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">recent work</span>
-      <h2>From the last few weeks</h2>
-      <p>A few of the setups our team has delivered recently across Pakala, Singarayakonda, Kandukur, Kavali, nearby Nellore & Ongole villages.</p>
-    </div>
-    <div class="gal-slider" id="gal-slider">
-      <div class="gal-track" id="gal-track">
-        <div class="gal-card reveal">
-          <img src="images/recent_works/birthday.png" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Birthday setup — Kandukur</h4>
-          <span>Birthday</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/ganpati.jpeg" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Ganpati Decor — Singarayakonda</h4>
-          <span>pooja</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/engagement-2.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
-          <h4>Engagement — Ongole</h4>
-          <span>Engagement</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/baby_shower.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
-          <h4>Baby shower — Nellore</h4>
-          <span>Baby Shower</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/haldi.jpeg" alt="Haldi setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Haldi Setup — Kavali</h4>
-          <span>Haldi</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/Marriage.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Marriage Decor — Pakala</h4>
-          <span>Marriage</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/maturity_cermony.jpeg" alt="Maturity function decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Maturity Function — Kanumalla</h4>
-          <span>Maturity Function</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/marriage-1.jpeg" alt="Marriage decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Marriage Decor — Karedu</h4>
-          <span>Marriage</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/Engagement-1.jpeg" alt="Engagement decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Engagement — Kandukur</h4>
-          <span>Engagement</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/temple.jpeg" alt="Temple decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Temple — Kanumalla</h4>
-          <span>Temple</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/pongalu.png" alt="Pongalu decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
-          <h4>Pongalu — Pakala</h4>
-          <span>Pongalu</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/ganpathi-4.png" alt="Ganpati decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
-          <h4>Ganpati Decor — Pakala</h4>
-          <span>Pooja</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/birthday-1.jpeg" alt="Birthday setup decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Birthday Setup — Nellore</h4>
-          <span>Birthday</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/maturity-1.jpeg" alt="Baby shower decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Baby Shower — Kavali</h4>
-          <span>Baby Shower</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/death_aniversary.jpeg" alt="Anniversary decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Death Anniversary — Pakala</h4>
-          <span>Anniversary</span>
-        </div>
-        <div class="gal-card reveal">
-          <img src="images/recent_works/ganpati-1.png" alt="Ganpathi decor decoration" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Ganpathi Decor — Peddapalem</h4>
-          <span>Ganpathi</span>
-        </div>
-        <!-- Exact duplicate of the 16 cards above (hidden from assistive tech) so
-             the -50% marquee animation loops back seamlessly with no visible jump -->
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/birthday.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Birthday setup — Kandukur</h4>
-          <span>Birthday</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/ganpati.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Ganpati Decor — Singarayakonda</h4>
-          <span>pooja</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/engagement-2.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
-          <h4>Engagement — Ongole</h4>
-          <span>Engagement</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/baby_shower.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
-          <h4>Baby shower — Nellore</h4>
-          <span>Baby Shower</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/haldi.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Haldi Setup — Kavali</h4>
-          <span>Haldi</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/Marriage.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Marriage Decor — Pakala</h4>
-          <span>Marriage</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/maturity_cermony.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Maturity Function — Kanumalla</h4>
-          <span>Maturity Function</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/marriage-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Marriage Decor — Karedu</h4>
-          <span>Marriage</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/Engagement-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/house warming.jpeg'; this.onerror=null;" />
-          <h4>Engagement — Kandukur</h4>
-          <span>Engagement</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/temple.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/wedding.jpg'; this.onerror=null;" />
-          <h4>Temple — Kanumalla</h4>
-          <span>Temple</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/pongalu.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/haldi.jpg'; this.onerror=null;" />
-          <h4>Pongalu — Pakala</h4>
-          <span>Pongalu</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/ganpathi-4.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" onerror="this.src='images/recent works/ganpat decoration.png'; this.onerror=null;" />
-          <h4>Ganpati Decor — Pakala</h4>
-          <span>Pooja</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/birthday-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Birthday Setup — Nellore</h4>
-          <span>Birthday</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/maturity-1.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Baby Shower — Kavali</h4>
-          <span>Baby Shower</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/death_aniversary.jpeg" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Death Anniversary — Pakala</h4>
-          <span>Anniversary</span>
-        </div>
-        <div class="gal-card" aria-hidden="true">
-          <img src="images/recent_works/ganpati-1.png" alt="" width="100%" height="75%" style="border-radius: 5px;" class="occ-thumb" />
-          <h4>Ganpathi Decor — Peddapalem</h4>
-          <span>Ganpathi</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ TESTIMONIALS ============ -->
 <section class="testimonials">
   <div class="wrap">
@@ -1430,19 +1505,19 @@
       <div class="t-card reveal" id="t-card-0">
         <div class="stars">★★★★★</div>
         <p>"Booked our housewarming decoration two days before the date and the team still made it look like it took a week to plan. Beautiful marigold work."</p>
-        <div class="t-name">Lakshmi R.</div>
+        <div class="t-name">Lakshmi </div>
         <div class="t-role">Griha Pravesh, Kandukuru</div>
       </div>
       <div class="t-card reveal" id="t-card-1">
         <div class="stars">★★★★★</div>
         <p>"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."</p>
-        <div class="t-name">Arjun &amp; Divya</div>
+        <div class="t-name">Arjun </div>
         <div class="t-role">Wedding, Singarayakonda</div>
       </div>
       <div class="t-card reveal" id="t-card-2">
         <div class="stars">★★★★★</div>
         <p>"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."</p>
-        <div class="t-name">Rohit Shetty</div>
+        <div class="t-name">Rohit </div>
         <div class="t-role">Ganpati Decor, Pakala</div>
       </div>
     </div>
@@ -1485,6 +1560,7 @@
         <div class="form-2col">
           <div class="form-row"><label for="name">Your Name</label><input id="name" name="Name" type="text" required></div>
           <div class="form-row"><label for="phone">Phone Number</label><input id="phone" name="Phone" type="tel" required></div>
+          
         </div>
         <div class="form-row">
           <label for="occ">Occasion</label>
@@ -1494,9 +1570,9 @@
             <option>Wedding &amp; Mandap</option>
             <option>Haldi Ceremony</option>
             <option>Baby Shower</option>
-            <option>Pooja &amp; Ganpati</option>
-            <option>Anniversary</option>
-            <option>Engagement</option>
+            <option>Ganpati Pooja &amp; Procession</option>
+            <option>Death Anniversary</option>
+            <option>Engagement & Reception</option>
             <option>Other</option>
           </select>
         </div>
@@ -1535,6 +1611,7 @@
         <ul>
           <li><a href="#styles">Our Styles</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#videos">Videos</a></li>
           <li><a href="#how">How It Works</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1596,11 +1673,21 @@
     housewarming: {
       eyebrow: 'Temple & housewarming décor',
       title: 'Temple & Housewarming Packages',
-      intro: 'Handpicked packages for every kind of Griha Pravesh — from traditional marigold torans to grand floral entrances. Every package is fully customisable.',
+      intro: 'Handpicked packages for every kind of Temple & Home Griha Pravesh — from traditional marigold torans to grand floral entrances. Every package is fully customisable.',
       items: [
         { title:'Vibrant Floral Portal',        price:'From ₹11,999', desc:'A traditional grand archway densely adorned with multicolored gerbera headers, lush greenery accents, and layered vertical floral garlands in romantic warm hues.', img:'images/occasions/Housewarming/img-1.jpeg' },
-        { title:'Blush Floral Gateway',       price:'From ₹5,999',  desc:'A romantic doorway design featuring soft pink side drapes tied back elegantly, topped with a colorful gerbera floral header and hanging yellow flower tassels.', img:'images/occasions/Housewarming/img-2.jpeg' },
         { title:'Divine Temple - Entrance Garland Decor',       price:'From ₹34,999',  desc:'A lavish temple entrance decoration featuring cascading marigold and mango leaf ceiling drapes, paired with dense vertical columns of white chrysanthemums, yellow marigolds, and red gerberas flanking the sacred doorway guarded by lions.', img:'images/occasions/Housewarming/img-3.jpeg' },
+        { title:'Divine Canopy',        price:'From ₹19,999', desc:'A magnificent entryway framing the sanctum, blanketed in a dense, precise pattern of red and yellow marigolds with a centered brass bell.', img:'images/occasions/Housewarming/img-4.jpeg' },
+        { title:'Durga’s Golden Mandap',       price:'From ₹8,999',  desc:'A vibrant altar featuring an overarching canopy of pink, yellow, and white gerbera daisies, flanked by elegant fabric-draped pillars.', img:'images/occasions/Housewarming/img-5.jpeg' },
+        { title:'The Eternal Guardian',        price:'From ₹9,499', desc:'A striking shrine arrangement where a powerful deity is framed by a massive, multi-layered floral halo of radiant blossoms.', img:'images/occasions/Housewarming/img-6.jpeg' },
+        { title:'Sacred Garland Arch',       price:'From ₹9,499',  desc:'An elegant, deeply traditional display featuring a heavy, dual-layered arch of white, orange, and red flowers cascading down to the floor.', img:'images/occasions/Housewarming/img-7.jpeg' },
+        { title:'Grand Temple Facade',        price:'From ₹39,999', desc:'A majestic outdoor festival setup utilizing a lush green backdrop adorned with marigold strings and large, ornate golden sacred symbols.', img:'images/occasions/Housewarming/img-8.jpeg' },
+        { title:'Vaikuntha Entrance',       price:'From ₹39,999',  desc:'A colorful, multi-tiered temple archway meticulously adorned with thick, dense vertical pillars of white, red, and green floral strings.', img:'images/occasions/Housewarming/img-9.jpeg' },
+        { title:'The Golden Archway',        price:'From ₹9,999', desc:'A grand ceremonial gateway showcasing intricately carved golden pillars and a peacock-motif header, illuminated by vibrant fairy lights.', img:'images/occasions/Housewarming/img-10.jpeg' },
+        { title:'Durga Pooja - Sacred Trishul Floral Arch',   price:'From ₹5,999',desc:'A clean, vibrant altar decor featuring a curved floral arch with red, orange, white, and yellow gerberas, paired with vertical marigold skirtings framing a golden Goddess idol with a Trishul.', img:'images/occasions/Pooja_Ganpati/img-12.jpeg' },
+        { title:'Home Festivity Frame',        price:'From ₹17,999', desc:'A warm, welcoming domestic setup featuring classic marigold torans draping the entrance and sweeping elegantly up an indoor staircase.', img:'images/occasions/Housewarming/img-11.jpeg' },
+        { title:'Blush Floral Gateway',       price:'From ₹5,999',  desc:'A romantic doorway design featuring soft pink side drapes tied back elegantly, topped with a colorful gerbera floral header and hanging yellow flower tassels.', img:'images/occasions/Housewarming/img-2.jpeg' },
+        
       ]
     },
     birthday: {
@@ -1614,6 +1701,12 @@
         { title:'Surprise Party Setup',   price:'From ₹6,999',  desc:'Balloon-filled room, floral welcome and cake-table decor, set up while they\'re away.', img:'images/occasions/Birthday/img-6.jpeg' },
         { title:'Grass Wall Setup',price:'From ₹4,999', desc:'Green grass backdrop with balloon flowers and birthday décor. Perfect for home celebrations and photos.', img:'images/occasions/Birthday/img-4.jpeg' },
         { title:'Royal Stage Decor',   price:'From ₹8,999',  desc:'Grand stage decoration with balloons, flowers, lighting, and premium seating. Designed to create unforgettable celebrations.', img:'images/occasions/Birthday/img-5.jpeg' },
+        { title:'Festive Garland & Balloon Arch', price:'From ₹17,999',  desc:'A vibrant backdrop featuring colorful balloon borders paired with elegant fresh flower garlands and leafy accents.', img:'images/occasions/Birthday/img-9.jpeg' },
+        { title:'Mickey & Friends Birthday Corner',     price:'From ₹3,999', desc:'A cheerful kids party setup with yellow-and-green balloon framing, fun character cutouts, and floor scatter balloons.', img:'images/occasions/Birthday/img-10.jpeg' },
+        { title:'Shimmering Circular Ring Stage',   price:'From ₹4,999',  desc:'A bold birthday backdrop featuring a multi-tone balloon ring, silver tinsel backdrop, and matching accent pillars.', img:'images/occasions/Birthday/img-11.jpeg' },
+        { title:'Pastel Glamour Balloon Wreath',price:'From ₹6,499', desc:'A chic pastel purple and rose gold balloon arch set against fairy-lit white drapes and tropical palm accents.', img:'images/occasions/Birthday/img-12.jpeg' },
+        { title:'Rainbow Ring First Birthday Backdrop',   price:'From ₹8,999',  desc:'A playful grass-wall setup featuring a multi-color balloon ring arch, cartoon character cutouts, a neon "Happy Birthday" sign, and matching balloon mini-pyramids to celebrate a 1st birthday.', img:'images/occasions/Birthday/img-13.jpeg' },
+        
       ]
     },
     wedding: {
@@ -1625,6 +1718,12 @@
         { title:'Chandelier Elegance',     price:'From ₹34,999',  desc:'A contemporary stage setup featuring soft white drapes, hanging warm chandeliers, a lush floral top border with purple and white blooms, an elegant curved sofa, and a dense floral border along the bottom.', img:'images/occasions/Wedding_Mandap/img-2.jpeg' },
         { title:'Temple Mandap',           price:'From ₹36,999',  desc:'A traditional wedding mandap featuring carved golden pillars, dense white gerbera and red rose borders, hanging jasmine garlands, and gold deity statues against a green backdrop.', img:'images/occasions/Wedding_Mandap/img-3.jpeg' },
         { title:'Floral Backdrop',         price:'From ₹22,999',  desc:'A clean, wide stage setup with a white pleated backdrop, red side drapes, a top floral arch, leaf/flower accent arrangements, and vibrant floral arrangements lining the stage front.', img:'images/occasions/Wedding_Mandap/img-4.png' },
+        { title:'Divine Sanctum Stage',   price:'From ₹39,999',  desc:'A traditional and opulent stage setup featuring ornate golden pillars and a central shrine for deities, richly decorated with vibrant marigolds, roses, and classic religious motifs set upon a deep red carpet.', img:'images/occasions/Wedding_Mandap/img-30.jpeg' },
+        { title:'Golden Namam Mandapam',price:'From ₹29,999', desc:'A regal mandapam highlighted by structured golden columns and a grand, meticulous floral Namam symbol set against a lush green and white draped background, creating a serene temple atmosphere.', img:'images/occasions/Wedding_Mandap/img-31.jpeg' },
+        { title:'Floral Radiance Altar',price:'From ₹49,999', desc:'An immersive display featuring dense, cascading garlands of white and orange blossoms that drape over golden pillars, centered around a traditional holy symbol against a backdrop of greenery.', img:'images/occasions/Wedding_Mandap/img-32.jpeg' },
+        { title:'Verdant Deity Gateway',price:'From ₹59,999', desc:'A stately stage adorned with thick, flower-covered arches and golden pillars, featuring a pristine white flower Namam set against a lush, leafy green background.', img:'images/occasions/Wedding_Mandap/img-33.jpeg' },
+        { title:'Grand Traditional Arch',price:'From ₹99,999', desc:'A magnificent ceremonial archway with intricate, carved-style pillars and a massive flower-laden header, framing a central shrine decorated with elegant, classic garlands.', img:'images/occasions/Wedding_Mandap/img-36.jpeg' },
+        { title:'Sacred Temple Bell Stage',price:'From ₹26,999', desc:'An elegant temple-themed stage featuring a central bell motif, flanked by sacred Chakra and Shankha symbols, all framed by vibrant flower arches and rich, yellow-toned drapery.', img:'images/occasions/Wedding_Mandap/img-37.jpeg' },
         { title:'Grand Mandap',   price:'From ₹29,999',  desc:'A heavily decorated traditional mandap featuring dense multi-colored flower garlands (yellow, orange, purple, red), golden pillars, framed fabric arches, and central deity statues.', img:'images/occasions/Wedding_Mandap/img-5.jpeg' },
         { title:'Arch Stage',price:'From ₹25,999', desc:'A traditional stage decor featuring a dense archway of colorful flowers, gold side pillars, heart-shaped floral wreaths, banana leaf motifs, and a central deity idol.', img:'images/occasions/Wedding_Mandap/img-6.jpeg' },
         { title:'Divine Motif',price:'From ₹21,999', desc:'Features blue printed backdrops with golden Shankha (conch) and Chakra motifs, a central green backdrop with a large Namam flower arrangement, top floral borders, and gold pillars.', img:'images/occasions/Wedding_Mandap/img-7.jpeg' },
@@ -1636,6 +1735,23 @@
         { title:'Royal Temple Floral Mandap',   price:'From ₹21,999',  desc:'A grand floral mandap with elegant pillars, fresh flower garlands, and a divine backdrop, creating a majestic temple ambiance.', img:'images/occasions/Wedding_Mandap/img-17.jpeg' },
         { title:'Divine Blossom Stage',price:'From ₹11,999', desc:'A premium artificial floral stage featuring luxurious garlands, golden pillars, and a graceful backdrop for sacred ceremonies.', img:'images/occasions/Wedding_Mandap/img-18.jpeg' },
         { title:'Swan Paradise Floral Decor',price:'From ₹15,499', desc:'An premium artificial floral setup with elegant swan pillars, vibrant flower arrangements, and premium hanging garlands.', img:'images/occasions/Wedding_Mandap/img-19.jpeg' },
+        { title:'Royal Circular Mandap Decor',   price:'From ₹34,999',  desc:'A stunning circular mandap decorated with premium fresh flowers and cascading garlands, designed to offer a grand, royal, and mesmerizing festive experience.', img:'images/occasions/Wedding_Mandap/img-9.png' },
+        { title:'Grand Golden Floral Stage',price:'From ₹31,999', desc:'A majestic floral backdrop with luxurious golden carvings, fresh blooms, and elegant garlands—crafted to create a divine and unforgettable celebration.', img:'images/occasions/Wedding_Mandap/img-20.jpeg' },
+        { title:'Divine Floral Arch Decor',price:'From ₹21,999', desc:'A graceful floral arch adorned with vibrant blossoms and traditional accents, bringing timeless elegance and sacred charm to every occasion.', img:'images/occasions/Wedding_Mandap/img-21.jpeg' },
+        { title:'Royal Floral Entrance Arch',price:'From ₹4,999', desc:'A magnificent entrance arch featuring elegant floral garlands, grand golden pillars, and a luxurious red carpet walkway, creating a regal welcome for every special celebration.', img:'images/occasions/Wedding_Mandap/img-23.jpeg' },
+        { title:'Bloom Canopy Mandap',   price:'From ₹15,999',  desc:'A vibrant floral-capped mandap featuring golden pillars and a colorful arch frame around sacred deities.', img:'images/occasions/Wedding_Mandap/img-10.png' },
+        { title:'Sacred Namam Backdrop',price:'From ₹24,999', desc:'A striking floral Namam design set against lush green foliage, framed by bright gerbera borders and carved gold accents.', img:'images/occasions/Wedding_Mandap/img-25.jpeg' },
+        { title:'Royal Temple Mandap',price:'From ₹39,999', desc:'A regal setup featuring a lavish overhead orchid ceiling, classic gold columns, and twin shrine deity motifs.', img:'images/occasions/Wedding_Mandap/img-26.jpeg' },
+        { title:'Traditional Kalyanam Stage',price:'From ₹34,999', desc:'An auspicious setup with fresh banana saplings, an ornate golden crest, and colorful floral arches framing idol statues.', img:'images/occasions/Wedding_Mandap/img-27.jpeg' },
+        { title:'Classic Wedding Throne Stage',price:'From ₹34,999', desc:'A sleek reception backdrop with elegant white drapes, dense floral framing, and an ornate center couch for the couple.', img:'images/occasions/Wedding_Mandap/img-28.jpeg' },
+        { title:'Blooming Hearts Floral Stage',price:'From ₹14,999', desc:'A vibrant floral stage decor featuring elegant twin heart arrangements, colorful flower arches, and graceful drapes, creating the perfect romantic backdrop for engagements, weddings.', img:'images/occasions/Wedding_Mandap/img-29.jpeg' },
+        { title:'Imperial Golden Garland Mandap',   price:'Price on Reaqest',  desc:'A premium, wide-spanning wedding stage featuring heavily carved golden pillars and traditional lattice screens. It showcases a magnificent, massive semi-circular dome densely packed with white and red roses, finished with thousands of cascading jasmine and rosebud drops.', img:'images/occasions/Wedding_Mandap/img-35.jpeg' },
+        { title:'Golden Heritage Grand Mandap',price:'From ₹49,999', desc:'A sprawling, majestic traditional wedding stage showcasing an ornate golden crown header, vibrant deity backplates, and sweeping multi-colored floral waves.', img:'images/occasions/Wedding_Mandap/img-38.jpeg' },
+        { title:'Royal Floral Canopy Stage',price:'Price on Reaqest', desc:'A luxurious domed mandap with rich golden columns, a dense white-blossom canopy with cascading jasmine tassels, and a bold red rose backdrop holding a sacred symbol.', img:'images/occasions/Wedding_Mandap/img-39.jpeg' },
+        { title:'Twin Heart Ganesha Altar',price:'From ₹34,999', desc:'A charming celebration stage crowned with twin silver peacocks, featuring a central Ganesha silhouette flanked by unique blue and yellow heart-shaped floral frames.', img:'images/occasions/Wedding_Mandap/img-40.jpeg' },
+        { title:'Classic Wedding Throne Stage',price:'From ₹34,999', desc:'Stately carved silver pillars supporting a thick red-and-white chrysanthemum fascia with a dense curtain of white tassels, framing a beautiful golden dual-deity shrine.', img:'images/occasions/Wedding_Mandap/img-41.jpeg' },
+        { title:'Sacred Tirupati Lattice Stage',price:'From ₹42,999', desc:'Description: An elegant golden lattice backdrop featuring a central sacred bell-Namam motif, framed by ornate pillars and a vibrant, multi-colored top floral border with hanging marigolds.', img:'images/occasions/Wedding_Mandap/img-42.jpeg' },
+        
       ]
     },
     haldi: {
@@ -1651,6 +1767,11 @@
         { title:'Grand Multicolour Rangoli',  price:'From ₹14,999', desc:'Banana-leaf backdrop with marigold swags over a spectacular layered rangoli in red, orange, yellow and white petals.', img:'images/occasions/Haldi_Ceremony/img-6.jpeg' },
         { title:'Ganesh Motif Banana Leaf',   price:'From ₹8,999',  desc:'Scalloped marigold garlands framing a banana-leaf wall with a striking red floral Ganesh motif and kalash pots below.', img:'images/occasions/Haldi_Ceremony/img-7.jpeg' },
         { title:'Gerbera Flower Frame Décor', price:'From ₹11,999',  desc:'White drape backdrop framed in yellow &amp; white gerbera daisies, with hanging marigold strands and a red rose floral emblem.', img:'images/occasions/Haldi_Ceremony/img-8.jpeg' },
+        { title:'Festive Terrace Toran',  price:'From ₹14,999', desc:'A charming, open-air celebration backdrop featuring a geometric white curtain adorned with hanging yellow marigold strings, colorful peacock motifs, and a crowning border of multi-colored gerbera daisies.', img:'images/occasions/Haldi_Ceremony/img-9.jpeg' },
+        { title:'Ganesha’s Lime-Green Satin Altar',   price:'From ₹8,999',  desc:'An elegant indoor festival display showcasing a central red rose Ganesha silhouette against draped lime-green satin, beautifully framed by a thick border of multi-colored blossoms and neat floral patches.', img:'images/occasions/Haldi_Ceremony/img-10.jpeg' },
+        { title:'Traditional Eco-Leaf Decor', price:'From ₹8,999',  desc:'A deeply traditional eco-friendly setup utilizing a fresh banana leaf background accented with orange marigold garlands, a center Ganesha motif, and a beautifully patterned semi-circular flower rangoli on the floor.', img:'images/occasions/Haldi_Ceremony/img-11.jpeg' },
+        { title:'Eco-Leaf Haldi Altar',   price:'From ₹15,999',  desc:'Traditional banana leaf backdrop framed by bright marigold arches and antique chairs, perfect for cultural ceremonies.', img:'images/occasions/Haldi_Ceremony/img-12.jpeg' },
+        { title:'Sunshine Draped Frame', price:'From ₹12,999',  desc:'Modern, clean white drapes accented by vertical marigold strings and a sleek yellow seating block.', img:'images/occasions/Haldi_Ceremony/img-13.jpeg' },
       ]
     },
     babyshower: {
@@ -1658,7 +1779,7 @@
       title: 'Baby Shower & Maturity function Packages',
       intro: 'Soft pastels, floral swings and Godh Bharai setups — designs that feel gentle, warm and perfect for welcoming the little one.',
       items: [
-        { title:'Spectrum Fan',      price:'From ₹11,999',  desc:'A dynamic multi-color fabric fan backdrop framed by rich floral borders, golden pillars, star-shaped foliage motifs, and a classical royal sofa.', img:'images/occasions/Baby_Shower/img-2.jpeg' },
+        { title:'Spectrum Fan',      price:'From ₹21,999',  desc:'A dynamic multi-color fabric fan backdrop framed by rich floral borders, golden pillars, star-shaped foliage motifs, and a classical royal sofa.', img:'images/occasions/Baby_Shower/img-2.jpeg' },
         { title:'Romantic Heart', price:'From ₹13,999',  desc:'A vibrant pink gerbera flower heart arch paired with soft white drapes, peach sequin swags, side floral pedestals, and an ornate antique sofa.', img:'images/occasions/Baby_Shower/img-1.jpeg' },
         { title:'Eco Traditional',     price:'From ₹10,999',  desc:'A traditional banana leaf backdrop featuring heavy marigold garlands, a mother-child white silhouette motif, and a colorful rangoli-style floral floor carpet.', img:'images/occasions/Baby_Shower/img-3.jpeg' },
         { title:'Grand Floral Arc',      price:'From ₹24,999', desc:'A spacious stage setting with multi-tiered gerbera archways, lush green backdrop, warm yellow drapes, and fabric-wrapped floral pedestals.', img:'images/occasions/Baby_Shower/img-4.jpeg' },
@@ -1669,7 +1790,14 @@
         { title:'Ganesha Grace',      price:'From ₹10,499',  desc:'A traditional banana leaf backdrop with heavy marigold side curtains, a central marigold Lord Ganesha idol motif, white flower swags, and a high-back red throne.', img:'images/occasions/Baby_Shower/img-9.jpeg' },
         { title:'Elegant Drapery',      price:'From ₹11,999', desc:'A classic backdrop setup with layered gold, white, and coral-pink fabric drapes, topped with colorful gerbera floral headers, leaf accents, and a silver carved sofa.', img:'images/occasions/Baby_Shower/img-10.jpeg' },
         { title:'Canopy Elegance',      price:'From ₹9,999',  desc:'A dome-shaped orange and green fabric canopy decorated with dense red-and-white floral rings, hanging leaf art motifs, and a carved wooden-gold sofa.', img:'images/occasions/Baby_Shower/img-11.jpeg' },
-      ]
+        { title:'Sweetheart Romance Stage',      price:'From ₹19,999', desc:'A dreamy wedding stage centered around a classic white couch, framed by a massive, vibrant pink floral heart backdrop and a beautiful multi-colored flower border along the stage base.', img:'images/occasions/Baby_Shower/img-12.jpeg' },
+        { title:'Golden Heritage Mandap',      price:'From ₹14,999',  desc:'A grand, festive outdoor setup featuring an ornate golden sofa against a warm yellow and white draped curtain backdrop, beautifully decorated with large marigold accents and vibrant floral edges.', img:'images/occasions/Baby_Shower/img-13.jpeg' },
+        { title:'Crimson Crescent Stage',      price:'From ₹16,999',  desc:'A classic, clean celebration stage featuring a traditional silver and red carved sofa set against a crisp white backdrop. It is highlighted by a grand semi-circular arch of red and white gerbera daisies, sweeping red fabric drapes, ornate side urns, and suspended floral hoops.', img:'images/occasions/Baby_Shower/img-18.jpeg' },
+        { title:'Coral Shimmer Backdrop',      price:'From ₹1,999',  desc:'An elegant, modern ceremonial setting showcasing a regal red and silver throne flanked by sparkling coral-orange drapes, accented with fresh floral bouquets at the crown.', img:'images/occasions/Baby_Shower/img-14.jpeg' },
+        { title:'Floral Arch Royalty',      price:'From ₹6,499', desc:'A striking celebration stage featuring a luxurious red velvet throne centered within a beautifully curved archway of densly woven yellow, pink, and white blossoms against a soft lilac background.', img:'images/occasions/Baby_Shower/img-15.jpeg' },
+        { title:'Whimsical Tassel Throne',      price:'From ₹3,499',  desc:'A vibrant, festive backdrop utilizing playful hanging elements—including pink and purple yarn tassels, green bird cutouts, and bright marigold strings—to frame a stately red and silver royal chair.', img:'images/occasions/Baby_Shower/img-17.jpeg' },
+        
+      ] 
     },
     pooja: {
       eyebrow: 'ganpathi pooja & procession décor',
@@ -1691,6 +1819,8 @@
         { title:'Peacock & Trishul Vehicle Decor',         price:'From ₹26,999',  desc:'A festive tractor/chariot decoration featuring a semicircular gerbera front grill arrangement, golden peacock accents, and an arched floral canopy for the deity.', img:'images/occasions/Pooja_Ganpati/img-13.jpeg' },
         { title:'Temple Utsavam - Illuminated Adishesha Prabhavali',   price:'From ₹38,999', desc:'A grand, wide-winged floral backdrop resembling a multi-colored serpent hood, richly layered with pink, white, yellow, and orange flowers, backlit and spotlighted for night celebrations.', img:'images/occasions/Pooja_Ganpati/img-14.png' },
         { title:'Divine Floral Arch',   price:'From ₹49,999', desc:'A breathtaking floral arch crafted with vibrant fresh blooms, creating a majestic backdrop for the Goddess idol and adding elegance to every sacred celebration.', img:'images/occasions/Pooja_Ganpati/img-10.png' },
+        { title:'Ganesha’s Royal Court',   price:'From ₹34,999', desc:'A majestic setup featuring a grand Lord Ganesha wrapped in thick marigold garlands, seated before a towering floral throne of multi-colored blossoms.', img:'images/occasions/Pooja_Ganpati/img-18.jpeg' },
+        { title:'Peacock Elegance Altar',   price:'From ₹19,999', desc:'A vibrant festive decor spotlighting Lord Ganesha against a striking pink backdrop, adorned with peacock-feather motifs and a unique fresh lemon garland.', img:'images/occasions/Pooja_Ganpati/img-19.jpeg' },
       ]
     },
     anniversary: {
@@ -1709,9 +1839,9 @@
     ]
     },
     engagement: {
-      eyebrow: 'engagement décor',
-      title: 'Engagement Packages',
-      intro: 'Ring platters, stage backdrops and entrance arches — engagement setups designed to make every photograph look effortless.',
+      eyebrow: 'engagement & Reception décor',
+      title: 'Engagement & Reception Packages',
+      intro: 'Ring platters, stage backdrops and entrance arches — engagement setups designed to make every photograph look effortless.<br> Reception - A breathtaking celebration of love and new beginnings.',
       items: [
         { title:'Garden Romance',price:'From ₹35,999', desc:'A romantic foliage backdrop featuring a grand floral arch, delicate hanging chandeliers, lush greenery walls, and a regal golden sofa framed by colorful stage blossoms.', img:'images/occasions/Engagement/img-1.jpeg' },
         { title:'Midnight Serenade',       price:'From ₹44,999',  desc:'An intimate white backdrop illuminated with warm fairy lights and custom monogram initials, bordered by dense white floral frames and low-stage floral borders.', img:'images/occasions/Engagement/img-2.jpeg' },
@@ -1721,6 +1851,25 @@
         { title:'Sunset Passion',     price:'From ₹19,999', desc:'Warm coral and peach drapery highlighted by vibrant floral headers, side flower urn pedestals, and an ornate gold-framed sofa.', img:'images/occasions/Engagement/img-6.jpeg' },
         { title:'Sweet Devotion',          price:'From ₹29,999', desc:'Geometric floral arches draped in pink and white gerbera strings surrounding a grand golden sofa with clean white sheer backdrop panels.', img:'images/occasions/Engagement/img-7.jpeg' },
         { title:'Moonlight Passion',     price:'From ₹24,999', desc:'Mood-lit stage arrangement featuring glowing neon-blue and magenta uplighting, hanging floral tassels overhead, and a vintage throne sofa.', img:'images/occasions/Engagement/img-8.jpeg' },
+        { title:'Moonlight Romance Stage',     price:'From ₹29,999', desc:'An elegant white floral stage with soft lighting and a royal loveseat, creating the perfect romantic setting for unforgettable moments and timeless celebrations.', img:'images/occasions/Engagement/img-9.jpeg' },
+        { title:'Blush Petal Haven',          price:'From ₹20,999', desc:'A romantic setup featuring a soft peach-toned sofa against white drapes, highlighted by hanging floral accents and a vibrant backdrop circle.', img:'images/occasions/Engagement/img-11.jpeg' },
+        { title:'Vibrant Arch Bliss',     price:'From ₹19,999', desc:'A festive stage showcasing a silver sofa framed by a stunning multi-colored circular floral arch and bright, traditional drapery.', img:'images/occasions/Engagement/img-13.jpeg' },
+        { title:'Royal Golden Throne',          price:'From ₹24,999', desc:'A regal display featuring an ornate golden sofa beneath a dense, lush white floral canopy, accented by elegant side bouquets.', img:'images/occasions/Engagement/img-14.png' },
+        { title:'Ornate Garden Retreat',     price:'From ₹26,999', desc:'A classic, sophisticated stage with an ornate gold sofa, crisp white drapes, and elegant suspended circular floral hoops.', img:'images/occasions/Engagement/img-15.jpeg' },
+        { title:'Silver Modern Arch',     price:'From ₹22,999', desc:'A chic, contemporary display with a silver sofa, a rich floral semi-circle arch, and polished floral pedestals on either side.', img:'images/occasions/Engagement/img-16.jpeg' },
+      ]
+    },
+    cardecor: {
+      eyebrow: 'Car décor',
+      title: 'Car Decor Packages',
+      intro: 'A luxurious car decoration that adds beauty, elegance, and festive charm to your special occasion.',
+      items: [
+        { title:'Rose Petal & Ribbon Delight',        price:'From ₹1,799', desc:'A sleek white car styled with scattered red rosebuds across the bonnet, framed by vibrant orange ribbon borders and a central floral bouquet.', img:'images/occasions/Car_decor/img-1.jpeg' },
+        { title:'Sunshine & Daisy Bouquet',       price:'From ₹1,999',  desc:'A dark blue SUV adorned with a lush yellow and white gerbera centerpiece, accented with delicate greenery and silver ribbon trims along the hood.', img:'images/occasions/Car_decor/img-2.jpeg' },
+        { title:'Diagonal Floral Wave',       price:'From ₹2,999',  desc:'A modern grey car decorated with a sweeping diagonal garland of bright colorful gerberas and pink ribbon edging framing the windshield.', img:'images/occasions/Car_decor/img-3.jpeg' },
+        { title:'Blossom & Ribbon Ensemble',        price:'From ₹2,499', desc:'A white SUV featuring prominent floral bouquets, layered yellow ribbon frills on the bonnet, and stylish pink ribbon borders.', img:'images/occasions/Car_decor/img-4.jpeg' },
+        { title:'Ribbon Fan Splendor',       price:'From ₹1,499',  desc:'A silver car highlighted by a vibrant multi-colored ribbon fan pattern across the bonnet, accented with red border garlands and purple door streamers.', img:'images/occasions/Car_decor/img-5.jpeg' },
+        { title:'Palm Leaf Floral Crown',       price:'From ₹1,499',  desc:'A metallic grey car featuring a center bouquet of yellow and red gerberas resting on spread palm leaves, complemented by yellow ribbon trails and pink roof trims.', img:'images/occasions/Car_decor/img-6.jpeg' },
       ]
     }
   };
@@ -1916,12 +2065,12 @@
   // ---------- TESTIMONIALS: rotate through an expanded pool with a
   // periodic "refresh" fade/slide animation, pausing while hovered ----------
   const TESTIMONIALS = [
-    { text:'"Booked our housewarming decoration two days before the date and the team still made it look like it took a week to plan. Beautiful marigold work."', name:'Lakshmi R.', role:'Griha Pravesh, Kandukuru' },
-    { text:'"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."', name:'Arjun & Divya', role:'Wedding, Singarayakonda' },
-    { text:'"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."', name:'Rohit Shetty', role:'Ganpati Decor, Pakala' },
-    { text:'"The Ganpati decor for our society festival was stunning — vibrant marigolds and fresh jasmine, delivered right on schedule."', name:'Priya Nair', role:'Pooja Decor, Ongole' },
-    { text:'"Our engagement evening looked like a five-star setup. The fresh rose arch was the highlight of the whole night."', name:'Sunil & Meena', role:'Engagement, Kavali' },
-    { text:'"Quick replies on WhatsApp, fair pricing, and the haldi function decoration turned out absolutely gorgeous."', name:'Deepika K.', role:'Haldi Ceremony, Nellore' }
+    { text:'"Booked our housewarming decoration two days before the date and the team still made it look like it took a week to plan. Beautiful marigold work."', name:'Lakshmi ', role:'Griha Pravesh, Kandukuru' },
+    { text:'"Our mandap looked exactly like the sketch they shared beforehand. No surprises, no last-minute stress, just showed up and it was ready."', name:'Arjun ', role:'Wedding, Singarayakonda' },
+    { text:'"They handle our office pooja room flowers every week. Always fresh, always on time, and the WhatsApp booking makes it effortless."', name:'Rohit ', role:'Ganpati Decor, Pakala' },
+    { text:'"The Ganpati decor for our society festival was stunning — vibrant marigolds and fresh jasmine, delivered right on schedule."', name:'Priya ', role:'Pooja Decor, Ongole' },
+    { text:'"Our engagement evening looked like a five-star setup. The fresh rose arch was the highlight of the whole night."', name:'Sunil ', role:'Engagement, Kavali' },
+    { text:'"Quick replies on WhatsApp, fair pricing, and the haldi function decoration turned out absolutely gorgeous."', name:'Deepak.', role:'Haldi Ceremony, Nellore' }
   ];
   const tCards = ['t-card-0','t-card-1','t-card-2'].map(id => document.getElementById(id)).filter(Boolean);
   let tOffset = 0;
