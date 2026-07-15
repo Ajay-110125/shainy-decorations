@@ -275,6 +275,8 @@
   .style-body{ padding:18px 18px 22px; }
   .style-body h3{ font-size:1.05rem; margin-bottom:.35rem; }
   .style-body p{ font-size:.85rem; color:var(--ink-soft); }
+  /* Video cards (Our videos section) — center the title under each video */
+  #videos .style-body h3{ text-align:center; }
 
   /* ---------- OUR VIDEOS (video cards, same footprint as Our Styles) ---------- */
   .style-thumb video{ width:97%; height:95%; object-fit:cover; border-radius:0; background:#000; box-shadow:5px 5px 10px rgb(5,5,5); }
@@ -568,6 +570,13 @@
   }
   .float-wa:hover{ transform:scale(1.08); }
   .float-wa svg{ width:20px; height:20px; }
+  /* Bigger floating WhatsApp button when a phone/tablet is browsing with
+     "Desktop site" enabled — viewport is desktop-width but the pointer is
+     still touch/coarse, which is how mobile browsers behave in that mode. */
+  @media (min-width:821px) and (pointer:coarse){
+    .float-wa{ width:64px; height:64px; }
+    .float-wa svg{ width:28px; height:28px; }
+  }
   /* Rotating ring around the floating WhatsApp button */
   .float-wa::before{
     content:''; position:absolute; inset:-6px; border-radius:50%;
@@ -656,6 +665,13 @@
     max-width:100%; max-height:88vh; width:auto; height:auto;
     border-radius:8px; display:block; margin:0 auto;
     box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.35);
+    cursor:zoom-in; transition:transform .3s ease-in-out;
+    touch-action:manipulation; /* fires dblclick promptly on mobile taps */
+  }
+  /* Double-click/double-tap zoom — scales only the image itself, not the
+     overlay or caption around it. */
+  #lightbox-img.zoomed{
+    transform:scale(1.9); cursor:zoom-out; position:relative; z-index:2;
   }
   .lightbox-overlay .lightbox-caption{
     text-align:center; color:var(--cream); font-size:.85rem; margin-top:12px; opacity:.85;
@@ -906,6 +922,15 @@
   #occasion-view .occ-card:nth-child(4){ animation-delay:.26s; }
   #occasion-view .occ-card:nth-child(5){ animation-delay:.34s; }
   #occasion-view .occ-card:nth-child(6){ animation-delay:.42s; }
+
+  /* "Our videos" home-page section — same skeleton-shimmer -> card-in
+     loading effect used when opening an occasion sub-page, played once
+     the first time the section scrolls into view. */
+  #home-videos-grid .style-card.video-loaded{ animation:cardIn .55s ease-in-out both; }
+  #home-videos-grid .style-card.video-loaded:nth-child(1){ animation-delay:.02s; }
+  #home-videos-grid .style-card.video-loaded:nth-child(2){ animation-delay:.10s; }
+  #home-videos-grid .style-card.video-loaded:nth-child(3){ animation-delay:.18s; }
+  #home-videos-grid .style-card.video-loaded:nth-child(4){ animation-delay:.26s; }
 
   /* Skeleton loading cards shown briefly while the new page "loads" */
   .skel-card{
@@ -1440,7 +1465,7 @@
       <h2>Our videos</h2>
       <p>Short clips from real setups — walk through the decor, the lighting and the little details you won't catch in a photo.</p>
     </div>
-    <div class="styles-grid">
+    <div class="styles-grid" id="home-videos-grid">
       <div class="style-card reveal">
         <div class="style-thumb vid-trigger">
           <video autoplay muted loop playsinline preload="metadata" poster="images/our_videos/img-1.png">
@@ -1946,6 +1971,27 @@
 
   let lastReturnTarget = 'occasions';
 
+  // ---------- BACK BUTTON: keep it inside the site ----------
+  // Opening the occasion sub-page, the "more videos" sub-page, or an
+  // image/video lightbox pushes its own history entry. Pressing the
+  // phone's (or browser's) back button then steps back through THOSE
+  // in-site views one at a time, instead of leaving the website. See the
+  // shared popstate listener further down for the actual close-on-back logic.
+  function pushNavState(type){
+    history.pushState({ shainyNav: type }, '', location.href);
+  }
+  // Used by close buttons / overlay-click closes: if we're currently on a
+  // pushed nav entry for this view, consume it via history.back() (which
+  // fires 'popstate' and runs the real close logic below) — this keeps
+  // history in sync whichever way the view gets closed.
+  function requestNavClose(type){
+    if(history.state && history.state.shainyNav === type){
+      history.back();
+      return true;
+    }
+    return false;
+  }
+
   // Tracks which sub-page is currently open ('occasion' or 'videos') so
   // closeOccasion() knows where on the home page to scroll back to.
   function openMoreVideos(){
@@ -1976,6 +2022,7 @@
     lastReturnTarget = 'videos';
     document.body.classList.add('hw-open');
     view.classList.add('active');
+    pushNavState('occasion');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     setTimeout(() => {
@@ -2028,6 +2075,7 @@
     lastReturnTarget = 'occasions';
     document.body.classList.add('hw-open');
     view.classList.add('active');
+    pushNavState('occasion');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Step 2: after a brief loading beat, swap skeletons for the real package
@@ -2046,8 +2094,17 @@
     }, 550);
   }
   function closeOccasion(){
+    // If this view was opened via pushNavState, consume that history entry
+    // instead of closing immediately — the popstate listener below runs
+    // doCloseOccasion() once the back navigation actually happens.
+    if(requestNavClose('occasion')) return;
+    doCloseOccasion();
+  }
+  function doCloseOccasion(){
+    const view = document.getElementById('occasion-view');
+    if(!view || !view.classList.contains('active')) return; // already closed
     document.body.classList.remove('hw-open');
-    document.getElementById('occasion-view').classList.remove('active');
+    view.classList.remove('active');
     const main = document.getElementById('main-view');
     if(main){
       main.classList.remove('page-return');
@@ -2239,6 +2296,46 @@
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
+  // ---------- "OUR VIDEOS" SECTION LOADING ANIMATION ----------
+  // Gives the home-page "Our videos" cards the same skeleton-shimmer ->
+  // card-entrance loading effect used when opening an occasion sub-page
+  // (see openOccasion/openMoreVideos), played once the first time the
+  // section scrolls into view.
+  (function(){
+    const videosGrid = document.getElementById('home-videos-grid');
+    if(!videosGrid) return;
+    const originalMarkup = videosGrid.innerHTML.replace(/style-card reveal/g, 'style-card video-loaded');
+    const cardCount = videosGrid.children.length;
+    let played = false;
+
+    function playVideosLoading(){
+      if(played) return;
+      played = true;
+      videosGrid.innerHTML = Array.from({length: cardCount}).map(() => `
+        <div class="skel-card">
+          <div class="skel-block skel-thumb"></div>
+          <div class="skel-block skel-line w-70"></div>
+        </div>
+      `).join('');
+      setTimeout(() => {
+        videosGrid.innerHTML = originalMarkup;
+        // Re-kick autoplay on the swapped-in previews (some mobile
+        // browsers need an explicit play() after markup is replaced).
+        videosGrid.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
+      }, 550);
+    }
+
+    const videosIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          playVideosLoading();
+          videosIO.disconnect();
+        }
+      });
+    }, {threshold:0.2});
+    videosIO.observe(videosGrid);
+  })();
+
   // ---------- GALLERY: pause the auto-slide while the visitor drags/scrolls
   // it manually, then resume smoothly once they let go ----------
   const galSlider = document.getElementById('gal-slider');
@@ -2273,6 +2370,10 @@
         document.body.classList.remove('hw-open');
         const ov = document.getElementById('occasion-view');
         if(ov) ov.classList.remove('active');
+        // Consume the pushed history entry silently (view is already
+        // closed above, so the popstate-triggered doCloseOccasion() below
+        // will just no-op) so the back button doesn't land on a stale entry.
+        if(history.state && history.state.shainyNav === 'occasion') history.back();
       }
       // Close mobile menu if it's open
       if(links && window.innerWidth <= 820){ links.style.display = 'none'; }
@@ -2329,17 +2430,33 @@
     if(!lightboxOverlay || !lightboxImg || !src) return;
     lightboxImg.src = src;
     lightboxImg.alt = alt || '';
+    lightboxImg.classList.remove('zoomed');
     lightboxCaption.textContent = alt || '';
     lightboxOverlay.classList.add('active');
     lightboxOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    pushNavState('lightbox');
   }
   function closeLightbox(e){
     if(e) e.stopPropagation();
-    if(!lightboxOverlay) return;
+    if(requestNavClose('lightbox')) return;
+    doCloseLightbox();
+  }
+  function doCloseLightbox(){
+    if(!lightboxOverlay || !lightboxOverlay.classList.contains('active')) return;
     lightboxOverlay.classList.remove('active');
     lightboxOverlay.setAttribute('aria-hidden', 'true');
+    lightboxImg.classList.remove('zoomed');
     document.body.style.overflow = '';
+  }
+  // Double-click (or double-tap on mobile) zooms only the image itself —
+  // the overlay, caption and everything else stay put. Double-clicking
+  // again zooms back out.
+  if(lightboxImg){
+    lightboxImg.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      lightboxImg.classList.toggle('zoomed');
+    });
   }
   document.addEventListener('click', (e) => {
     const img = e.target;
@@ -2386,10 +2503,15 @@
     document.body.style.overflow = 'hidden';
     lightboxVideo.currentTime = 0;
     lightboxVideo.play().catch(() => {});
+    pushNavState('video-lightbox');
   }
   function closeVideoLightbox(e){
     if(e) e.stopPropagation();
-    if(!videoLightboxOverlay) return;
+    if(requestNavClose('video-lightbox')) return;
+    doCloseVideoLightbox();
+  }
+  function doCloseVideoLightbox(){
+    if(!videoLightboxOverlay || !videoLightboxOverlay.classList.contains('active')) return;
     videoLightboxOverlay.classList.remove('active');
     videoLightboxOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -2414,6 +2536,22 @@
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && videoLightboxOverlay && videoLightboxOverlay.classList.contains('active')){
       closeVideoLightbox();
+    }
+  });
+
+  // ---------- BACK BUTTON: shared popstate handler ----------
+  // Fires when the phone's (or browser's) back button is pressed after any
+  // of openLightbox/openVideoLightbox/openOccasion/openMoreVideos pushed a
+  // history entry. Closes whichever in-site view is currently on top
+  // (video lightbox, then image lightbox, then the occasion sub-page) so
+  // the visitor steps back through the website instead of leaving it.
+  window.addEventListener('popstate', () => {
+    if(videoLightboxOverlay && videoLightboxOverlay.classList.contains('active')){
+      doCloseVideoLightbox();
+    } else if(lightboxOverlay && lightboxOverlay.classList.contains('active')){
+      doCloseLightbox();
+    } else if(document.body.classList.contains('hw-open')){
+      doCloseOccasion();
     }
   });
 </script>
